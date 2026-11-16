@@ -1,0 +1,15 @@
+{
+ "_note": "Measured effects shown next to each picker choice. Taken from the Objectives doc; edit as results come in.",
+ "pipeline:model_only": "Objective 2, Step 8 (test): without retrieval, 50.0% (4B) and 40.1% (2B) of answerable store questions right.",
+ "pipeline:retrieval": "Objective 2, Step 8 (test): with retrieval, 77.9% (4B) and 55.4% (2B) right (+27.9 and +15.3 points); unanswerable hallucination 19.3% and 22.8%, against 29.8% and 40.4% without.",
+ "pipeline:o3_final": "Objective 3: router, harness-run tools, discovery and checks; confirmed on the O3-T test set in Step 14 (results_obj3/_step14/verdicts.md).",
+ "pipeline:custom": "Combinations other than the presets are labelled untested unless a run covers them.",
+ "toggle:retrieval": "Objective 2, Step 8 (test): +27.9 points (4B) and +15.3 points (2B) on answerable store questions.",
+ "toggle:fallback": "Objective 2, Step 8: a hard fallback would have cut unanswerable hallucination to 15.8% / 12.3%, but in the Step 7 pilot it refused 7 of 20 ordinary shopping cases; Objective 3 applies it to store questions only.",
+ "toggle:harness_tools": "Objective 3, Step 5 (dev): 2B tool cases +8.3 points; hand-offs 17% to 100% (2B) and 50% to 83% (4B); tool-case first word 4.1 to 2.0 s (2B).",
+ "toggle:answer_check": "Objective 3, Step 10: replies with a detail not in the shown information get the fixed reply (see the Objectives doc for the measured effect).",
+ "toggle:patches": "Objective 3, Step 7 (dev): forced-answer recovery took the 4B's store-set shopping cases from 27.3% to 81.8%; no printed tool call reached a customer.",
+ "toggle:short_replies": "Objective 3, Step 13a2 (dev): Tier A first word 2.1 s earlier on store questions and 0.7 s on tool cases, no set worse; not used for the 4B, which then printed tool calls.",
+ "toggle:thinking": "Off in every evaluated run.",
+ "pipeline:deployed": "Objective 4: Tier A keeps O3-final (the 2B adapter missed the Step 8 speed rule on tool cases); Tier B runs lora_4b with short replies and the patches off (no set worse on dev, 0 printed tool calls)."
+}

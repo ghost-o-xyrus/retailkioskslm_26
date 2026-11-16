@@ -1,0 +1,25 @@
+{
+  "k": 3,
+  "rule": "smallest k in 1-5 with dev Recall@k >= dev Recall@5 - 2%, at most 1500 context tokens",
+  "max_context_tokens": 1500,
+  "dev_recall": {
+    "1": 0.76,
+    "2": 0.84,
+    "3": 0.872,
+    "4": 0.88,
+    "5": 0.88
+  },
+  "knowledge_base": {
+    "embedder": "BAAI/bge-small-en-v1.5",
+    "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "backend": "openvino",
+    "max_length": 256,
+    "depth": 20,
+    "k": 3,
+    "max_context_tokens": 1500,
+    "threshold": -3.481874465942383,
+    "hinglish_bypass": true,
+    "fallback_file": "results_retrieval\\fallback_bypass\\fallback.json"
+  },
+  "fake": false
+}

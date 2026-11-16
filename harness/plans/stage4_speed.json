@@ -1,0 +1,540 @@
+{
+  "name": "stage4_speed",
+  "description": "Speed and RAM on the fixed 30-case subset, every finalist x quant x backend. Use --only to select the finalists' entries. CPU runs use 4 threads (Tier A); Vulkan runs offload all layers (Tier B). Check model_path values against your models/ folder; filenames follow model_registry.csv.",
+  "base_dir": "..",
+  "defaults": {
+    "port": 8080,
+    "eval": "eval/eval_set.jsonl",
+    "ids": "eval/speed_subset_ids.json",
+    "set": "all",
+    "split": "all",
+    "repeats": 1,
+    "temperature": 0
+  },
+  "runs": [
+    {
+      "name": "qwen35-0.8b_q4_k_m_cpu_speed",
+      "model": "Qwen3.5-0.8B",
+      "quant": "Q4_K_M",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-0.8b/Qwen3.5-0.8B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-0.8b_q4_k_m_vulkan_speed",
+      "model": "Qwen3.5-0.8B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-0.8b/Qwen3.5-0.8B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "qwen35-0.8b_q8_0_cpu_speed",
+      "model": "Qwen3.5-0.8B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-0.8b/Qwen3.5-0.8B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-0.8b_q8_0_vulkan_speed",
+      "model": "Qwen3.5-0.8B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-0.8b/Qwen3.5-0.8B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "qwen35-2b_q4_k_m_cpu_speed",
+      "model": "Qwen3.5-2B",
+      "quant": "Q4_K_M",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-2b_q4_k_m_vulkan_speed",
+      "model": "Qwen3.5-2B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "qwen35-2b_q8_0_cpu_speed",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-2b_q8_0_vulkan_speed",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "gemma4-e2b_q4_k_m_cpu_speed",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q4_K_M",
+      "backend": "cpu",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q4_K_M.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "gemma4-e2b_q4_k_m_vulkan_speed",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "gemma4-e2b_q8_0_cpu_speed",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "gemma4-e2b_q8_0_vulkan_speed",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "qwen35-4b_q4_k_m_cpu_speed",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-4b_q4_k_m_vulkan_speed",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "qwen35-4b_q8_0_cpu_speed",
+      "model": "Qwen3.5-4B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-4b_q8_0_vulkan_speed",
+      "model": "Qwen3.5-4B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "phi4-mini_q4_k_m_cpu_speed",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q4_K_M",
+      "backend": "cpu",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct-Q4_K_M.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "phi4-mini_q4_k_m_vulkan_speed",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "phi4-mini_q8_0_cpu_speed",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct.Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "phi4-mini_q8_0_vulkan_speed",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct.Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "llama32-3b_q4_k_m_cpu_speed",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q4_K_M",
+      "backend": "cpu",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "llama32-3b_q4_k_m_vulkan_speed",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "llama32-3b_q8_0_cpu_speed",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "llama32-3b_q8_0_vulkan_speed",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    },
+    {
+      "name": "qwen35-2b_bf16_cpu_speed",
+      "model": "Qwen3.5-2B",
+      "quant": "BF16",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-BF16.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ]
+    },
+    {
+      "name": "qwen35-2b_bf16_vulkan_speed",
+      "model": "Qwen3.5-2B",
+      "quant": "BF16",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-BF16.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ]
+    }
+  ]
+}

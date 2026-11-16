@@ -1,0 +1,14 @@
+
+--- 2026-11-03 17:50:19 C:\Users\user\Downloads\SLM_work\llama-vulkan/llama-server.exe -m C:\Users\user\Downloads\SLM_work\models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf --host 127.0.0.1 --port 8080 --jinja -c 8192 -np 1 -ngl 99 --reasoning-budget 0 --spec-type draft-mtp
+0.00.113.053 I srv  llama_server: initializing ...
+0.00.113.062 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.113.428 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.123.865 I srv    load_model: loading model 'C:\Users\user\Downloads\SLM_work\models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf'
+0.01.408.154 W operator(): failed to measure the memory of the extra model, fitting without it: failed to create llama_context from model
+0.05.941.715 I cmn          init: llama threadpool init, n_threads = 12
+0.06.210.725 I common_speculative_init_result: creating MTP draft context against the target model 'C:\Users\user\Downloads\SLM_work\models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf'
+0.06.210.746 W llama_init_from_model: context type MTP requested but model doesn't contain MTP layers
+0.06.210.747 E common_speculative_init_result: failed to create MTP context
+0.06.210.754 E srv    load_model: failed to create MTP context
+0.06.210.775 I srv    operator(): operator(): cleaning up before exit...
+0.06.213.654 E srv  llama_server: exiting due to model loading error

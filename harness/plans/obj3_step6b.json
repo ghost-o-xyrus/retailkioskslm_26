@@ -1,0 +1,152 @@
+{
+  "name": "obj3_step6b",
+  "description": "Objective 3, Step 6 re-run of the dev dialogues after the router fix (openings such as 'Can you help me pick a watch?' and 'Watch lene aaya hoon' now route to shopping): O3-S5h (baseline) and O3-S6 (template questions), both models, Vulkan. About 1.5 hours; resumable.",
+  "runs": [
+    {
+      "name": "o3s6d2_4b_s5h",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S5h dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl"
+    },
+    {
+      "name": "o3s6d2_2b_s5h",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S5h dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl"
+    },
+    {
+      "name": "o3s6d2_4b_s6",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S6 dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl",
+      "discovery": "template"
+    },
+    {
+      "name": "o3s6d2_2b_s6",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S6 dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl",
+      "discovery": "template"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

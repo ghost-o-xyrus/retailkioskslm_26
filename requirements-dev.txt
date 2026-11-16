@@ -1,0 +1,30 @@
+# Everything beyond requirements.txt that the evaluation, retrieval-building and scoring scripts use.
+# The kiosk app does not need any of this. docs/ENVIRONMENT.md has the exact versions the results were measured with.
+-r requirements.txt
+
+# retrieval: benchmarks, alternative backends, building models/ov (export_openvino.py, quantize_reranker.py)
+sentence-transformers
+torch
+transformers
+huggingface_hub
+optimum[openvino]
+nncf
+onnxruntime
+
+# figures and score sheets
+matplotlib
+scipy
+openpyxl
+
+# app interface tests (app/test_app.py, app/a11y_check.py)
+playwright
+axe-playwright-python
+
+# Kaggle jobs (kaggle/push_job.py, pull_job.py)
+kaggle
+
+# demo_tool_loop.py only
+openai
+
+# finetune/ training runs on a Kaggle GPU; its packages (unsloth, datasets, peft) are installed there by
+# finetune/kaggle_train.sh and are not needed on the laptop.

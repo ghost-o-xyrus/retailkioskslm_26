@@ -1,0 +1,1213 @@
+{
+ "o3s4_2b_rag_s4": {
+  "run": "o3s4_2b_rag_s4",
+  "model": "Qwen3.5-2B",
+  "backend": "vulkan",
+  "config": "O3-S4",
+  "retrieval": "routed",
+  "eval": "eval\\rag_cases.jsonl",
+  "n_records": 151,
+  "n_cases": 151,
+  "repeats": 1,
+  "rounds_mean": 2.3311258278145695,
+  "rounds_dist": {
+   "1": 21,
+   "2": 76,
+   "3": 37,
+   "4": 17
+  },
+  "share_multi_round": 0.8609271523178808,
+  "tok_read_mean": 524.9801324503311,
+  "tok_read_message_mean": 376.33112582781456,
+  "tok_read_tools_mean": 148.64900662251657,
+  "tok_write_calls_mean": 59.41721854304636,
+  "tok_answer_mean": 55.23841059602649,
+  "context_tokens_real_mean": 459.6725663716814,
+  "context_real_over_estimate": 1.3586973580957364,
+  "tool_output_tokens_mean": 124.55629139072848,
+  "tool_output_tokens_per_call": 91.74634146341464,
+  "tool_calls_mean": 1.3576158940397351,
+  "time_share": {
+   "retrieval": 0.038244662657046194,
+   "read_message": 0.1755690055258565,
+   "read_tool_outputs": 0.11044818538201423,
+   "write_calls": 0.34620511537666593,
+   "write_answer": 0.3215632916685562,
+   "other": 0.007969739389861024
+  },
+  "time_mean_ms": {
+   "retrieval": 444.57814569536424,
+   "read_message": 2040.9159735099336,
+   "read_tool_outputs": 1283.9137814569535,
+   "write_calls": 4024.4891059602646,
+   "write_answer": 3738.0382516556288,
+   "other": 92.64487417218527
+  },
+  "v_read_tok_s": 157.89684619673392,
+  "v_write_tok_s": 14.770399363112459,
+  "fit_read": {
+   "overhead_ms": 541.0176254878647,
+   "tok_s": 254.39402781871695
+  },
+  "fit_write": {
+   "overhead_ms": -34.86382022301359,
+   "tok_s": 14.617358835501658
+  },
+  "formula_median_abs_err": 0.07469324011403146,
+  "formula_p90_abs_err": 0.2253043839036781,
+  "first_word_p50_ms": 6994.7,
+  "first_word_p50_ci": [
+   6568.4,
+   8904.3
+  ],
+  "first_word_p90_ms": 14395.2,
+  "reply_p50_ms": 10844.6,
+  "reply_p50_ci": [
+   8780.5,
+   11986.3
+  ],
+  "reply_p90_ms": 19108.3,
+  "forced_final_requests": 17,
+  "forced_final_read_mean": 85.6470588235294,
+  "other_tool_round_read_mean": 114.07608695652173,
+  "cache_miss_share": 0.0,
+  "waste": {
+   "dup_calls": 13,
+   "staff_calls_over_1": 13,
+   "deduped_fetches": 63,
+   "tool_errors": 0,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 13,
+   "n_calls": 205
+  },
+  "repeats_check": null,
+  "by_category": {
+   "rag/collection": {
+    "n": 8,
+    "rounds": 2.375,
+    "tok_read": 1040.625,
+    "first_p50_ms": 10351.900000000001
+   },
+   "rag/faq": {
+    "n": 16,
+    "rounds": 1.875,
+    "tok_read": 206,
+    "first_p50_ms": 5639.85
+   },
+   "rag/glossary": {
+    "n": 8,
+    "rounds": 2.75,
+    "tok_read": 360.125,
+    "first_p50_ms": 6810.85
+   },
+   "rag/hinglish_spec": {
+    "n": 8,
+    "rounds": 2.5,
+    "tok_read": 734.625,
+    "first_p50_ms": 9321.45
+   },
+   "rag/hinglish_text": {
+    "n": 6,
+    "rounds": 2,
+    "tok_read": 558,
+    "first_p50_ms": 6077.200000000001
+   },
+   "rag/missing_attribute": {
+    "n": 8,
+    "rounds": 2.875,
+    "tok_read": 782.5,
+    "first_p50_ms": 9952.8
+   },
+   "rag/missing_policy": {
+    "n": 4,
+    "rounds": 1.25,
+    "tok_read": 156,
+    "first_p50_ms": 1119.5
+   },
+   "rag/negative": {
+    "n": 9,
+    "rounds": 2.888888888888889,
+    "tok_read": 723,
+    "first_p50_ms": 12210.1
+   },
+   "rag/nonexistent_product": {
+    "n": 4,
+    "rounds": 4,
+    "tok_read": 943.5,
+    "first_p50_ms": 15403.75
+   },
+   "rag/not_sold": {
+    "n": 6,
+    "rounds": 1.3333333333333333,
+    "tok_read": 81,
+    "first_p50_ms": 1222.05
+   },
+   "rag/off_topic": {
+    "n": 4,
+    "rounds": 1,
+    "tok_read": 19,
+    "first_p50_ms": 1255.0
+   },
+   "rag/offer": {
+    "n": 2,
+    "rounds": 3,
+    "tok_read": 328,
+    "first_p50_ms": 10614.35
+   },
+   "rag/policy": {
+    "n": 7,
+    "rounds": 2.4285714285714284,
+    "tok_read": 458.85714285714283,
+    "first_p50_ms": 6994.7
+   },
+   "rag/product_description": {
+    "n": 10,
+    "rounds": 2.2,
+    "tok_read": 207,
+    "first_p50_ms": 8944.9
+   },
+   "rag/product_name": {
+    "n": 12,
+    "rounds": 3,
+    "tok_read": 776.5,
+    "first_p50_ms": 9508.7
+   },
+   "rag/product_sku": {
+    "n": 9,
+    "rounds": 2,
+    "tok_read": 220.22222222222223,
+    "first_p50_ms": 4269.4
+   },
+   "rag/product_spec": {
+    "n": 16,
+    "rounds": 2.25,
+    "tok_read": 709.5,
+    "first_p50_ms": 6617.2
+   },
+   "rag/spec_not_listed": {
+    "n": 4,
+    "rounds": 2.25,
+    "tok_read": 651.75,
+    "first_p50_ms": 6274.1
+   },
+   "rag/store": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 234.5,
+    "first_p50_ms": 5657.0
+   },
+   "rag/typo_spec": {
+    "n": 8,
+    "rounds": 2.375,
+    "tok_read": 769,
+    "first_p50_ms": 7018.85
+   }
+  },
+  "by_route": {
+   "lookup": {
+    "n": 9,
+    "rounds": 2,
+    "tok_read": 220.22222222222223,
+    "first_p50_ms": 4269.4
+   },
+   "shopping": {
+    "n": 11,
+    "rounds": 2.3636363636363638,
+    "tok_read": 243,
+    "first_p50_ms": 9000.9
+   },
+   "store": {
+    "n": 130,
+    "rounds": 2.3615384615384616,
+    "tok_read": 573.8461538461538,
+    "first_p50_ms": 6917.85
+   },
+   "unclear": {
+    "n": 1,
+    "rounds": 1,
+    "tok_read": 17,
+    "first_p50_ms": 1181.0
+   }
+  },
+  "run_peak_rss_mb": 3051.2,
+  "harness_rss_mb_max": 359
+ },
+ "o3s4_2b_v12_s4": {
+  "run": "o3s4_2b_v12_s4",
+  "model": "Qwen3.5-2B",
+  "backend": "vulkan",
+  "config": "O3-S4",
+  "retrieval": "routed",
+  "eval": "eval\\eval_set_v1.2.jsonl",
+  "n_records": 78,
+  "n_cases": 78,
+  "repeats": 1,
+  "rounds_mean": 1.6282051282051282,
+  "rounds_dist": {
+   "1": 32,
+   "2": 44,
+   "3": 1,
+   "4": 1
+  },
+  "share_multi_round": 0.5897435897435898,
+  "tok_read_mean": 275.15384615384613,
+  "tok_read_message_mean": 143.75641025641025,
+  "tok_read_tools_mean": 131.39743589743588,
+  "tok_write_calls_mean": 32.58974358974359,
+  "tok_answer_mean": 92.84615384615384,
+  "context_tokens_real_mean": 205.66666666666666,
+  "context_real_over_estimate": 1.1532710280373832,
+  "tool_output_tokens_mean": 119.64102564102564,
+  "tool_output_tokens_per_call": 166.64285714285714,
+  "tool_calls_mean": 0.717948717948718,
+  "time_share": {
+   "retrieval": 0.004906984606932164,
+   "read_message": 0.11091221168013618,
+   "read_tool_outputs": 0.07818788552306272,
+   "write_calls": 0.20450207253164387,
+   "write_answer": 0.5877015093389991,
+   "other": 0.01378933631922605
+  },
+  "time_mean_ms": {
+   "retrieval": 52.3974358974359,
+   "read_message": 1184.3353846153846,
+   "read_tool_outputs": 834.9006666666667,
+   "write_calls": 2183.7003974358972,
+   "write_answer": 6275.555076923077,
+   "other": 147.24437179487163
+  },
+  "v_read_tok_s": 136.26631021130282,
+  "v_write_tok_s": 14.82824319659204,
+  "fit_read": {
+   "overhead_ms": 600.5684515034802,
+   "tok_s": 264.2185234922261
+  },
+  "fit_write": {
+   "overhead_ms": -82.98374194206554,
+   "tok_s": 14.595124135830183
+  },
+  "formula_median_abs_err": 0.14566886139256874,
+  "formula_p90_abs_err": 0.7934281725200496,
+  "first_word_p50_ms": 4064.15,
+  "first_word_p50_ci": [
+   3506.4,
+   4900.6
+  ],
+  "first_word_p90_ms": 7294.48,
+  "reply_p50_ms": 7664.85,
+  "reply_p50_ci": [
+   6233.8,
+   9083.1
+  ],
+  "reply_p90_ms": 20860.569999999996,
+  "forced_final_requests": 1,
+  "forced_final_read_mean": 424,
+  "other_tool_round_read_mean": 204.6875,
+  "cache_miss_share": 0.016666666666666666,
+  "waste": {
+   "dup_calls": 0,
+   "staff_calls_over_1": 0,
+   "deduped_fetches": 4,
+   "tool_errors": 1,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 0,
+   "n_calls": 56
+  },
+  "repeats_check": null,
+  "by_category": {
+   "comparison": {
+    "n": 5,
+    "rounds": 1.4,
+    "tok_read": 505.2,
+    "first_p50_ms": 3576.7
+   },
+   "discovery": {
+    "n": 16,
+    "rounds": 1.75,
+    "tok_read": 264.6875,
+    "first_p50_ms": 5472.35
+   },
+   "grounded_qa": {
+    "n": 10,
+    "rounds": 1,
+    "tok_read": 335.8,
+    "first_p50_ms": 2341.7
+   },
+   "handoff": {
+    "n": 6,
+    "rounds": 1.8333333333333333,
+    "tok_read": 140,
+    "first_p50_ms": 4017.0
+   },
+   "hinglish": {
+    "n": 10,
+    "rounds": 1.6,
+    "tok_read": 210.8,
+    "first_p50_ms": 5052.200000000001
+   },
+   "refusal": {
+    "n": 12,
+    "rounds": 1.5,
+    "tok_read": 301.0833333333333,
+    "first_p50_ms": 3201.3
+   },
+   "tool_selection": {
+    "n": 19,
+    "rounds": 1.9473684210526316,
+    "tok_read": 251.68421052631578,
+    "first_p50_ms": 4108.8
+   }
+  },
+  "by_route": {
+   "chat": {
+    "n": 3,
+    "rounds": 1,
+    "tok_read": 16,
+    "first_p50_ms": 725.6
+   },
+   "compare": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 316,
+    "first_p50_ms": 6189.35
+   },
+   "lookup": {
+    "n": 6,
+    "rounds": 2,
+    "tok_read": 214.66666666666666,
+    "first_p50_ms": 4740.85
+   },
+   "shopping": {
+    "n": 27,
+    "rounds": 1.7407407407407407,
+    "tok_read": 232.11111111111111,
+    "first_p50_ms": 5644.1
+   },
+   "staff": {
+    "n": 5,
+    "rounds": 1.8,
+    "tok_read": 126.8,
+    "first_p50_ms": 3917.2
+   },
+   "stock": {
+    "n": 8,
+    "rounds": 2,
+    "tok_read": 124.875,
+    "first_p50_ms": 4016.4
+   },
+   "store": {
+    "n": 9,
+    "rounds": 2,
+    "tok_read": 497.55555555555554,
+    "first_p50_ms": 5577.7
+   }
+  },
+  "run_peak_rss_mb": 4135.7,
+  "harness_rss_mb_max": 362
+ },
+ "o3s4_4b_rag_s4": {
+  "run": "o3s4_4b_rag_s4",
+  "model": "Qwen3.5-4B",
+  "backend": "vulkan",
+  "config": "O3-S4",
+  "retrieval": "routed",
+  "eval": "eval\\rag_cases.jsonl",
+  "n_records": 151,
+  "n_cases": 151,
+  "repeats": 1,
+  "rounds_mean": 1.3112582781456954,
+  "rounds_dist": {
+   "1": 123,
+   "2": 17,
+   "3": 3,
+   "4": 8
+  },
+  "share_multi_round": 0.18543046357615894,
+  "tok_read_mean": 422.13907284768214,
+  "tok_read_message_mean": 376.33112582781456,
+  "tok_read_tools_mean": 45.80794701986755,
+  "tok_write_calls_mean": 19.344370860927153,
+  "tok_answer_mean": 68.88741721854305,
+  "context_tokens_real_mean": 459.6725663716814,
+  "context_real_over_estimate": 1.3586973580957364,
+  "tool_output_tokens_mean": 40.0728476821192,
+  "tool_output_tokens_per_call": 118.6470588235294,
+  "tool_calls_mean": 0.33774834437086093,
+  "time_share": {
+   "retrieval": 0.03618265324695282,
+   "read_message": 0.2916043189075986,
+   "read_tool_outputs": 0.04437572644969977,
+   "write_calls": 0.135862571194617,
+   "write_answer": 0.4880119309800267,
+   "other": 0.0039627992211051
+  },
+  "time_mean_ms": {
+   "retrieval": 541.0794701986755,
+   "read_message": 4360.6838145695365,
+   "read_tool_outputs": 663.5996092715231,
+   "write_calls": 2031.7041854304634,
+   "write_answer": 7297.785357615893,
+   "other": 59.26014569536433
+  },
+  "v_read_tok_s": 84.01975709502416,
+  "v_write_tok_s": 9.457300710008608,
+  "fit_read": {
+   "overhead_ms": 897.9196321654335,
+   "tok_s": 109.73547303621869
+  },
+  "fit_write": {
+   "overhead_ms": -162.7273404926318,
+   "tok_s": 9.24583639413416
+  },
+  "formula_median_abs_err": 0.10703350819595202,
+  "formula_p90_abs_err": 0.2269515999599587,
+  "first_word_p50_ms": 6774.3,
+  "first_word_p50_ci": [
+   6564.9,
+   7009.7
+  ],
+  "first_word_p90_ms": 12807.7,
+  "reply_p50_ms": 12438.4,
+  "reply_p50_ci": [
+   11715.1,
+   13150.9
+  ],
+  "reply_p90_ms": 27343.1,
+  "forced_final_requests": 8,
+  "forced_final_read_mean": 212,
+  "other_tool_round_read_mean": 133.87179487179486,
+  "cache_miss_share": 0.0,
+  "waste": {
+   "dup_calls": 0,
+   "staff_calls_over_1": 0,
+   "deduped_fetches": 1,
+   "tool_errors": 0,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 0,
+   "n_calls": 51
+  },
+  "repeats_check": null,
+  "by_category": {
+   "rag/collection": {
+    "n": 8,
+    "rounds": 1,
+    "tok_read": 578.25,
+    "first_p50_ms": 6487.95
+   },
+   "rag/faq": {
+    "n": 16,
+    "rounds": 1.125,
+    "tok_read": 162.6875,
+    "first_p50_ms": 3043.5
+   },
+   "rag/glossary": {
+    "n": 8,
+    "rounds": 1,
+    "tok_read": 287.375,
+    "first_p50_ms": 3796.8500000000004
+   },
+   "rag/hinglish_spec": {
+    "n": 8,
+    "rounds": 1,
+    "tok_read": 605.5,
+    "first_p50_ms": 6967.9
+   },
+   "rag/hinglish_text": {
+    "n": 6,
+    "rounds": 1,
+    "tok_read": 442.3333333333333,
+    "first_p50_ms": 5989.95
+   },
+   "rag/missing_attribute": {
+    "n": 8,
+    "rounds": 1,
+    "tok_read": 578.375,
+    "first_p50_ms": 7989.0
+   },
+   "rag/missing_policy": {
+    "n": 4,
+    "rounds": 1.25,
+    "tok_read": 156,
+    "first_p50_ms": 4025.75
+   },
+   "rag/negative": {
+    "n": 9,
+    "rounds": 1.5555555555555556,
+    "tok_read": 644.5555555555555,
+    "first_p50_ms": 7197.8
+   },
+   "rag/nonexistent_product": {
+    "n": 4,
+    "rounds": 1,
+    "tok_read": 568,
+    "first_p50_ms": 7456.95
+   },
+   "rag/not_sold": {
+    "n": 6,
+    "rounds": 1.5,
+    "tok_read": 66.33333333333333,
+    "first_p50_ms": 2694.85
+   },
+   "rag/off_topic": {
+    "n": 4,
+    "rounds": 1,
+    "tok_read": 19,
+    "first_p50_ms": 2256.55
+   },
+   "rag/offer": {
+    "n": 2,
+    "rounds": 1,
+    "tok_read": 245,
+    "first_p50_ms": 3704.15
+   },
+   "rag/policy": {
+    "n": 7,
+    "rounds": 1,
+    "tok_read": 334.42857142857144,
+    "first_p50_ms": 4646.9
+   },
+   "rag/product_description": {
+    "n": 10,
+    "rounds": 3.2,
+    "tok_read": 325.8,
+    "first_p50_ms": 27185.75
+   },
+   "rag/product_name": {
+    "n": 12,
+    "rounds": 1.25,
+    "tok_read": 605.5833333333334,
+    "first_p50_ms": 6734.4
+   },
+   "rag/product_sku": {
+    "n": 9,
+    "rounds": 2.111111111111111,
+    "tok_read": 232.11111111111111,
+    "first_p50_ms": 7274.5
+   },
+   "rag/product_spec": {
+    "n": 16,
+    "rounds": 1,
+    "tok_read": 604.25,
+    "first_p50_ms": 7209.8
+   },
+   "rag/spec_not_listed": {
+    "n": 4,
+    "rounds": 1.25,
+    "tok_read": 579.75,
+    "first_p50_ms": 6670.299999999999
+   },
+   "rag/store": {
+    "n": 2,
+    "rounds": 1,
+    "tok_read": 192.5,
+    "first_p50_ms": 3014.05
+   },
+   "rag/typo_spec": {
+    "n": 8,
+    "rounds": 1,
+    "tok_read": 637.75,
+    "first_p50_ms": 6981.4
+   }
+  },
+  "by_route": {
+   "lookup": {
+    "n": 9,
+    "rounds": 2.111111111111111,
+    "tok_read": 232.11111111111111,
+    "first_p50_ms": 7274.5
+   },
+   "shopping": {
+    "n": 11,
+    "rounds": 3,
+    "tok_read": 298.45454545454544,
+    "first_p50_ms": 26967.1
+   },
+   "store": {
+    "n": 130,
+    "rounds": 1.1153846153846154,
+    "tok_read": 448.87692307692305,
+    "first_p50_ms": 6632.5
+   },
+   "unclear": {
+    "n": 1,
+    "rounds": 1,
+    "tok_read": 17,
+    "first_p50_ms": 1796.1
+   }
+  },
+  "run_peak_rss_mb": 4244.1,
+  "harness_rss_mb_max": 941
+ },
+ "o3s4_4b_v12_s4": {
+  "run": "o3s4_4b_v12_s4",
+  "model": "Qwen3.5-4B",
+  "backend": "vulkan",
+  "config": "O3-S4",
+  "retrieval": "routed",
+  "eval": "eval\\eval_set_v1.2.jsonl",
+  "n_records": 78,
+  "n_cases": 78,
+  "repeats": 1,
+  "rounds_mean": 1.5128205128205128,
+  "rounds_dist": {
+   "1": 44,
+   "2": 30,
+   "3": 2,
+   "4": 2
+  },
+  "share_multi_round": 0.4358974358974359,
+  "tok_read_mean": 237.05128205128204,
+  "tok_read_message_mean": 144.57692307692307,
+  "tok_read_tools_mean": 92.47435897435898,
+  "tok_write_calls_mean": 27.58974358974359,
+  "tok_answer_mean": 85.02564102564102,
+  "context_tokens_real_mean": 205.66666666666666,
+  "context_real_over_estimate": 1.1532710280373832,
+  "tool_output_tokens_mean": 83.05128205128206,
+  "tool_output_tokens_per_call": 150.65116279069767,
+  "tool_calls_mean": 0.5512820512820513,
+  "time_share": {
+   "retrieval": 0.005617864953145932,
+   "read_message": 0.16280168415118154,
+   "read_tool_outputs": 0.08425585072622471,
+   "write_calls": 0.17632715839752416,
+   "write_answer": 0.5526601301651541,
+   "other": 0.018337311606769425
+  },
+  "time_mean_ms": {
+   "retrieval": 95.96794871794872,
+   "read_message": 2781.0821025641026,
+   "read_tool_outputs": 1439.3121282051284,
+   "write_calls": 3012.132871794872,
+   "write_answer": 9440.892487179488,
+   "other": 313.2496410256412
+  },
+  "v_read_tok_s": 56.168042388797375,
+  "v_write_tok_s": 9.043214911164343,
+  "fit_read": {
+   "overhead_ms": 1335.1162022681615,
+   "tok_s": 107.72105479467913
+  },
+  "fit_write": {
+   "overhead_ms": -199.8739593127939,
+   "tok_s": 8.828840753402108
+  },
+  "formula_median_abs_err": 0.18391858101321967,
+  "formula_p90_abs_err": 0.818712810484138,
+  "first_word_p50_ms": 7223.450000000001,
+  "first_word_p50_ci": [
+   5760.4,
+   7827.5
+  ],
+  "first_word_p90_ms": 14272.019999999999,
+  "reply_p50_ms": 12297.5,
+  "reply_p50_ci": [
+   11741.150000000001,
+   13188.2
+  ],
+  "reply_p90_ms": 34372.9,
+  "forced_final_requests": 2,
+  "forced_final_read_mean": 182.5,
+  "other_tool_round_read_mean": 180.21052631578948,
+  "cache_miss_share": 0.016666666666666666,
+  "waste": {
+   "dup_calls": 0,
+   "staff_calls_over_1": 0,
+   "deduped_fetches": 0,
+   "tool_errors": 1,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 0,
+   "n_calls": 43
+  },
+  "repeats_check": null,
+  "by_category": {
+   "comparison": {
+    "n": 5,
+    "rounds": 1.4,
+    "tok_read": 505.2,
+    "first_p50_ms": 8926.7
+   },
+   "discovery": {
+    "n": 16,
+    "rounds": 1.4375,
+    "tok_read": 131.5,
+    "first_p50_ms": 2410.8
+   },
+   "grounded_qa": {
+    "n": 10,
+    "rounds": 1,
+    "tok_read": 335.8,
+    "first_p50_ms": 5748.65
+   },
+   "handoff": {
+    "n": 6,
+    "rounds": 1.8333333333333333,
+    "tok_read": 101.66666666666667,
+    "first_p50_ms": 7441.8
+   },
+   "hinglish": {
+    "n": 10,
+    "rounds": 1.6,
+    "tok_read": 210.9,
+    "first_p50_ms": 9304.05
+   },
+   "refusal": {
+    "n": 12,
+    "rounds": 1.3333333333333333,
+    "tok_read": 278.6666666666667,
+    "first_p50_ms": 5048.65
+   },
+   "tool_selection": {
+    "n": 19,
+    "rounds": 1.8421052631578947,
+    "tok_read": 233.6315789473684,
+    "first_p50_ms": 7483.4
+   }
+  },
+  "by_route": {
+   "chat": {
+    "n": 3,
+    "rounds": 1,
+    "tok_read": 16,
+    "first_p50_ms": 1699.6
+   },
+   "compare": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 316,
+    "first_p50_ms": 11533.7
+   },
+   "lookup": {
+    "n": 6,
+    "rounds": 2.3333333333333335,
+    "tok_read": 296.5,
+    "first_p50_ms": 8835.05
+   },
+   "shopping": {
+    "n": 27,
+    "rounds": 1.4814814814814814,
+    "tok_read": 155.66666666666666,
+    "first_p50_ms": 2441.7
+   },
+   "staff": {
+    "n": 5,
+    "rounds": 2,
+    "tok_read": 89.2,
+    "first_p50_ms": 7612.3
+   },
+   "stock": {
+    "n": 8,
+    "rounds": 2.125,
+    "tok_read": 130.125,
+    "first_p50_ms": 7407.799999999999
+   },
+   "store": {
+    "n": 9,
+    "rounds": 1.3333333333333333,
+    "tok_read": 358.3333333333333,
+    "first_p50_ms": 4338.5
+   }
+  },
+  "run_peak_rss_mb": 4573.7,
+  "harness_rss_mb_max": 756
+ },
+ "o3s4sp_a_2b_rag_s4": {
+  "run": "o3s4sp_a_2b_rag_s4",
+  "model": "Qwen3.5-2B",
+  "backend": "cpu",
+  "config": "O3-S4",
+  "retrieval": "routed",
+  "eval": "eval\\rag_cases.jsonl",
+  "n_records": 40,
+  "n_cases": 40,
+  "repeats": 1,
+  "rounds_mean": 2.4,
+  "rounds_dist": {
+   "1": 6,
+   "2": 19,
+   "3": 8,
+   "4": 7
+  },
+  "share_multi_round": 0.85,
+  "tok_read_mean": 517.775,
+  "tok_read_message_mean": 365.925,
+  "tok_read_tools_mean": 151.85,
+  "tok_write_calls_mean": 63.55,
+  "tok_answer_mean": 53.825,
+  "context_tokens_real_mean": 421.4193548387097,
+  "context_real_over_estimate": 1.3423756678997123,
+  "tool_output_tokens_mean": 126.65,
+  "tool_output_tokens_per_call": 90.46428571428571,
+  "tool_calls_mean": 1.4,
+  "time_share": {
+   "retrieval": 0.03337271077914547,
+   "read_message": 0.33955952852945853,
+   "read_tool_outputs": 0.15613527750974082,
+   "write_calls": 0.25142112030303904,
+   "write_answer": 0.2119755409504945,
+   "other": 0.007535821928121651
+  },
+  "time_mean_ms": {
+   "retrieval": 576.8,
+   "read_message": 5868.805125,
+   "read_tool_outputs": 2698.5769499999997,
+   "write_calls": 4345.457675,
+   "write_answer": 3663.69675,
+   "other": 130.2459999999996
+  },
+  "v_read_tok_s": 60.43561445810737,
+  "v_write_tok_s": 14.655105117416936,
+  "fit_read": {
+   "overhead_ms": 261.7363006149367,
+   "tok_s": 65.21740537711024
+  },
+  "fit_write": {
+   "overhead_ms": 164.11021010751938,
+   "tok_s": 15.413070444015899
+  },
+  "formula_median_abs_err": 0.03935948814819823,
+  "formula_p90_abs_err": 0.1796756154733832,
+  "first_word_p50_ms": 13903.8,
+  "first_word_p50_ci": [
+   9669.5,
+   17152.0
+  ],
+  "first_word_p90_ms": 22617.48,
+  "reply_p50_ms": 15834.3,
+  "reply_p50_ci": [
+   12440.8,
+   20907.55
+  ],
+  "reply_p90_ms": 31351.66,
+  "forced_final_requests": 7,
+  "forced_final_read_mean": 81.14285714285714,
+  "other_tool_round_read_mean": 112.36734693877551,
+  "cache_miss_share": 0.0,
+  "waste": {
+   "dup_calls": 5,
+   "staff_calls_over_1": 5,
+   "deduped_fetches": 17,
+   "tool_errors": 0,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 5,
+   "n_calls": 56
+  },
+  "repeats_check": null,
+  "by_category": {
+   "rag/collection": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 924,
+    "first_p50_ms": 19688.0
+   },
+   "rag/faq": {
+    "n": 4,
+    "rounds": 1.75,
+    "tok_read": 225.75,
+    "first_p50_ms": 7453.049999999999
+   },
+   "rag/glossary": {
+    "n": 2,
+    "rounds": 3,
+    "tok_read": 360.5,
+    "first_p50_ms": 18139.2
+   },
+   "rag/hinglish_spec": {
+    "n": 2,
+    "rounds": 3.5,
+    "tok_read": 835.5,
+    "first_p50_ms": 19717.6
+   },
+   "rag/hinglish_text": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 454.5,
+    "first_p50_ms": 10121.550000000001
+   },
+   "rag/missing_attribute": {
+    "n": 2,
+    "rounds": 3,
+    "tok_read": 708,
+    "first_p50_ms": 18492.65
+   },
+   "rag/missing_policy": {
+    "n": 1,
+    "rounds": 1,
+    "tok_read": 19,
+    "first_p50_ms": 805.7
+   },
+   "rag/negative": {
+    "n": 2,
+    "rounds": 4,
+    "tok_read": 1257,
+    "first_p50_ms": 30425.35
+   },
+   "rag/nonexistent_product": {
+    "n": 1,
+    "rounds": 4,
+    "tok_read": 864,
+    "first_p50_ms": 23912.4
+   },
+   "rag/not_sold": {
+    "n": 2,
+    "rounds": 1,
+    "tok_read": 18.5,
+    "first_p50_ms": 1154.85
+   },
+   "rag/off_topic": {
+    "n": 1,
+    "rounds": 1,
+    "tok_read": 20,
+    "first_p50_ms": 1621.6
+   },
+   "rag/offer": {
+    "n": 1,
+    "rounds": 4,
+    "tok_read": 399,
+    "first_p50_ms": 21725.2
+   },
+   "rag/policy": {
+    "n": 2,
+    "rounds": 2.5,
+    "tok_read": 369.5,
+    "first_p50_ms": 12753.9
+   },
+   "rag/product_description": {
+    "n": 3,
+    "rounds": 2,
+    "tok_read": 157,
+    "first_p50_ms": 9120.5
+   },
+   "rag/product_name": {
+    "n": 3,
+    "rounds": 3,
+    "tok_read": 844.3333333333334,
+    "first_p50_ms": 18301.2
+   },
+   "rag/product_sku": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 240.5,
+    "first_p50_ms": 5854.7
+   },
+   "rag/product_spec": {
+    "n": 4,
+    "rounds": 2.25,
+    "tok_read": 677,
+    "first_p50_ms": 14131.150000000001
+   },
+   "rag/spec_not_listed": {
+    "n": 1,
+    "rounds": 2,
+    "tok_read": 669,
+    "first_p50_ms": 13236.8
+   },
+   "rag/store": {
+    "n": 1,
+    "rounds": 2,
+    "tok_read": 255,
+    "first_p50_ms": 7804.8
+   },
+   "rag/typo_spec": {
+    "n": 2,
+    "rounds": 2.5,
+    "tok_read": 767,
+    "first_p50_ms": 16133.5
+   }
+  },
+  "by_route": {
+   "lookup": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 240.5,
+    "first_p50_ms": 5854.7
+   },
+   "shopping": {
+    "n": 3,
+    "rounds": 2,
+    "tok_read": 157,
+    "first_p50_ms": 9120.5
+   },
+   "store": {
+    "n": 35,
+    "rounds": 2.4571428571428573,
+    "tok_read": 564.5428571428571,
+    "first_p50_ms": 14511.7
+   }
+  },
+  "run_peak_rss_mb": 2396.4,
+  "harness_rss_mb_max": 915
+ },
+ "o3s4sp_a_2b_v12_s4": {
+  "run": "o3s4sp_a_2b_v12_s4",
+  "model": "Qwen3.5-2B",
+  "backend": "cpu",
+  "config": "O3-S4",
+  "retrieval": "routed",
+  "eval": "eval\\eval_set_v1.2.jsonl",
+  "n_records": 30,
+  "n_cases": 30,
+  "repeats": 1,
+  "rounds_mean": 1.6666666666666667,
+  "rounds_dist": {
+   "1": 11,
+   "2": 18,
+   "3": 1
+  },
+  "share_multi_round": 0.6333333333333333,
+  "tok_read_mean": 170.5,
+  "tok_read_message_mean": 30.7,
+  "tok_read_tools_mean": 139.8,
+  "tok_write_calls_mean": 33.266666666666666,
+  "tok_answer_mean": 89.46666666666667,
+  "context_tokens_real_mean": 152,
+  "context_real_over_estimate": 1.0066225165562914,
+  "tool_output_tokens_mean": 127.63333333333334,
+  "tool_output_tokens_per_call": 182.33333333333334,
+  "tool_calls_mean": 0.7,
+  "time_share": {
+   "retrieval": 0.003649172656701065,
+   "read_message": 0.05164828266070983,
+   "read_tool_outputs": 0.2053645264742292,
+   "write_calls": 0.19681112293290237,
+   "write_answer": 0.5347516741001082,
+   "other": 0.007775221175349371
+  },
+  "time_mean_ms": {
+   "retrieval": 38.59666666666667,
+   "read_message": 546.2749333333334,
+   "read_tool_outputs": 2172.105,
+   "write_calls": 2081.637133333333,
+   "write_answer": 5655.9757666666665,
+   "other": 82.23716666666657
+  },
+  "v_read_tok_s": 62.72118106424122,
+  "v_write_tok_s": 15.861911796250926,
+  "fit_read": {
+   "overhead_ms": 72.12592921047099,
+   "tok_s": 65.62311035555496
+  },
+  "fit_write": {
+   "overhead_ms": -95.95221990615937,
+   "tok_s": 15.540717486279908
+  },
+  "formula_median_abs_err": 0.031530637970015,
+  "formula_p90_abs_err": 0.29126028370888174,
+  "first_word_p50_ms": 4420.799999999999,
+  "first_word_p50_ci": [
+   2390.3,
+   6649.049999999999
+  ],
+  "first_word_p90_ms": 10480.789999999999,
+  "reply_p50_ms": 7704.75,
+  "reply_p50_ci": [
+   5171.799999999999,
+   13716.6
+  ],
+  "reply_p90_ms": 22122.77,
+  "forced_final_requests": 0,
+  "forced_final_read_mean": null,
+  "other_tool_round_read_mean": 209.7,
+  "cache_miss_share": 0.0,
+  "waste": {
+   "dup_calls": 0,
+   "staff_calls_over_1": 0,
+   "deduped_fetches": 0,
+   "tool_errors": 0,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 0,
+   "n_calls": 21
+  },
+  "repeats_check": null,
+  "by_category": {
+   "comparison": {
+    "n": 1,
+    "rounds": 2,
+    "tok_read": 405,
+    "first_p50_ms": 10723.4
+   },
+   "discovery": {
+    "n": 8,
+    "rounds": 1.625,
+    "tok_read": 237.25,
+    "first_p50_ms": 7950.75
+   },
+   "handoff": {
+    "n": 3,
+    "rounds": 2,
+    "tok_read": 162.33333333333334,
+    "first_p50_ms": 4319.6
+   },
+   "hinglish": {
+    "n": 4,
+    "rounds": 1.5,
+    "tok_read": 153.25,
+    "first_p50_ms": 4172.1
+   },
+   "refusal": {
+    "n": 4,
+    "rounds": 1.5,
+    "tok_read": 129.75,
+    "first_p50_ms": 3942.2
+   },
+   "tool_selection": {
+    "n": 10,
+    "rounds": 1.7,
+    "tok_read": 119.3,
+    "first_p50_ms": 4375.799999999999
+   }
+  },
+  "by_route": {
+   "chat": {
+    "n": 3,
+    "rounds": 1,
+    "tok_read": 16,
+    "first_p50_ms": 324.3
+   },
+   "compare": {
+    "n": 1,
+    "rounds": 2,
+    "tok_read": 405,
+    "first_p50_ms": 10723.4
+   },
+   "lookup": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 215,
+    "first_p50_ms": 6085.5
+   },
+   "shopping": {
+    "n": 14,
+    "rounds": 1.6428571428571428,
+    "tok_read": 201.92857142857142,
+    "first_p50_ms": 7333.5
+   },
+   "staff": {
+    "n": 3,
+    "rounds": 2,
+    "tok_read": 162.33333333333334,
+    "first_p50_ms": 4319.6
+   },
+   "stock": {
+    "n": 5,
+    "rounds": 2,
+    "tok_read": 137.6,
+    "first_p50_ms": 4407.9
+   },
+   "store": {
+    "n": 2,
+    "rounds": 1,
+    "tok_read": 115,
+    "first_p50_ms": 2390.3
+   }
+  },
+  "run_peak_rss_mb": 2298.3,
+  "harness_rss_mb_max": 783
+ }
+}

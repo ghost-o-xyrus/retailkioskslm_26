@@ -1,0 +1,55 @@
+{
+  "name": "s8sp_2b_cpu_rag_none",
+  "model": "Qwen3.5-2B",
+  "quant": "Q8_0",
+  "backend": "cpu",
+  "eval_file": "eval\\rag_cases.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "test",
+    "ids": "C:\\Users\\user\\Downloads\\SLM_work\\slm-kiosk-catalogue\\eval/rag_speed_ids.json",
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 40,
+  "repeats": 1,
+  "data_dir": "data\\kiosk",
+  "warmup": true,
+  "retrieval": {
+    "condition": "none",
+    "fallback": null,
+    "context_view": "full",
+    "chunk_gate": false,
+    "gate_style": "message",
+    "rag_rule": "rag_always_rule",
+    "dedupe_shown": false,
+    "knowledge_base": null
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 68732",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-21T23:36:40",
+  "finished": "2026-10-21T23:44:04",
+  "errors": 0,
+  "run_peak_rss_mb": 2338.8,
+  "wall_minutes": 7.4
+}

@@ -1,0 +1,83 @@
+{
+ "name": "smoke_qlora_4b",
+ "model": "unsloth/Qwen3.5-4B",
+ "tier": "B",
+ "qlora": true,
+ "settings": {
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0.0,
+  "lr": 0.0002,
+  "warmup": 0.05,
+  "epochs": 2,
+  "batch": 2,
+  "accum": 8,
+  "max_len": 4096,
+  "seed": 3407
+ },
+ "targets": [
+  "q_proj",
+  "k_proj",
+  "v_proj",
+  "o_proj",
+  "gate_proj",
+  "up_proj",
+  "down_proj"
+ ],
+ "data": {
+  "exact": 200,
+  "joined": 0,
+  "unsplittable": 0,
+  "too long": 0,
+  "examples": 200,
+  "train": 190,
+  "held_out": 10,
+  "tokens": 445653,
+  "longest": 2688,
+  "answer_tokens": 9283
+ },
+ "steps_per_epoch": 12,
+ "loss": [
+  [
+   5,
+   0.8145
+  ]
+ ],
+ "held_out_loss": [
+  [
+   8,
+   0.7359
+  ],
+  [
+   8,
+   0.7359
+  ],
+  [
+   8,
+   0.7359
+  ]
+ ],
+ "compute_dtype": "float16",
+ "fp16_mixed_precision": true,
+ "step_seconds": [
+  null,
+  110.5,
+  108.4,
+  112.0,
+  114.3,
+  110.3,
+  109.9,
+  112.1
+ ],
+ "arguments_left_out": [
+  "group_by_length"
+ ],
+ "steps": 8,
+ "train_minutes": 21.5,
+ "total_minutes": 23.0,
+ "peak_gpu_gb": 5.13,
+ "seconds_per_step": 110.5,
+ "examples_seen": 128,
+ "epochs_done": 0.67,
+ "tokens_per_second": 221.6
+}

@@ -1,0 +1,71 @@
+# About Veyra Watch Co.
+
+Veyra Watch Co. is a fictional Indian watchmaker used for this prototype. It sells through brand stores, partner outlets and its website.
+
+## Sub-brands
+- **Veyra Atelier** (premium): premium automatics and sapphire-crystal dress watches. Price range roughly ₹14,000 to ₹58,000.
+- **Veyra** (flagship): the core range for office, occasion and sport. Price range roughly ₹3,500 to ₹16,000.
+- **Veyra Pulse** (youth): bold, colourful watches for students and young professionals. Price range roughly ₹1,200 to ₹6,500.
+- **Veyra Nitya** (value): dependable everyday watches at accessible prices. Price range roughly ₹650 to ₹3,200.
+- **Veyra Junior** (kids): durable, easy-to-read watches for children. Price range roughly ₹500 to ₹1,800.
+
+## Collections
+- **Meridian** (Veyra Atelier): formal watches.
+- **Tidewater** (Veyra Atelier): sport watches.
+- **Monsoon Chrono** (Veyra Atelier): sport watches.
+- **Lumiere** (Veyra Atelier): formal watches.
+- **Classique** (Veyra): formal watches.
+- **Karigari** (Veyra): ethnic watches.
+- **Workday** (Veyra): casual watches.
+- **Skyline** (Veyra): sport watches.
+- **Slim** (Veyra): formal watches.
+- **Solar Line** (Veyra): casual watches.
+- **Street** (Veyra Pulse): fashion watches.
+- **Neon Digital** (Veyra Pulse): sport watches.
+- **Loop** (Veyra Pulse): fashion watches.
+- **Track** (Veyra Pulse): sport watches.
+- **Basics** (Veyra Nitya): casual watches.
+- **Shagun** (Veyra Nitya): ethnic watches.
+- **Daily Digital** (Veyra Nitya): casual watches.
+- **Steel Smart** (Veyra Nitya): formal watches.
+- **Little Explorer** (Veyra Junior): kids watches.
+- **Glow** (Veyra Junior): kids watches.
+- **Sovereign** (Veyra Atelier): formal watches.
+- **Regalia** (Veyra Atelier): formal watches.
+- **Fathom** (Veyra Atelier): sport watches.
+- **Corsair** (Veyra Atelier): sport watches.
+- **Velocita** (Veyra Atelier): sport watches.
+- **Aurelia** (Veyra Atelier): formal watches.
+- **Opaline** (Veyra Atelier): formal watches.
+- **Heritage** (Veyra): formal watches.
+- **Ambassador** (Veyra): formal watches.
+- **Promenade** (Veyra): formal watches.
+- **Kalaa** (Veyra): ethnic watches.
+- **Utsavi** (Veyra): ethnic watches.
+- **Commute** (Veyra): casual watches.
+- **Weekender** (Veyra): casual watches.
+- **Horizon** (Veyra): casual watches.
+- **Altitude** (Veyra): sport watches.
+- **Sprint** (Veyra): sport watches.
+- **Feather** (Veyra): formal watches.
+- **Daylight** (Veyra): casual watches.
+- **Kaleido** (Veyra Pulse): fashion watches.
+- **Mixtape** (Veyra Pulse): fashion watches.
+- **Candy** (Veyra Pulse): fashion watches.
+- **Arcade** (Veyra Pulse): sport watches.
+- **Circuit** (Veyra Pulse): sport watches.
+- **Charm** (Veyra Pulse): fashion watches.
+- **Ribbon** (Veyra Pulse): fashion watches.
+- **Turbo** (Veyra Pulse): sport watches.
+- **Rally** (Veyra Pulse): sport watches.
+- **Everyday** (Veyra Nitya): casual watches.
+- **Saathi** (Veyra Nitya): casual watches.
+- **Roots** (Veyra Nitya): casual watches.
+- **Mangal** (Veyra Nitya): ethnic watches.
+- **Shringar** (Veyra Nitya): ethnic watches.
+- **Tick Digital** (Veyra Nitya): casual watches.
+- **Desk** (Veyra Nitya): formal watches.
+- **Space Cadet** (Veyra Junior): kids watches.
+- **Jungle** (Veyra Junior): kids watches.
+- **Ocean Pals** (Veyra Junior): kids watches.
+- **Tiny Tots** (Veyra Junior): kids watches.

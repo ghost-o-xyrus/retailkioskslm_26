@@ -1,0 +1,48 @@
+{
+  "name": "obj3_step3_pilot",
+  "description": "Objective 3, Step 3 pilot (about 5-10 minutes): O3-S3 on the 2B, Vulkan, only the dev retrieval questions where the 2B hit the round limit before. Checks that the loop guard ends every turn with an answer and that the forced final request (tool_choice none) keeps the prompt cache.",
+  "runs": [
+    {
+      "name": "o3s3p_2b_rag_s3",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S3 pilot",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "ids": "eval/o3_loop_pilot_ids.json"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

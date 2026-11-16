@@ -1,0 +1,255 @@
+# Paired PPG + ECG dataset registry (objective B).
+# role:
+#   in_domain     - clinical finger PPG, the setting most models were trained on
+#   wearable      - wrist/consumer PPG, device-shift test
+#   motion        - contains labelled activity / motion for robustness slicing
+#   skin_tone     - per-subject skin-tone (or race) labels -> fairness slicing
+#   pathology     - arrhythmia (AF) for clinical robustness + downstream AF task
+#   scale         - large, used for Track-2 training
+# access:
+#   open          - direct download, no account
+#   click_dua     - free download after accepting a data-use agreement (no approval step)
+#   request_dua   - free, but an application must be approved (NSRR, PhysioNet "restricted")
+#   credentialed  - PhysioNet credentialing + CITI training (excluded by project decision)
+# skin_tone.label: fitzpatrick | monk | race_self_report | none
+#   race is a weak proxy for melanin; only fitzpatrick/monk/spectrophotometer count as skin-tone labels.
+# Melanin matters most for GREEN reflective PPG (wrist/forearm); finger transmissive red/IR clinical PPG is less affected.
+# loader: name of the adapter in bench/datasets (null = not yet implemented)
+# '# verify' = not yet checked against the source.
+
+datasets:
+
+  # ======================= skin-tone labelled (the fairness tier) =======================
+
+  aurora_bp:
+    url: https://github.com/microsoft/aurorabp-sample-data
+    data_url: https://doi.org/10.5281/zenodo.19099166
+    access: click_dua           # DUA terms: no redistribution, no joining with other data sources
+    subjects: 1125 (Fitzpatrick label for 823)
+    duration: many 30-s measurements per subject (in-lab postures/exercise + 24-h ambulatory)
+    ppg: {site: anterior forearm, wavelength: green 527-537 nm, sensor: MAX30101, fs: 500 (resampled from 250)}
+    ecg: {lead: I, fs: 500 (resampled from ~499)}
+    skin_tone:
+      label: fitzpatrick
+      distribution: {I: 311, II: 291, III: 137, IV: 43, V: 27, VI: 7}   # our k00 run, subjects with in-lab recordings (paper: 311/294/138/44/28/8)
+      dark_V_VI: 34
+    role: [skin_tone, wearable, motion, scale]
+    loader: aurora_bp
+    notes: >
+      Largest open source of green-light PPG + ECG with Fitzpatrick labels, and the only one with
+      dozens of type V-VI subjects. Raw optical channel is inverted (loader flips it; verified on the
+      sample: R->PPG peak ~190 ms). ECG is lead I, so morphology metrics vs lead-II-trained models
+      need a lead-mismatch caveat; timing/HR metrics are unaffected. 30-s files suit 4-10 s models only.
+
+  multisite_ppg:
+    url: https://huggingface.co/datasets/snowballlab/Multisite-PPG
+    paper: https://arxiv.org/abs/2605.17859
+    access: open                # license not stated in the paper - check the HF card
+    subjects: 20 (19 F, 1 M)
+    ppg: {site: [earlobe, finger ring, wrist, neck], wavelength: [green, IR], fs: 100}
+    ecg: {lead: Polar H10 chest, fs: 130}
+    skin_tone:
+      label: fitzpatrick
+      distribution: "I-V (per-type counts not in paper text)"
+    role: [skin_tone, wearable, motion]
+    loader: null
+    notes: "Small but open, multi-site, green + IR, with Fitzpatrick labels up to type V."
+
+  dalia:
+    url: https://archive.ics.uci.edu/dataset/495/ppg+dalia
+    access: open
+    subjects: 15
+    duration: ~2.5 h each
+    ppg: {site: wrist (Empatica E4), wavelength: green, fs: 64}
+    ecg: {lead: chest (RespiBAN), fs: 700}
+    extra: [acc_wrist_32Hz, activity_labels_4Hz]
+    skin_tone:
+      label: fitzpatrick
+      distribution: {II: 1, III: 11, IV: 3}   # from our k00 run (questionnaire field)
+    role: [wearable, motion, skin_tone]
+    loader: dalia
+
+  # ======================= race-labelled, large (request access) =======================
+
+  mesa_sleep:
+    url: https://sleepdata.org/datasets/mesa
+    access: request_dua         # NSRR data access request, free for research
+    subjects: ~2,056 PSG recordings
+    ppg: {site: finger, wavelength: red/IR (pulse oximeter), fs: 256}
+    ecg: {lead: PSG ECG, fs: 256}   # verify lead
+    skin_tone:
+      label: race_self_report
+      distribution: "parent cohort: White, Black, Hispanic, Chinese-American (exact sleep-subset counts from NSRR covariates)"
+    role: [skin_tone, scale, in_domain]
+    loader: null
+    notes: >
+      Largest racially diverse paired PPG+ECG set available without PhysioNet credentialing.
+      Overnight, mostly still -> clean signals. Finger red/IR, so less melanin-sensitive than wrist green.
+
+  cfs:
+    url: https://sleepdata.org/datasets/cfs
+    access: request_dua
+    subjects: ~730 PSG (family study)   # verify
+    ppg: {site: finger, fs: 128}
+    ecg: {lead: PSG ECG}   # verify
+    skin_tone:
+      label: race_self_report
+      distribution: "large African-American share (exact counts from NSRR covariates)"   # verify
+    role: [skin_tone, in_domain]
+    loader: null
+
+  # ======================= current open sets (no skin-tone labels) =======================
+
+  bidmc:
+    url: https://physionet.org/content/bidmc/1.0.0/
+    access: open
+    subjects: 53
+    duration: 8 min each
+    ppg: {site: finger, fs: 125}
+    ecg: {lead: II, fs: 125}
+    skin_tone: {label: none, distribution: "Boston ICU; only age/sex released"}
+    role: [in_domain]
+    loader: bidmc
+    notes: "PPG<->ECG delay ~1 beat in subject 01 (device delay) - report alignment-sensitive metrics both raw and lag-corrected."
+
+  capnobase:
+    url: https://borealisdata.ca/dataverse/capnobase
+    access: open
+    files: "XXXX_8min_signal.tab (Borealis tab-separated copy of the CSV) and/or XXXX_8min.mat - loader reads csv, tab or mat"
+    subjects: 42
+    duration: 8 min each
+    ppg: {site: finger, fs: 300}
+    ecg: {lead: unspecified, fs: 300}
+    skin_tone: {label: none, distribution: "Vancouver surgical patients incl. children; no ethnicity"}
+    role: [in_domain]
+    loader: capnobase
+
+  wesad:
+    url: https://archive.ics.uci.edu/dataset/465/wesad+wearable+stress+and+affect+detection
+    access: open
+    subjects: 15
+    duration: ~100 min each
+    ppg: {site: wrist (Empatica E4), wavelength: green, fs: 64}
+    ecg: {lead: chest (RespiBAN), fs: 700}
+    skin_tone: {label: none, distribution: "German students"}
+    role: [wearable]
+    loader: wesad
+
+  wildppg:
+    url: https://siplab.org/projects/WildPPG
+    access: open
+    subjects: 16
+    duration: ~13.5 h continuous each, outdoor/daily life
+    ppg: {site: [forehead, sternum, wrist, ankle], wavelength: [green, red, IR], fs: 128}
+    ecg: {lead: I (sternum electrodes), fs: 128}
+    skin_tone: {label: fitzpatrick, distribution: "I-III only (paper states none IV-VI)"}
+    role: [wearable, motion]
+    loader: null
+
+  galaxyppg:
+    url: https://www.nature.com/articles/s41597-025-05152-z
+    access: open
+    subjects: 24   # verify
+    ppg: {site: wrist (Galaxy Watch 5), fs: 25}   # verify
+    ecg: {lead: Polar H10 chest, fs: 130}
+    skin_tone: {label: none, distribution: "Korean cohort"}   # verify
+    role: [wearable, motion]
+    loader: null
+
+  guilin_finger_ecg_ppg:
+    url: https://data.mendeley.com/datasets/pz2zzr8vhm/1
+    paper: https://www.mdpi.com/2306-5729/11/7/155
+    access: open (CC-BY 4.0)
+    subjects: 148 (444 records, rest + post-exercise)
+    ppg: {site: finger reflective, wavelength: [red 660, IR 940], fs: 250}
+    ecg: {lead: finger-contact single lead (not clinical grade), fs: 250}
+    skin_tone: {label: none, distribution: "Chinese cohort"}
+    role: [in_domain]
+    loader: null
+    notes: "Adds East-Asian subjects and red/IR reflective PPG. ECG is consumer-grade."
+
+  vitaldb:
+    url: https://vitaldb.net/dataset/
+    access: open
+    subjects: 6388 surgical cases   # verify
+    ppg: {site: finger, fs: 500}
+    ecg: {lead: II, fs: 500}
+    skin_tone: {label: none, distribution: "Korean surgical cohort (homogeneous)"}
+    role: [scale, in_domain]
+    loader: null
+
+  mimic_perform_af:
+    url: https://zenodo.org/records/6807403   # verify
+    access: open
+    subjects: 35 (19 AF, 16 non-AF)
+    duration: 20 min each
+    ppg: {site: finger, fs: 125}
+    ecg: {lead: II, fs: 125}
+    skin_tone: {label: none}
+    role: [pathology]
+    loader: null
+
+  pulsedb:
+    url: https://github.com/pulselabteam/PulseDB   # verify
+    access: open (derived from MIMIC-III matched + VitalDB)
+    subjects: 5361
+    ppg: {site: finger, fs: 125}
+    ecg: {lead: II, fs: 125}
+    skin_tone: {label: none, distribution: "race exists only in credentialed MIMIC clinical tables"}
+    role: [scale, in_domain]
+    loader: null
+
+  uci_cuffless_bp:
+    url: https://archive.ics.uci.edu/dataset/340/cuff+less+blood+pressure+estimation
+    access: open
+    ppg: {site: finger, fs: 125}
+    ecg: {lead: II, fs: 125}
+    skin_tone: {label: none}
+    role: [scale]
+    loader: null
+    notes: "No subject IDs -> training only, never for held-out claims."
+
+  who_is_alyx:
+    url: https://github.com/cschell/who-is-alyx   # verify
+    access: open
+    subjects: 71
+    ppg: {site: wrist, fs: 64}
+    ecg: {lead: Polar H10 chest, fs: 130}
+    skin_tone: {label: none}   # verify
+    role: [wearable, motion]
+    loader: null
+
+  # ======================= checked and NOT usable for PPG->ECG =======================
+
+  bigideaslab_step_hr:
+    url: https://physionet.org/content/bigideaslab-step-hr-smartwatch/
+    access: request_dua
+    skin_tone: {label: fitzpatrick, distribution: "53 subjects, even across I-VI"}
+    reason: "Heart-rate values only - no raw PPG or ECG waveforms."
+
+  openox:
+    url: https://physionet.org/content/openox-repo/
+    access: request_dua
+    skin_tone: {label: monk + spectrophotometry}
+    reason: "Raw PPG (86 Hz) only for a subset and NOT time-synchronised with the ECG; built for SpO2 bias."
+
+  vitalvideos:
+    url: https://arxiv.org/abs/2306.11891
+    skin_tone: {label: fitzpatrick, distribution: "893 subjects; VV100 subset I:5 II:35 III:21 IV:17 V:13 VI:9"}
+    reason: "Camera rPPG + finger-oximeter PPG, no ECG."
+
+  mmpd:
+    skin_tone: {label: fitzpatrick, distribution: "III-VI"}
+    reason: "Camera rPPG, no ECG."
+
+  tri_spectral_ppg:
+    url: https://arxiv.org/abs/2412.17549
+    skin_tone: {label: fitzpatrick, distribution: "I-III only"}
+    reason: "Not released (authors 'hope to release')."
+
+  mcmed:
+    access: credentialed
+    reason: "PPGFlowECG training set; credentialed."
+  mimic4_waveform:
+    access: credentialed
+    reason: "P2Es data; credentialed."

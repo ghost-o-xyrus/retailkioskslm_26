@@ -1,0 +1,139 @@
+{
+  "name": "obj2_step7e_behaviour",
+  "description": "Objective 2, Step 7e, DEV cases only: the 2B's extra tool rounds with retrieval. Same setup as Step 7d's compact run (always-retrieve, compact cards, soft fallback, warm-up). 'omit': when the gate applies, the customer's message goes in unchanged instead of with '(nothing relevant found)', which in Step 7d made the 2B call staff or search on chit-chat; the rule says store information 'may' come with a message. 'rulec' adds: answer from product cards already shown without re-fetching them, and don't call staff just to answer (exploratory: the v1.1 scorer still expects the tool calls, so its tool checks will under-count correct answers).",
+  "base_dir": "..",
+  "results_dir": "results_obj2",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "split": "all",
+    "repeats": 1,
+    "temperature": 0
+  },
+  "runs": [
+    {
+      "name": "p7e_2b_cpu_v11_omit",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b"
+    },
+    {
+      "name": "p7e_2b_cpu_rag_omit",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b"
+    },
+    {
+      "name": "p7e_2b_cpu_v11_rulec",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_c"
+    },
+    {
+      "name": "p7e_2b_cpu_rag_rulec",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_c"
+    }
+  ]
+}

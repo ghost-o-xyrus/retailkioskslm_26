@@ -1,0 +1,55 @@
+[01:28:07] project unpacked to /tmp/proj (bundle 20261107-065535)
+[01:28:07]   input models/ov/bge-small: present
+[01:28:07]   input models/ov/minilm: present
+[01:28:07]   input results_obj3/_speed_step12/choice.json: present
+[01:28:07]   input results_obj3/_speed_step12/fallback.json: present
+[01:28:07]   input results_obj3/o3g_r6_2b_dlg: present
+[01:28:07]   input results_obj3/o3g_r6_2b_fup: present
+[01:28:07]   input results_obj3/o3g_r6_2b_rag: present
+[01:28:07]   input results_obj3/o3g_r6_2b_v12: present
+[01:28:07]   input results_obj3/o3g_r6_4b_dlg: present
+[01:28:07]   input results_obj3/o3g_r6_4b_fup: present
+[01:28:07]   input results_obj3/o3g_r6_4b_rag: present
+[01:28:07]   input results_obj3/o3g_r6_4b_v12: present
+[01:28:07]   input results_retrieval/fallback_bypass/fallback.json: present
+[01:28:07]   input results_retrieval/integration/integration.json: present
+[01:28:07] $ /usr/bin/python3 -m pip uninstall -y -q diffusers
+[01:28:10] $ /usr/bin/python3 -m pip install -q "sentence-transformers==5.7.0" "openvino==2026.4.1" "optimum-intel==2.2.0" "psutil==7.2.2"
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+gradio 6.30.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.
+[01:28:37] GPUs: ['Tesla T4, 7.5', 'Tesla T4, 7.5']
+[01:28:37] llama-server: /tmp/proj/kaggle/_llama_build/b11696-cuda75/llama-server (fixed build b11696-cuda75, made by an earlier job)
+[01:28:37] $ "/usr/bin/python3" kaggle/gpu_lanes.py harness/plans/obj3_step15_gpu/o3g_01_r6.json --server-exe /tmp/proj/kaggle/_llama_build/b11696-cuda75/llama-server --models-root /kaggle/input
+[gpu0] 4 runs: o3g_r6_2b_v12, o3g_r6_2b_fup, o3g_r6_2b_dlg, o3g_r6_4b_rag
+[gpu1] 4 runs: o3g_r6_2b_rag, o3g_r6_4b_v12, o3g_r6_4b_fup, o3g_r6_4b_dlg
+[gpu0] == o3g_r6_2b_v12: already complete, skipping
+[gpu0] == o3g_r6_2b_fup: already complete, skipping
+[gpu0] == o3g_r6_2b_dlg: already complete, skipping
+[gpu1] 
+[gpu1] == o3g_r6_2b_rag
+[gpu1]    server: /tmp/proj/kaggle/_llama_build/b11696-cuda75/llama-server -m /kaggle/input/datasets/ananydevchoudhary/slm-kiosk-models/Qwen3.5-2B-Q8_0.gguf --host 127.0.0.1 --port 8091 --jinja -c 8192 -np 1 -ngl 99 --reasoning-budget 0
+[gpu1]    cases: 463 x 1
+[gpu0] == o3g_r6_4b_rag: already complete, skipping
+[gpu0] 
+[gpu0] Plan summary:
+[gpu0]   o3g_r6_2b_v12                            skipped (complete)
+[gpu0]   o3g_r6_2b_fup                            skipped (complete)
+[gpu0]   o3g_r6_2b_dlg                            skipped (complete)
+[gpu0]   o3g_r6_4b_rag                            skipped (complete)
+[gpu1] Knowledge base ready in 84.2 s (k=3, threshold -3.457, Hinglish bypass True, +710 MB)
+[gpu1] Router ready in 1.0 s (86 prototypes)
+[gpu1] Warm-up request: 0.6 s (not logged)
+[gpu1] o3g_r6_2b_rag: 463 cases x 1 repeats, 462 already done, 1 to run
+[gpu1] [1/1] RT-NEG-002 r0 1 calls, 2.7s | eta 0 min
+[gpu1] Done: /tmp/proj/results_obj3/o3g_r6_2b_rag/cases.jsonl  (errors: 0, peak server RAM: 1104.6 MB)
+[gpu1] == o3g_r6_4b_v12: already complete, skipping
+[gpu1] == o3g_r6_4b_fup: already complete, skipping
+[gpu1] == o3g_r6_4b_dlg: already complete, skipping
+[gpu1] 
+[gpu1] Plan summary:
+[gpu1]   o3g_r6_2b_rag                            ok
+[gpu1]   o3g_r6_4b_v12                            skipped (complete)
+[gpu1]   o3g_r6_4b_fup                            skipped (complete)
+[gpu1]   o3g_r6_4b_dlg                            skipped (complete)
+lanes done: {0: 0, 1: 0}
+[01:30:31] done: ok=True, 3 files packed, 3.7 min

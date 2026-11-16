@@ -1,0 +1,86 @@
+{
+  "name": "o3s6c_2b_v12_s6",
+  "model": "Qwen3.5-2B",
+  "quant": "Q8_0",
+  "backend": "vulkan",
+  "eval_file": "eval\\eval_set_v1.2.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "dev",
+    "ids": "C:\\Users\\user\\Downloads\\SLM_work\\slm-kiosk-catalogue\\eval/o3_shopping_dev_ids.json",
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 27,
+  "repeats": 1,
+  "config_label": "O3-S6",
+  "tool_view": "compact",
+  "loop_guard": true,
+  "harness_tools": true,
+  "store_one_round": false,
+  "discovery": "template",
+  "data_dir": "data\\kiosk",
+  "warmup": true,
+  "retrieval": {
+    "condition": "routed",
+    "fallback": "gate",
+    "context_view": "compact",
+    "chunk_gate": false,
+    "gate_style": "omit",
+    "rag_rule": "rag_always_rule_b",
+    "dedupe_shown": true,
+    "knowledge_base": {
+      "embedder": "BAAI/bge-small-en-v1.5",
+      "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "backend": "openvino",
+      "max_length": 256,
+      "depth": 20,
+      "k": 3,
+      "max_context_tokens": 1500,
+      "threshold": -3.481874465942383,
+      "hinglish_bypass": true,
+      "view": "compact",
+      "chunk_gate": false,
+      "fallback_file": "results_retrieval\\fallback_bypass\\fallback.json",
+      "load_s": 0.0,
+      "reused_from_earlier_run": true,
+      "added_rss_mb": null,
+      "router": {
+        "prototypes": "router/prototypes.json",
+        "rule_margin": 1.0,
+        "proto_margin": 0.02,
+        "retrieve_routes": [
+          "store",
+          "unclear"
+        ]
+      }
+    }
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 110332",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-27T06:18:19",
+  "finished": "2026-10-27T06:21:11",
+  "errors": 0,
+  "run_peak_rss_mb": 2923.9,
+  "wall_minutes": 2.9
+}

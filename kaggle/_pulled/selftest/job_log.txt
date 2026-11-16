@@ -1,0 +1,326 @@
+[12:05:07] project unpacked to /tmp/proj (bundle 20261029-173403)
+[12:05:07] $ /usr/bin/python3 -m pip install -q "numpy==2.4.6" "psutil==7.2.2"
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+bigframes 2.48.0 requires google-cloud-bigquery-storage<3.0.0,>=2.30.0, which is not installed.
+ydata-profiling 4.18.4 requires numpy<2.4,>=1.22, but you have numpy 2.4.6 which is incompatible.
+dopamine-rl 4.1.2 requires gym<=0.25.2, but you have gym 0.26.2 which is incompatible.
+gradio 6.26.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.
+moviepy 1.0.3 requires decorator<5.0,>=4.0.2, but you have decorator 5.3.1 which is incompatible.
+numba 0.61.2 requires numpy<2.3,>=1.24, but you have numpy 2.4.6 which is incompatible.
+[12:05:20] $ "/usr/bin/python3" -m unittest router.test_router harness.test_harness eval.test_score tools.test_tools retrieval.test_retrieval
+.dev: accuracy 97.6%, store misrouted 0.7%, unclear 0.9%, p50 0.33 ms -> PASS
+Wrote /tmp/tmp4hst04p4/report.md
+dev: accuracy 98.1%, store misrouted 1.4%, unclear 0.0%, p50 0.34 ms -> PASS
+Wrote /tmp/tmp4hst04p4/report.md
+.Knowledge base ready in 0.2 s (k=5, threshold 0.300, Hinglish bypass True, +4 MB)
+Router ready in 0.0 s (86 prototypes)
+d_tmpl: 4 cases x 1 repeats, 0 already done, 4 to run
+[1/4] DLG-D001 r0 1 calls, 0.0s | eta 0 min
+[2/4] DLG-D002 r0 1 calls, 0.0s | eta 0 min
+[3/4] DLG-D003 r0 1 calls, 0.0s | eta 0 min
+[4/4] DLG-D004 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/d_tmpl/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+d_none: 4 cases x 1 repeats, 0 already done, 4 to run
+[1/4] DLG-D001 r0 1 calls, 0.0s | eta 0 min
+[2/4] DLG-D002 r0 1 calls, 0.0s | eta 0 min
+[3/4] DLG-D003 r0 1 calls, 0.0s | eta 0 min
+[4/4] DLG-D004 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/d_none/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Wrote /tmp/tmpnpuhf_ga/_dlg/report.md
+.Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_s8: 6 cases x 1 repeats, 0 already done, 6 to run
+[1/6] E1 r0 1 calls, 0.0s | eta 0 min
+[2/6] E2 r0 1 calls, 0.1s | eta 0 min
+[3/6] E3 r0 0 calls, 0.0s | eta 0 min
+[4/6] F1 r0 0 calls, 0.0s | eta 0 min
+[5/6] C1 r0 1 calls, 0.0s | eta 0 min
+[6/6] N1 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_s8/cases.jsonl  (errors: 0, peak server RAM: None MB)
+# Step 8: hard-fallback threshold on dev store questions
+
+Run read: `r_s8`. Store or unclear questions with a logged score: 0; the fallback can act on 0 (no code or catalogue name, not caught by the entity check, not Hinglish): 0 must answer, 0 must refuse, 0 either.
+
+Rule: highest threshold with false refusals on must-answer at most 5%.
+
+| Threshold | False refusals (must answer) [95% CI] | Refused (must refuse) | Refused (either) |
+|---|---|---|---|
+| Objective 2 0.300 | – | 0/0 | 0/0 |
+| chosen -inf | – | 0/0 | 0/0 |
+
+Questions refused at the chosen threshold:
+Wrote /tmp/tmpnpuhf_ga/_tau/fallback.json (threshold -inf)
+..Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_s7old: 4 cases x 1 repeats, 0 already done, 4 to run
+[1/4] P1 r0 1 calls, 0.0s | eta 0 min
+[2/4] P2 r0 1 calls, 0.0s | eta 0 min
+[3/4] P3 r0 1 calls, 0.0s | eta 0 min
+[4/4] P4 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_s7old/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_s7: 4 cases x 1 repeats, 0 already done, 4 to run
+[1/4] P1 r0 2 calls, 0.0s | eta 0 min
+[2/4] P2 r0 1 calls, 0.0s | eta 0 min
+[3/4] P3 r0 2 calls, 0.0s | eta 0 min
+[4/4] P4 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_s7/cases.jsonl  (errors: 0, peak server RAM: None MB)
+.full: 8 cases x 1 repeats, 0 already done, 8 to run
+[1/8] T1 r0 1 calls, 0.0s | eta 0 min
+[2/8] T2 r0 1 calls, 0.0s | eta 0 min
+[3/8] T3 r0 1 calls, 0.0s | eta 0 min
+[4/8] T4 r0 1 calls, 0.0s | eta 0 min
+[5/8] T5 r0 0 calls, 0.0s | eta 0 min
+[6/8] T6 r0 0 calls, 0.0s | eta 0 min
+[7/8] T7 r0 1 calls, 0.0s | eta 0 min
+[8/8] G1 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/full/cases.jsonl  (errors: 0, peak server RAM: None MB)
+.Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_s5: 7 cases x 1 repeats, 0 already done, 7 to run
+[1/7] S1 r0 1 calls, 0.0s | eta 0 min
+[2/7] S2 r0 1 calls, 0.0s | eta 0 min
+[3/7] S3 r0 1 calls, 0.0s | eta 0 min
+[4/7] S4 r0 0 calls, 0.0s | eta 0 min
+[5/7] S5 r0 1 calls, 0.0s | eta 0 min
+[6/7] S6 r0 1 calls, 0.0s | eta 0 min
+[7/7] S7 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_s5/cases.jsonl  (errors: 0, peak server RAM: None MB)
+.g_off: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] L1 r0 4 calls, 0.1s | eta 0 min
+[2/5] L2 r0 4 calls, 0.0s | eta 0 min
+[3/5] L3 r0 0 calls, 0.0s | eta 0 min
+[4/5] C1 r0 1 calls, 0.0s | eta 0 min
+[5/5] C2 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/g_off/cases.jsonl  (errors: 0, peak server RAM: None MB)
+g_on: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] L1 r0 3 calls, 0.1s | eta 0 min
+[2/5] L2 r0 3 calls, 0.0s | eta 0 min
+[3/5] L3 r0 0 calls, 0.0s | eta 0 min
+[4/5] C1 r0 1 calls, 0.0s | eta 0 min
+[5/5] C2 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/g_on/cases.jsonl  (errors: 0, peak server RAM: None MB)
+g_reset: 1 cases x 1 repeats, 0 already done, 1 to run
+[1/1] L1 r0 4 calls, 0.1s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/g_reset/cases.jsonl  (errors: 0, peak server RAM: None MB)
+.....rep: 3 cases x 2 repeats, 0 already done, 6 to run
+[1/6] T1 r0 1 calls, 0.0s | eta 0 min
+[2/6] T2 r0 1 calls, 0.0s | eta 0 min
+[3/6] T3 r0 1 calls, 0.0s | eta 0 min
+[4/6] T1 r1 1 calls, 0.0s | eta 0 min
+[5/6] T2 r1 1 calls, 0.0s | eta 0 min
+[6/6] T3 r1 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/rep/cases.jsonl  (errors: 0, peak server RAM: None MB)
+rep: 3 cases x 2 repeats, 6 already done, 0 to run
+Done: /tmp/tmpnpuhf_ga/rep/cases.jsonl  (errors: 0, peak server RAM: None MB)
+.Knowledge base ready in 0.0 s (k=3, threshold 0.300, Hinglish bypass True, +None MB)
+r_always: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 1 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_always/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_live: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 0 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_live/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_gate: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 1 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_gate/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+Warm-up request: 0.0 s (not logged)
+r_compact: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 1 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_compact/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_omit: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 1 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_omit/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Unknown --rag-rule nope; keys: rag_always_rule, rag_tool_rule, rag_always_rule_b, rag_always_rule_c
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_dedupe: 1 cases x 1 repeats, 0 already done, 1 to run
+[1/1] D1 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_dedupe/cases.jsonl  (errors: 0, peak server RAM: None MB)
+r_oracle: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 1 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_oracle/cases.jsonl  (errors: 0, peak server RAM: None MB)
+Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_tool: 5 cases x 1 repeats, 0 already done, 5 to run
+[1/5] K1 r0 1 calls, 0.0s | eta 0 min
+[2/5] K2 r0 1 calls, 0.0s | eta 0 min
+[3/5] K3 r0 1 calls, 0.0s | eta 0 min
+[4/5] K4 r0 1 calls, 0.0s | eta 0 min
+[5/5] G2 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_tool/cases.jsonl  (errors: 0, peak server RAM: None MB)
+..Knowledge base ready in 0.0 s (k=5, threshold 0.300, Hinglish bypass True, +None MB)
+r_routed: 4 cases x 1 repeats, 0 already done, 4 to run
+[1/4] K1 r0 1 calls, 0.0s | eta 0 min
+[2/4] R1 r0 1 calls, 0.0s | eta 0 min
+[3/4] R2 r0 0 calls, 0.0s | eta 0 min
+[4/4] R3 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/r_routed/cases.jsonl  (errors: 0, peak server RAM: None MB)
+  r_routed: 4 records, rounds 1.75, first word p50 0.0 s
+Wrote /tmp/tmpnpuhf_ga/_ts_routed/report.md, summary.json, cases_split.csv
+..sum: 8 cases x 1 repeats, 0 already done, 8 to run
+[1/8] T1 r0 1 calls, 0.0s | eta 0 min
+[2/8] T2 r0 1 calls, 0.0s | eta 0 min
+[3/8] T3 r0 1 calls, 0.0s | eta 0 min
+[4/8] T4 r0 1 calls, 0.0s | eta 0 min
+[5/8] T5 r0 0 calls, 0.0s | eta 0 min
+[6/8] T6 r0 0 calls, 0.0s | eta 0 min
+[7/8] T7 r0 1 calls, 0.0s | eta 0 min
+[8/8] G1 r0 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/sum/cases.jsonl  (errors: 0, peak server RAM: None MB)
+..o3s1: 5 cases x 2 repeats, 0 already done, 10 to run
+[1/10] T1 r0 1 calls, 0.0s | eta 0 min
+[2/10] T2 r0 1 calls, 0.0s | eta 0 min
+[3/10] T3 r0 1 calls, 0.0s | eta 0 min
+[4/10] T4 r0 1 calls, 0.0s | eta 0 min
+[5/10] T5 r0 0 calls, 0.0s | eta 0 min
+[6/10] T1 r1 1 calls, 0.0s | eta 0 min
+[7/10] T2 r1 1 calls, 0.0s | eta 0 min
+[8/10] T3 r1 1 calls, 0.0s | eta 0 min
+[9/10] T4 r1 1 calls, 0.0s | eta 0 min
+[10/10] T5 r1 0 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/o3s1/cases.jsonl  (errors: 0, peak server RAM: None MB)
+o3s1_nocount: 1 cases x 1 repeats, 0 already done, 1 to run
+[1/1] T1 r0 1 calls, 0.0s | eta 0 min
+Done: /tmp/tmpnpuhf_ga/o3s1_nocount/cases.jsonl  (errors: 0, peak server RAM: None MB)
+  o3s1: 10 records, rounds 1.80, first word p50 0.0 s
+Wrote /tmp/tmpnpuhf_ga/_ts/report.md, summary.json, cases_split.csv
+.# Step 9: fallback thresholds for the chosen re-ranker (dev)
+
+Re-ranker: x-d10.
+
+- Without the Hinglish bypass, the 5% rule gives 0.200, which refuses 2 of 3 answerable dev Hinglish questions: bypass **kept** (retired if at most 1).
+- Soft threshold (cards shown): 0.220 (was 0.3).
+- Hard threshold (Step 8, store questions): 0.220 (was 0.1); refuses 2/40 must-answer and 0/0 must-refuse dev store questions it can act on.
+.# Step 8: hard-fallback threshold on dev store questions
+
+Run read: `run`. Store or unclear questions with a logged score: 45; the fallback can act on 44 (no code or catalogue name, not caught by the entity check, not Hinglish): 40 must answer, 4 must refuse, 0 either.
+
+Rule: highest threshold with false refusals on must-answer at most 5%.
+
+| Threshold | False refusals (must answer) [95% CI] | Refused (must refuse) | Refused (either) |
+|---|---|---|---|
+| Objective 2 0.300 | 10/40 = 25.0% [14.2%, 40.2%] | 4/4 | 0/0 |
+| chosen 0.220 | 2/40 = 5.0% [1.4%, 16.5%] | 4/4 | 0/0 |
+
+Questions refused at the chosen threshold:
+Wrote /tmp/tmpchs96232/out/fallback.json (threshold 0.220)
+.Wrote /tmp/tmph6kcrd7k/cmp/report.md
+...  o3s1sp_x_rag_b0: flip rate 50.0%, noise bound on full dev 9.2 points
+Wrote /tmp/tmper213sr5/nf/report.md
+.....................................4302 generated, 3938 kept; first stage for hard negatives ...
+  500/3938
+  1000/3938
+  1500/3938
+  2000/3938
+  2500/3938
+  3000/3938
+  3500/3938
+# Step 9a: re-ranker training data (generated from the corpus)
+
+Generated 4302 questions; kept 3938 (3550 train, 388 gen-val held out by source chunk). Dropped: close to an eval question 342, duplicate 22.
+
+Languages: en 3107, hinglish 831.
+Templates: collection 197, faq 181, glossary 67, offer 18, policy 33, product 3091, product_description 145, product_typo 192, store 14.
+Positive in the first stage's top 20: 3774/3938 = 95.8% (the re-ranker can only help when it is there).
+
+Leakage control: eval files read only to drop generated questions with the same normalised text or word overlap >= 0.6 with any eval question (dev and test): knowledge/retrieval_eval.jsonl, eval/rag_cases.jsonl, eval/eval_set.jsonl, eval/eval_set_v1.1.jsonl, eval/eval_set_v1.2.jsonl, eval/o3_dialogues.jsonl.
+3550 training questions -> 17743 pairs, 1109 steps; 388 gen-val questions
+minilm-d20: R@3 68.8% (Hinglish 71.4%), p50 2.2 ms
+minilm-d10: R@3 66.4% (Hinglish 64.3%), p50 1.9 ms
+minilm-veyra-d20: R@3 68.8% (Hinglish 71.4%), p50 2.2 ms
+minilm-veyra-d10: R@3 66.4% (Hinglish 64.3%), p50 1.8 ms
+mminilm-l12-d20: R@3 68.8% (Hinglish 71.4%), p50 2.2 ms
+mminilm-l12-d10: R@3 66.4% (Hinglish 64.3%), p50 1.8 ms
+# Step 9: re-ranker trial (dev retrieval questions)
+
+Dev: 125 answerable (14 Hinglish), 26 unanswerable. Backend openvino, 256 tokens, 4 threads; latency = first stage + re-rank on 5 dev questions.
+Recall computed on: kaggle-cpu. Latency measured on: kaggle-cpu.
+
+Rule: p50 <= 300 ms and (Recall@3 +2 points, or Hinglish Recall@3 +5 with Recall@3 not lower) against minilm at depth 20.
+
+| Config | R@1 | R@3 | R@3 − base [95% CI] | R@5 | MRR | R@3 Hinglish | R@3 English | p50 ms | p95 ms | Added RAM MB | Qualifies |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| minilm-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.2 | 2.6 | 0 | baseline |
+| minilm-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.9 | 2.0 | 0 | no |
+| minilm-veyra-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.2 | 2.4 | 0 | no |
+| minilm-veyra-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.8 | 1.9 | 0 | no |
+| mminilm-l12-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.2 | 2.6 | 0 | no |
+| mminilm-l12-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.8 | 1.9 | 0 | no |
+
+**Latency was not measured on the kiosk's machine, so no choice is made yet.** Run `python retrieval\bench_reranker.py --latency-only` on the laptop.
+minilm-d20: R@3 68.8% (Hinglish 71.4%), p50 2.2 ms
+minilm-d10: R@3 66.4% (Hinglish 64.3%), p50 1.5 ms
+minilm-veyra-d20: R@3 68.8% (Hinglish 71.4%), p50 2.1 ms
+minilm-veyra-d10: R@3 66.4% (Hinglish 64.3%), p50 1.5 ms
+mminilm-l12-d20: R@3 68.8% (Hinglish 71.4%), p50 2.1 ms
+mminilm-l12-d10: R@3 66.4% (Hinglish 64.3%), p50 1.5 ms
+# Step 9: re-ranker trial (dev retrieval questions)
+
+Dev: 125 answerable (14 Hinglish), 26 unanswerable. Backend openvino, 256 tokens, 4 threads; latency = first stage + re-rank on 5 dev questions.
+Recall computed on: kaggle-cpu. Latency measured on: kaggle-cpu.
+
+Rule: p50 <= 300 ms and (Recall@3 +2 points, or Hinglish Recall@3 +5 with Recall@3 not lower) against minilm at depth 20.
+
+| Config | R@1 | R@3 | R@3 − base [95% CI] | R@5 | MRR | R@3 Hinglish | R@3 English | p50 ms | p95 ms | Added RAM MB | Qualifies |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| minilm-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.2 | 2.6 | 0 | baseline |
+| minilm-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.5 | 1.8 | 0 | no |
+| minilm-veyra-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.1 | 2.3 | 0 | no |
+| minilm-veyra-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.5 | 1.7 | 0 | no |
+| mminilm-l12-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.1 | 2.5 | 0 | no |
+| mminilm-l12-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.5 | 1.7 | 0 | no |
+
+**Latency was not measured on the kiosk's machine, so no choice is made yet.** Run `python retrieval\bench_reranker.py --latency-only` on the laptop.
+minilm-d20: p50 2.0 ms on local
+minilm-d10: p50 1.5 ms on local
+minilm-veyra-d20: p50 2.1 ms on local
+minilm-veyra-d10: p50 1.8 ms on local
+mminilm-l12-d20: p50 2.5 ms on local
+mminilm-l12-d10: p50 1.5 ms on local
+# Step 9: re-ranker trial (dev retrieval questions)
+
+Dev: 125 answerable (14 Hinglish), 26 unanswerable. Backend openvino, 256 tokens, 4 threads; latency = first stage + re-rank on 5 dev questions.
+Recall computed on: kaggle-cpu. Latency measured on: local.
+
+Rule: p50 <= 300 ms and (Recall@3 +2 points, or Hinglish Recall@3 +5 with Recall@3 not lower) against minilm at depth 20.
+
+| Config | R@1 | R@3 | R@3 − base [95% CI] | R@5 | MRR | R@3 Hinglish | R@3 English | p50 ms | p95 ms | Added RAM MB | Qualifies |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| minilm-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.0 | 2.3 | 0 | baseline |
+| minilm-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.5 | 1.9 | 0 | no |
+| minilm-veyra-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.1 | 2.3 | 0 | no |
+| minilm-veyra-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.8 | 1.9 | 0 | no |
+| mminilm-l12-d20 | 35.2% | 68.8% | +0.0 [+0.0, +0.0] | 72.0% | 0.525 | 71.4% | 68.5% | 2.5 | 3.0 | 0 | no |
+| mminilm-l12-d10 | 40.0% | 66.4% | -2.4 [-7.2, +2.4] | 68.8% | 0.534 | 64.3% | 66.7% | 1.5 | 1.9 | 0 | no |
+
+**No configuration qualifies: the deployed re-ranker stays.**
+.
+----------------------------------------------------------------------
+Ran 64 tests in 157.752s
+
+OK
+[12:07:58] done: ok=True, 0 files packed, 3.0 min

@@ -1,0 +1,232 @@
+{
+  "selftest": {
+    "description": "Checks the Kaggle path end to end: unzips the project, installs packages, runs the unit tests that need no models. A few minutes.",
+    "commands": [
+      "python -m unittest router.test_router harness.test_harness eval.test_score tools.test_tools retrieval.test_retrieval"
+    ],
+    "pip": [
+      "numpy",
+      "psutil"
+    ],
+    "inputs": [],
+    "outputs": []
+  },
+  "step9_train": {
+    "description": "Objective 3, Step 9a-b on Kaggle CPU: training data and fine-tuning (about 85 minutes). The re-ranker trial itself (bench_reranker.py) runs on the laptop: it needs OpenVINO, the deployed backend, and the kiosk's own timing, and takes about 10-15 minutes.",
+    "commands": [
+      "python retrieval/build_rerank_train.py",
+      "python retrieval/finetune_reranker.py"
+    ],
+    "pip": [
+      "sentence-transformers",
+      "psutil"
+    ],
+    "inputs": [],
+    "outputs": [
+      "knowledge/rerank_train.jsonl",
+      "knowledge/rerank_genval.jsonl",
+      "models/reranker-veyra-minilm",
+      "results_obj3/_rerank_step9"
+    ],
+    "uninstall": [
+      "diffusers"
+    ]
+  },
+  "o4_teacher_pilot": {
+    "description": "Objective 4, Step 3a pilot on a Kaggle GPU (push with --gpu): builds llama-server with CUDA, downloads Qwen3.5-9B Q8_0 and writes the first 100 training replies, printing replies per hour. About 25-30 minutes of GPU time.",
+    "commands": [
+      "bash finetune/kaggle_teacher.sh --limit 100 --minutes 30"
+    ],
+    "pip": [
+      "huggingface_hub"
+    ],
+    "inputs": [],
+    "outputs": [
+      "finetune/teacher"
+    ]
+  },
+  "o4_teacher": {
+    "description": "Objective 4, Step 3a on a Kaggle GPU (push with --gpu): the remaining training replies with Qwen3.5-9B Q8_0, stopping cleanly after 180 minutes of writing (rerun to resume). Replies already in finetune/teacher/replies.jsonl are skipped.",
+    "commands": [
+      "bash finetune/kaggle_teacher.sh --minutes 180"
+    ],
+    "pip": [
+      "huggingface_hub"
+    ],
+    "inputs": [],
+    "outputs": [
+      "finetune/teacher"
+    ]
+  },
+  "o4_step2": {
+    "description": "Objective 4, Steps 1-2 on Kaggle CPU (no GPU): rebuilds the training catalogue and questions (byte-identical to the shipped ones), runs the training questions through the real harness with O3-final's Tier A and Tier B settings and the deployed retrieval (the laptop's OpenVINO models, uploaded with the job) against the oracle, and exports the training examples and the teacher's wording tasks. About 45-75 minutes.",
+    "commands": [
+      "python -c \"import os, sys; miss=[d for d in ('models/ov/bge-small', 'models/ov/minilm', 'results_obj3/_speed_step12/choice.json') if not os.path.exists(d)]; sys.exit('missing on the laptop when the job was pushed: ' + ', '.join(miss) if miss else 0)\"",
+      "python finetune/build_train_catalogue.py",
+      "python finetune/build_train_questions.py",
+      "python harness/run_plan.py finetune/plans/o4_traj_tierA.json",
+      "python harness/run_plan.py finetune/plans/o4_traj_tierB.json",
+      "python finetune/export_examples.py"
+    ],
+    "pip": [
+      "openvino",
+      "tokenizers",
+      "numpy",
+      "psutil"
+    ],
+    "uninstall": [
+      "diffusers"
+    ],
+    "inputs": [
+      "models/ov/bge-small",
+      "models/ov/minilm",
+      "results_obj3/_speed_step12/choice.json",
+      "results_obj3/_speed_step12/fallback.json",
+      "results_retrieval/fallback_bypass/fallback.json",
+      "results_retrieval/integration/integration.json"
+    ],
+    "outputs": [
+      "data_train",
+      "finetune/knowledge",
+      "finetune/train",
+      "finetune/examples",
+      "results_o4"
+    ],
+    "required_inputs": [
+      "models/ov/bge-small",
+      "models/ov/minilm",
+      "results_obj3/_speed_step12/choice.json",
+      "results_obj3/_speed_step12/fallback.json",
+      "results_retrieval/fallback_bypass/fallback.json",
+      "results_retrieval/integration/integration.json"
+    ]
+  },
+  "o4_train_smoke": {
+    "description": "Objective 4, Step 4 smoke run on a Kaggle GPU (push with --gpu): installs Unsloth, then 8 training steps of each adapter (4B QLoRA on GPU 0; 2B LoRA then 2B QLoRA on GPU 1) on 200 examples, to catch errors and measure seconds per step and memory. The full run plans its steps from these numbers. About 30 minutes.",
+    "commands": [
+      "bash finetune/kaggle_train.sh smoke"
+    ],
+    "pip": [],
+    "inputs": [],
+    "outputs": [
+      "finetune/adapters"
+    ]
+  },
+  "o4_train": {
+    "description": "Objective 4, Step 4 on a Kaggle GPU (push with --gpu): 1 epoch of each adapter, two at a time (GPU 0: 4B LoRA for Tier B, or the 4B QLoRA if the LoRA fails even at 1 example per step; GPU 1: 2B LoRA, then 2B QLoRA, for Tier A). Needs the smoke run's train_log.json files (pull o4_train_smoke first): each run plans its steps from the smoke run's seconds per step to fit its time limit (O4_MIN_4B 335, O4_MIN_2B 145, O4_MIN_Q2B 145 minutes). About 5.5-6 hours.",
+    "commands": [
+      "bash finetune/kaggle_train.sh full"
+    ],
+    "pip": [],
+    "inputs": [],
+    "outputs": [
+      "finetune/adapters"
+    ],
+    "required_inputs": [
+      "finetune/adapters/smoke_qlora_4b/train_log.json",
+      "finetune/adapters/smoke_lora_2b/train_log.json",
+      "finetune/adapters/smoke_qlora_2b/train_log.json"
+    ]
+  },
+  "o4_teacher_retry": {
+    "description": "Objective 4, Step 3 retry on a Kaggle GPU (push with --gpu): asks the teacher once more for every reply filter_wording.py rejected, telling it why, with a new seed. The new replies are appended to finetune/teacher/replies.jsonl (the last reply per task is the one checked). About 35-45 minutes, most of it building llama.cpp and downloading the model.",
+    "commands": [
+      "bash finetune/kaggle_teacher.sh --retry finetune/teacher/retry_tasks.jsonl --minutes 60"
+    ],
+    "pip": [
+      "huggingface_hub"
+    ],
+    "inputs": [],
+    "outputs": [
+      "finetune/teacher"
+    ]
+  },
+  "o4_step5_smoke": {
+    "description": "Objective 4, Step 5 on Kaggle CPU (no GPU): converts the smoke-run adapters, to test the conversion and loading path before the real adapters exist to GGUF with the laptop's llama.cpp build, loads each next to the deployed model file in llama-server, and checks the chat template, the adapter at scale 0 (must match plain decoding) and a first look at scale 1. About 1-1.5 hours (CPU prompt processing is the slow part).",
+    "commands": [
+      "bash finetune/kaggle_step5.sh {LLAMA_SERVER} {LLAMA_VERSION} smoke_lora_2b smoke_qlora_2b smoke_qlora_4b"
+    ],
+    "needs_llama": true,
+    "pip": [
+      "huggingface_hub",
+      "transformers>=5"
+    ],
+    "inputs": [
+      "finetune/adapters/smoke_lora_2b",
+      "finetune/adapters/smoke_qlora_2b",
+      "finetune/adapters/smoke_qlora_4b"
+    ],
+    "required_inputs": [
+      "finetune/adapters/smoke_lora_2b/adapter_model.safetensors",
+      "finetune/adapters/smoke_qlora_2b/adapter_model.safetensors",
+      "finetune/adapters/smoke_qlora_4b/adapter_model.safetensors",
+      "finetune/examples/tierA_final.jsonl",
+      "finetune/examples/tierB_final.jsonl",
+      "finetune/examples/tools.json"
+    ],
+    "hash_files": [
+      "../models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "../models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf"
+    ],
+    "outputs": [
+      "finetune/adapters_gguf"
+    ]
+  },
+  "o4_step5_smoke_4b": {
+    "description": "Objective 4, Step 5 smoke, only the 4B QLoRA smoke adapter, re-checked with the fairer scale-0 comparison (every reply recomputes its prompt). The 2B smoke adapters passed in the first smoke run. About 40 minutes.",
+    "commands": [
+      "STEP5_REPORT=step5_report_smoke4b STEP5_ONE_TIER=1 bash finetune/kaggle_step5.sh {LLAMA_SERVER} {LLAMA_VERSION} smoke_qlora_4b"
+    ],
+    "needs_llama": true,
+    "pip": [
+      "huggingface_hub",
+      "transformers>=5"
+    ],
+    "inputs": [
+      "finetune/adapters/smoke_qlora_4b"
+    ],
+    "required_inputs": [
+      "finetune/adapters/smoke_qlora_4b/adapter_model.safetensors",
+      "finetune/examples/tierA_final.jsonl",
+      "finetune/examples/tierB_final.jsonl",
+      "finetune/examples/tools.json"
+    ],
+    "hash_files": [
+      "../models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf"
+    ],
+    "outputs": [
+      "finetune/adapters_gguf"
+    ]
+  },
+  "o4_step5": {
+    "description": "Objective 4, Step 5 on Kaggle CPU (no GPU): converts the trained adapters (lora_2b, qlora_2b, and lora_4b, or qlora_4b if training fell back to it; a missing one is skipped) to GGUF with the laptop's llama.cpp build, loads each next to the deployed model file in llama-server, and checks the chat template, the adapter at scale 0 (must match plain decoding) and a first look at scale 1. About 1-1.5 hours (CPU prompt processing is the slow part).",
+    "commands": [
+      "bash finetune/kaggle_step5.sh {LLAMA_SERVER} {LLAMA_VERSION} lora_2b qlora_2b lora_4b qlora_4b"
+    ],
+    "needs_llama": true,
+    "pip": [
+      "huggingface_hub",
+      "transformers>=5"
+    ],
+    "inputs": [
+      "finetune/adapters/lora_2b",
+      "finetune/adapters/qlora_2b",
+      "finetune/adapters/lora_4b",
+      "finetune/adapters/qlora_4b"
+    ],
+    "required_inputs": [
+      "finetune/adapters/lora_2b/adapter_model.safetensors",
+      "finetune/adapters/qlora_2b/adapter_model.safetensors",
+      "finetune/examples/tierA_final.jsonl",
+      "finetune/examples/tierB_final.jsonl",
+      "finetune/examples/tools.json"
+    ],
+    "hash_files": [
+      "../models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "../models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf"
+    ],
+    "outputs": [
+      "finetune/adapters_gguf"
+    ]
+  }
+}

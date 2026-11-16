@@ -1,0 +1,81 @@
+﻿id,repeat,category,subcategory,behaviour,language,passed,tool_ok,no_tool_ok,format_ok,facts_ok,forbidden_ok,clarify_ok,grounded_ok,error,flags,user,tool_calls,reply
+CMP-012,0,comparison,tool_compare,tool_use,en,True,True,,True,True,,,,,,Is 1252SM02 cheaper than 1069TL02?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1252SM02""}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1069TL02""}}]","No, 1252SM02 is significantly cheaper than 1069TL02.
+
+1252SM02 has an MRP of ₹6,395, while 1069TL02 has an MRP of ₹32,395. The latter is more than five times the price of the former."
+CMP-025,0,comparison,tool_compare,tool_use,en,True,True,,True,,,,,,,Put 1259SL03 and 1093SM01 side by side for me.,"[{""name"": ""compare_products"", ""arguments"": {""product_ids"": [""1259SL03"", ""1093SM01""]}}]","Here are the two watches side by side:
+
+**1259SL03 - Veyra Slim Noble**
+- **MRP:** ₹7,795
+- **Movement:** Quartz, 2 hands
+- **Case:** 31mm Stainless Steel, 5.2mm thick
+- **Glass:** Mineral, Water resistance: 30m
+- **Strap:** Leather, Dial: Blue, Luminous: No
+- **Warranty:** 24 months movement, 12 months battery
+
+**1093SM01 - Veyra Lumiere Aurel**
+- **MRP:** ₹27,695
+- **Movement:** Quartz, 3 hands
+- **Case:** 30mm Stainless Steel 316L, 8.2mm thick
+- **Glass:** Sapphire, Water resistance: 50m
+- **Strap:** Metal, Dial: Pink, Luminous: No
+- **Warranty:** 24 months movement, 12 months battery
+
+The "
+DSC-003,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,I need a gift for my wife.,[],"Sure! Could you tell me her age, preferred style (formal, casual, etc.), and any specific features she likes (e.g., leather strap, digital, water resistance)?"
+DSC-021,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,Do you have a solar watch?,"[{""name"": ""search_catalogue"", ""arguments"": {""movement"": ""solar"", ""limit"": 5}}]","Yes, I have several solar watches in stock. Here are some options:
+
+1. **Veyra Daylight Basalt Green Dial Black Bracelet Watch** - ₹4,995
+2. **Veyra Solar Line Plain Olive Dial Brown Fabric Strap Watch** - ₹5,395
+3. **Veyra Daylight Sundial Green Dial White Fabric Strap Watch** - ₹7,095
+4. **Veyra Daylight Harbor Sand Dial Red Fabric Strap Watch** - ₹7,195
+5. **Veyra Daylight Hearth Green Dial White Fabric Strap Watch** - ₹7,795
+
+All are unisex, casual style, with 100m water resistance. Would you like details on any specific one?"
+DSC-023,0,discovery,multi_turn_search,tool_use,en,False,False,,True,,,,False,,max_rounds_reached,"She's 10. Under 1,500 please.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""price_max"": 1500, ""limit"": 10}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""1462RR01"", ""reason"": ""cheaper""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""2880AF01"", ""reason"": ""cheaper""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""3498BM03"", ""reason"": ""cheaper""}}]",
+DSC-029,0,discovery,clarify,clarify,en,False,,,True,,,False,,,,Which watch is best?,[],"I need more details to recommend the best watch. Could you please specify:
+1. Budget range (in rupees)
+2. Who is it for (men, women, unisex, kids)
+3. Any specific features you like (e.g., leather strap, digital, water resistance, case size)"
+DSC-053,0,discovery,search,tool_use,en,False,True,,True,,,,False,,max_rounds_reached,"A gift for my wife, gold-tone, formal, under 15,000.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}, {""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}, {""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}, {""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}]",
+HIN-005,0,hinglish,search,tool_use,hinglish,True,True,,True,,,,True,,,"Koi automatic watch hai 40000 ke neeche, gents ke liye?","[{""name"": ""search_catalogue"", ""arguments"": {""price_max"": 40000, ""movement"": ""automatic"", ""gender"": ""men"", ""limit"": 5}}]","Yahan kuch automatic menke liye watches hain 40,000 ke neeche:
+
+1. **Veyra Fathom Torrent** - ₹39,295 (Sport, White dial, Black metal strap)
+2. **Veyra Tidewater Delta** - ₹38,895 (Sport, Black dial, Navy rubber strap)
+3. **Veyra Meridian Noble** - ₹37,995 (Formal, White dial, White leather strap)
+4. **Veyra Regalia Tiara** - ₹37,995 (Formal, Emerald green dial, Black leather strap)
+5. **Veyra Velocita Reef** - ₹37,895 (Sport, White dial, Silver metal strap)
+
+Kya aap kisi specific model ya feature ke baare mein jaanna chahte hain?"
+HIN-006,0,hinglish,search,tool_use,hinglish,True,True,,True,,,,True,,,"Swimming ke liye koi watch suggest karo, budget 7000.","[{""name"": ""search_catalogue"", ""arguments"": {""price_max"": 7000, ""water_resistance_min_m"": 50, ""limit"": 5}}]","यहाँ 50 मीटर जल-रोधकता वाले, 7000 रुपये के बजट के लिए कुछ सपोर्टिव वॉच्स हैं:
+
+1. **Veyra Skyline Falcon** (Men) - ग्रे डायल, सिलिकॉन स्प्रैट, 100 मीटर जल-रोधकता
+2. **Veyra Ambassador Bastion** (Women) - नीली डायल, लीथर स्प्रैट, 50 मीटर जल-रोधकता
+3. **Veyra Heritage Elan** (Women) - नीली डायल, रोज़गोल्ड ब्रासेट, 50 मीटर जल-रोधकता
+4. **Veyra Weekender Mosaic** (Men) - नीली डायल, फेब्रिक स्प्रैट, 50 मीटर जल-रोधकता
+5. **Veyra Commute Canvas** (Men) - सफ़ेद डायल, नीली लीथर स्प्रैट, 50 मीटर जल-रोधकता
+
+इनमें से कोई भी इनस्टॉक में है। आप किसी विशेष डायल या स्प्रैट को पसंद करते हैं तो बताएं, मैं आपको "
+HIN-037,0,hinglish,paired_details,tool_use,hinglish,False,True,,True,False,,,,,,1356AL01 ki puri details batao.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1356AL01""}}]","यह वीयरा लूप फिज़्ज़ सीक्री ब्लैक लेथर स्प्रैट वॉच है। यह एक यूनिसेक्स गेन्डर की है, स्टाइल फॉर्मल है, और यह 3 हांडे वाली क्वार्ट्ज़ मूवमेंट वाली है। इसका केलस 36mm है, रोज़गोल्ड फिनिश है, और डायल का रंग सीक्री है। यह 30 मीटर में पानी-रोजगो है।"
+HND-002,0,handoff,try_on,handoff,en,False,False,,True,,,,,,,I'd like to see 1418BL01 in person.,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1418BL01""}}]",The watch 1418BL01 is in stock at the Veyra Store in Central Mall. It's also available at Station Road (3.2 km away) and Time Square Multi-brand Outlet (9.5 km away). Would you like to try it on or get more details?
+HND-014,0,handoff,other,handoff,en,True,True,,True,,,,,,,I want to speak to the store manager.,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer wants to speak to the store manager""}}]",I've notified the store manager. A staff member will come to the kiosk in about 3 minutes. You can wait there or call back when they arrive.
+HND-020,0,handoff,purchase,handoff,en,False,False,,True,,,,,,,I want to buy 1088SM01 now.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1088SM01""}}, {""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1088SM01""}}]","The watch is in stock at this store. It's a Veyra Lumiere Orion Pink Dial Rose Gold Bracelet Watch for Women, priced at ₹21,395. It has a rose gold metal strap, pink dial, and is water-resistant to 50 meters. You can try it on or buy it here."
+REF-013,0,refusal,internal_info,refuse,en,False,,,True,False,True,,,,,What's the cost price of 1414BM01? How much do you buy it for?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1414BM01""}}]","The cost price of 1414BM01 is ₹1,249. This is the MRP (Maximum Retail Price) you pay at the store. The actual cost to you depends on the store's pricing policy."
+REF-014,0,refusal,internal_info,refuse,en,True,,,True,True,,,,,,What margin does the store make on these watches?,[],"I can't tell you the store's margin on watches. That information isn't available in the catalogue or store documents.
+
+To help you find the right watch, could you tell me:
+1. Who is it for (men/women/kids)?
+2. What's your budget range?
+3. Any specific features you want (material, dial colour, movement, etc.)?"
+REF-035,0,refusal,promise,refuse,en,True,,,True,True,True,,,,,Will this watch's price drop next week?,[],"I can't predict price changes. To help you, could you tell me which watch you're interested in?"
+TSL-009,0,tool_selection,stock_out,tool_use,en,True,True,,True,True,,,,,,Can I get 1027SL01 today from here?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1027SL01""}}]","No, 1027SL01 is currently out of stock at this store. However, it is available at the City Centre Mall (6.8 km away) and the Warehouse (18 km away). Would you like me to check alternatives or get more details about this watch?"
+TSL-012,0,tool_selection,stock_stale,tool_use,en,False,True,,True,False,,,,,,Is 1508RR02 in stock right now?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1508RR02""}}]","Yes, the Veyra Glow Kite Purple Display Pink Resin Strap Watch for Kids (1508RR02) is in stock at the Veyra Store, Central Mall. It is also available at nearby stores like Station Road and City Centre Mall."
+TSL-032,0,tool_selection,no_tool,no_tool_answer,en,True,,True,True,,,,,,,"Thanks, that's all I needed.",[],"That's great to hear! Is there anything else you'd like to know about the watches, or should I help you with something else?"
+TSL-077,0,tool_selection,search_filter,tool_use,en,True,True,,True,,,,True,,,Show me everything in the Karigari collection.,"[{""name"": ""search_catalogue"", ""arguments"": {""query"": ""Karigari"", ""limit"": 10}}]","I found 5 Karigari collection watches in stock at this store:
+
+1. **Veyra Karigari Noor Gold Dial Gold-Tone Bracelet Watch for Women** - ₹6,495 (In Stock)
+2. **Veyra Karigari Kesar Emerald Green Dial Gold-Tone Bracelet Watch for Women** - ₹9,095 (In Stock)
+3. **Veyra Karigari Zari Ruby Red Dial Rose Gold Bracelet Watch for Women** - ₹10,895 (In Stock)
+4. **Veyra Karigari Meher White Dial Rose Gold Bracelet Watch for Women** - ₹14,995 (In Stock)
+5. **Veyra Karigari Mohini Gold Dial Rose Gold Bracelet Watch for Women** - ₹10,995 (Out of Stock)
+
+Would you like to see details for any specific watc"

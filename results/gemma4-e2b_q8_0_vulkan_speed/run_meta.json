@@ -1,0 +1,43 @@
+{
+  "name": "gemma4-e2b_q8_0_vulkan_speed",
+  "model": "Gemma-4-E2B-it",
+  "quant": "Q8_0",
+  "backend": "vulkan",
+  "eval_file": "eval\\eval_set.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "all",
+    "ids": "C:\\Users\\user\\Downloads\\SLM_work\\slm-kiosk-catalogue\\eval/speed_subset_ids.json",
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 30,
+  "repeats": 1,
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/gemma-4-E2B-it/gemma-4-E2B-it-Q8_0.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{%- macro format_parameters(properties, required, filter_keys=false) -%}\n    {%- set standard_keys = ['description', 'type', 'properties', 'required', 'nullable'] -%}\n    {%- set ns = namespace(found_first=false) -%}\n    {%- for key, value in properties | dictsort -%}\n        {%- set add_comma = fal...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 6260",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-19T14:20:27",
+  "finished": "2026-10-19T14:25:15",
+  "errors": 0,
+  "run_peak_rss_mb": 5684.5,
+  "wall_minutes": 4.8
+}

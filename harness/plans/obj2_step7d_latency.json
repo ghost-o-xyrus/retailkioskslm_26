@@ -1,0 +1,218 @@
+{
+  "name": "obj2_step7d_latency",
+  "description": "Objective 2, Step 7d: Tier A latency fix, DEV cases only. Qwen3.5-2B Q8_0 on CPU (4 threads), always-retrieve with the soft (gate) fallback, which replaces the hard fallback after the Step 7 pilot. Compares full product cards, compact cards (no marketing description) and compact cards with the chunk gate (only chunks at or above the fallback threshold are shown). Every run starts with an unlogged warm-up request, as a kiosk would at start-up. p7d_2b_cpu_v11_none is the 2B's v1.1 baseline on the scaled catalogue, missing from the pilot.",
+  "base_dir": "..",
+  "results_dir": "results_obj2",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "split": "all",
+    "repeats": 1,
+    "temperature": 0
+  },
+  "runs": [
+    {
+      "name": "p7d_2b_cpu_v11_none",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "none"
+    },
+    {
+      "name": "p7d_2b_cpu_rag_full_gate",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "full"
+    },
+    {
+      "name": "p7d_2b_cpu_v11_full_gate",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "full"
+    },
+    {
+      "name": "p7d_2b_cpu_rag_compact_gate",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact"
+    },
+    {
+      "name": "p7d_2b_cpu_v11_compact_gate",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact"
+    },
+    {
+      "name": "p7d_2b_cpu_rag_compact_chunkgate",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "chunk_gate": true
+    },
+    {
+      "name": "p7d_2b_cpu_v11_compact_chunkgate",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "chunk_gate": true
+    }
+  ]
+}

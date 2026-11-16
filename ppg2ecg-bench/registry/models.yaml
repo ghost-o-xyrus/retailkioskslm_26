@@ -1,0 +1,216 @@
+# PPG -> ECG model registry (objective A)
+# status keys:
+#   code:     yes | no | unverified
+#   weights:  yes | no | lost | unverified
+#   track1:   true if it can enter the "as-released" track (needs code + weights)
+#   track1_recipe: true if it enters Track 1 trained by us with the AUTHORS' code + recipe (no released weights)
+#   track2:   true if it can be (re)trained under the shared protocol (code exists or reimplementable from paper)
+#   trained_on: datasets (+ subject scope) the RELEASED weights saw -> used to tag results seen/unseen
+# Verified 2026-10-19 by cloning repos / reading papers. "unverified" = could not confirm, check before use.
+
+models:
+
+  cardiogan:
+    paper: "CardioGAN: Attentive Generative Adversarial Network with Dual Discriminators for Synthesis of ECG from PPG (AAAI 2021)"
+    repo: https://github.com/pritamqu/ppg2ecg-cardiogan
+    weights_url: https://github.com/pritamqu/ppg2ecg-cardiogan/releases/download/model_weights/cardiogan_ppg2ecg_generator.zip
+    framework: tensorflow2
+    environment: "authors: TF 2.2 (README, 2020). Harness: Python 3.10 + tensorflow[and-cuda]==2.15.1 + tensorflow-addons==0.23.0 (last Keras-2 TF; module.py breaks on Keras 3). Repo last commit 2022-04-27."
+    family: gan
+    code: yes
+    weights: yes
+    track1: true
+    track2: true
+    native_fs: 128
+    window_s: 4
+    output: lead_II_like, normalized [-1, 1]
+    preprocessing: "PPG bandpass 1-8 Hz (butter 4) on the WHOLE recording, then N x 512, per-window min-max to [-1,1]; output optionally FIR 3-45 Hz"
+    trained_on:
+      bidmc: all
+      capnobase: all
+      dalia: all
+      wesad: all
+    reported_size: {params_M: 80.32, gflops: 3.01}   # CLEP-GAN comparison, not self-reported
+    notes: "Released weights saw every subject of all four datasets -> any test on them is a seen-data result."
+
+  ppgflowecg:
+    paper: "PPGFlowECG: Latent Rectified Flow with Cross-Modal Encoding for PPG-Guided ECG Generation (arXiv 2509.19774, 2025)"
+    repo: https://github.com/PKUDigitalHealth/PPGFlowECG
+    weights_url: https://huggingface.co/XiaochengFang/PPGFlowECG/tree/main   # VAE-iter-40000.pth (3.8 GB) + checkpoint-10.pt (97 MB)
+    framework: pytorch
+    environment: "authors' requirements.txt: torch 2.7.0, numpy 1.22.3 (=> Python 3.9/3.10). Inference needs only torch + einops + pyyaml + scipy; runs on Kaggle's Python 3.13 torch."
+    family: latent_flow
+    code: yes
+    weights: yes
+    track1: true
+    track2: true        # but MCMED training data is credentialed -> retrain on open data only
+    native_fs: 128
+    window_s: 10
+    output: lead_II
+    preprocessing: "NaN/flat removal, PPG Elgendi clean 0.5-8 Hz, ECG NeuroKit clean >0.5 Hz, SQI filtering, resample 128 Hz, per-window normalization"
+    trained_on:
+      mcmed: official_train_split     # credentialed, we cannot test on it
+      mimic_afib: subject_80pct
+      vitaldb: subject_80pct
+      bidmc: subject_80pct            # split IDs not published -> treat all BIDMC as possibly seen
+    reported_size: {params_M: null}
+    notes: "Two-stage (CardioAlign encoder + latent rectified flow). Check which checkpoint corresponds to which dataset on HF."
+
+  transformer_gan_ssl:
+    paper: "End-to-end non-invasive ECG signal generation from PPG signal: a self-supervised learning approach (Yalcin & Latoschik, 2026)"
+    repo: https://github.com/m1237/self-supervised-ppg-to-ecg   # (earlier mirror: jatoja123/...)
+    framework: pytorch
+    family: transformer_gan
+    code: yes
+    weights: no
+    track1: false
+    track1_recipe: true   # k93: official code/train.py + self_supervised_transformation; 128 Hz, 4 s, ModelConfig defaults (batch 128, 90+90 epochs), LOSO split as in their main()
+    harness_name: yalcin2026
+    track2: true
+    native_fs: 128
+    window_s: 4         # repo's documented default; the paper also reports 64-96 s windows
+    trained_on: {mimic_perform_af: possibly}   # our training data: MIMIC PERform AF (MIMIC-III subset)
+    notes: "Paper trains on MIMIC-III + Who is Alyx?. main() does not save the model; the wrapper saves the generator."
+
+  chiu_qrs_attention:
+    paper: "Reconstructing QRS complex from PPG by transformed attentional neural networks (Chiu et al., IEEE Sensors J. 2020)"
+    repo: https://github.com/james77777778/ppg2ecg-pytorch
+    framework: pytorch
+    family: cnn_attention
+    code: yes
+    weights: lost
+    track1: false
+    track1_recipe: true   # k90: their train.py --flagfile config/BIDMC.cfg, their released BIDMC windows
+    harness_name: chiu2020
+    track2: true
+    native_fs: 125
+    window_s: 2.048
+    trained_on: {bidmc: possibly}
+    notes: "Small model, good lightweight Track-2 candidate. Main paper config is UQ Vital Signs (100 Hz, 2 s)."
+
+  realmattio_lightweight_hybrid:
+    paper: null   # thesis/hobby repo, not peer reviewed
+    repo: https://github.com/RealMattio/ECG-Reconstruction
+    framework: pytorch
+    family: cnn_lstm
+    code: yes
+    weights: yes   # ecg_generator_mobile.pt (TorchScript, input [B, 3, 875])
+    track1: false  # input channel 2 is 6 s of REAL past ECG -> autoregressive ECG forecaster, not PPG-only
+    environment: "torch 2.6, numpy 2.2 (Python >= 3.10)"
+    track2: true
+    native_fs: 125
+    window_s: 7    # autoregressive: 7 s PPG context -> 1 s ECG
+    trained_on:
+      mimic3_matched: subset
+    notes: "Not peer reviewed; include only as an extra lightweight data point. License: research only."
+
+  rddm:
+    paper: "Region-Disentangled Diffusion Model for High-Fidelity PPG-to-ECG Translation (AAAI 2024)"
+    repo: https://github.com/DebadityaQU/RDDM
+    weights_url: https://drive.google.com/drive/folders/1Z7JQ5VdTrekx4lbARJNIUiR5D-4Kz7wg
+    framework: pytorch
+    code: yes       # corrected 2026-10-27 (earlier entry said no)
+    weights: yes
+    track1: true
+    track2: true
+    trained_on: {bidmc: possibly, capnobase: possibly, dalia: possibly, wesad: possibly, mimic_perform_af: possibly}
+    native_fs: 128
+    window_s: 4
+    reported: {rmse: "0.19-0.25", fd: "2.9-6.7", datasets: [wesad, capnobase, dalia, bidmc, mimic]}
+    reported_size: {params_M: 76.65, gflops: 2.293, steps: 10}
+
+  peak_oriented_diffusion:
+    paper: "A peak-oriented diffusion model for high-fidelity ECG reconstruction from PPG (BioData Mining 2026)"
+    code: unverified
+    weights: unverified
+    track1: false
+    track2: true
+    reported_size: {params_M: 24, steps: 300}
+
+  p2es:
+    paper: "Translation from Wearable PPG to 12-Lead ECG / P2Es (arXiv 2509.25480)"
+    code: no
+    weights: no
+    track1: false
+    track2: false   # 12-lead, MIMIC-IV/II credentialed, 57M params -> literature reference only
+    native_fs: 125
+    window_s: 2
+    reported_size: {params_M: 57, latency: "620 ms / 2 s M2 Pro; 4.46 s iPhone 15 Pro Max"}
+
+  adssm:
+    paper: "PPG-to-ECG Signal Translation for Continuous AF Detection via Attention-based Deep State-Space Modeling (arXiv 2309.15375)"
+    code: unverified
+    weights: unverified
+    track1: false
+    track2: true
+
+  tiny_cnn_bilstm_57k:
+    paper: "Subject-Independent per Beat PPG to Single-Lead ECG Mapping (2023)"
+    code: unverified
+    weights: no
+    track1: false
+    track2: true    # small enough to reimplement and train on CPU/Kaggle
+    window: one beat (128 samples)
+    reported_size: {params_K: 57, kb: 850, mflops: 2.28}
+
+  p2erm:
+    paper: "Real-Time PPG-to-ECG Reconstruction Model with On-Device Recalibration (2024)"
+    code: unverified
+    weights: no
+    track1: false
+    track2: true
+    reported_size: {latency: "216 ms/beat ARM v6"}
+
+  # ---- reference baselines implemented inside this harness (no learning / trivial) ----
+  p2e_wgan:
+    paper: "P2E-WGAN: ECG waveform synthesis from PPG with conditional Wasserstein GANs (Vo et al., ACM SAC 2021)"
+    repo: https://github.com/khuongav/P2E-WGAN-ecg-ppg-reconstruction
+    framework: pytorch
+    family: gan
+    code: yes
+    weights: no
+    track1: false
+    track1_recipe: true   # k92: their p2e_wgan_gp.py unchanged, their MIMIC sample (Drive) or MIMIC PERform AF fallback
+    harness_name: p2e_wgan
+    track2: true
+    native_fs: 125
+    window_s: 3
+    trained_on: {mimic_perform_af: possibly}
+
+  clep_gan:
+    paper: "CLEP-GAN: subject-independent ECG reconstruction from PPG (BMC Bioinformatics 2025; arXiv 2502.17536)"
+    repo: https://github.com/Mathematics-Analytics-Data-Science-Lab/CLEP-GAN
+    framework: pytorch
+    family: gan_contrastive
+    code: yes
+    weights: no
+    track1: false
+    track1_recipe: true   # k91: their data_processing.py + Trainer, BIDMC 28 train / 4 test subjects, 200 epochs
+    harness_name: clep_gan
+    track2: true
+    native_fs: 125
+    window_s: 4.096
+    trained_on: {bidmc: possibly}
+
+  zhu_dct:
+    paper: "ECG Reconstruction via PPG: A Pilot Study (Zhu, Tian, Wong & Wu, 2019; arXiv 1904.10481)"
+    framework: numpy
+    family: linear
+    code: reimplemented   # 12 PPG DCT coefficients -> 100 ECG DCT coefficients, ridge lambda 500
+    weights: fitted_on_capnobase
+    track1: true          # fitted once on CapnoBase (its paper's data) via fit_on
+    track2: true
+    native_fs: 128
+    window_s: 10
+    trained_on: {capnobase: all}
+
+  template_baseline:
+    paper: null
+    family: baseline
+    code: yes
+    weights: n/a
+    track1: true
+    track2: true
+    native_fs: 128
+    window_s: 10
+    notes: "Places a fixed synthetic PQRST beat at each detected PPG pulse, shifted by a calibrated delay. Any model that cannot beat this is only reproducing heart rate."

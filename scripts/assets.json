@@ -1,0 +1,81 @@
+{
+ "_notes": [
+  "What setup.bat downloads, and where it puts it. Nothing here is stored in the repository itself.",
+  "github_repo: 'owner/name' of this repository; the project's own files (retrieval models, adapters) are release assets there. If empty, it is read from 'git remote get-url origin'.",
+  "sha256 / size: filled in by publish/prepare_repo.py from the files the results were measured with; a download that does not match is reported.",
+  "gdrive_id: optional Google Drive file id, tried when the release asset cannot be downloaded."
+ ],
+ "github_repo": "ghost-o-xyrus/retailkioskslm_26",
+ "release_tag": "v1.0",
+ "runtime_dir": "runtime",
+ "llama": {
+  "repo": "ggml-org/llama.cpp",
+  "tag": "b11696",
+  "tag_source": "read from llama-cpu\\llama-server.exe --version on the test laptop",
+  "builds": [
+   {
+    "id": "llama-cpu",
+    "label": "llama.cpp, CPU build (Tier A)",
+    "asset_regex": "bin-win-cpu-x64\\.zip$",
+    "dest": "llama-cpu",
+    "exe": "llama-server.exe"
+   },
+   {
+    "id": "llama-vulkan",
+    "label": "llama.cpp, Vulkan build (Tier B)",
+    "asset_regex": "bin-win-vulkan-x64\\.zip$",
+    "dest": "llama-vulkan",
+    "exe": "llama-server.exe"
+   }
+  ]
+ },
+ "models": [
+  {
+   "id": "model-2b",
+   "label": "Qwen3.5-2B Q8_0 (Tier A model)",
+   "url": "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF/resolve/main/Qwen3.5-2B-Q8_0.gguf",
+   "dest": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+   "sha256": "1b04acba824817554f4ce23639bc8495ff70453b8fcb047900c731521021f2c1",
+   "size": 2012012800
+  },
+  {
+   "id": "model-4b",
+   "label": "Qwen3.5-4B Q4_K_M (Tier B model)",
+   "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf",
+   "dest": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+   "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+   "size": 2740937888
+  }
+ ],
+ "project_assets": [
+  {
+   "id": "retrieval",
+   "label": "Retrieval models in OpenVINO form (bge-small embedder, MiniLM re-ranker)",
+   "file": "retrieval_models_ov.zip",
+   "unpack_to": ".",
+   "provides": [
+    "models/ov/bge-small",
+    "models/ov/minilm"
+   ],
+   "sha256": "4c7ecbbf54b8ddb6dc66583d3d935586b3183c6f898dcccb02c8fc3b8d330a04",
+   "size": 209091529,
+   "gdrive_id": null,
+   "url": null,
+   "rebuild": "retrieval"
+  },
+  {
+   "id": "adapters",
+   "label": "LoRA adapters from Objective 4 (GGUF); Tier B deploys lora_4b",
+   "file": "adapters_gguf.zip",
+   "unpack_to": ".",
+   "provides": [
+    "finetune/adapters_gguf/lora_4b.gguf"
+   ],
+   "sha256": "c04d1ea52cb0a427409bdabba996239aba759877ce0f0a475faf51d350709353",
+   "size": 154802699,
+   "gdrive_id": null,
+   "url": null,
+   "optional": true
+  }
+ ]
+}

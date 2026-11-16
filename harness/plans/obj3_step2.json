@@ -1,0 +1,138 @@
+{
+  "name": "obj3_step2",
+  "description": "Objective 3, Step 2. O3-S2 = O3-B0 plus the tool fixes: search_catalogue matches whole words with generic words ('watch', 'dial', gender words) dropped, prefers products matching every query word, and searches material, glass, function and lume; the query field's description now lists those features. Eval set v1.2 (label fix on two test cases; dev identical to v1.1). Dev split, greedy, Vulkan for both models, paired with the Step 1 O3-B0 runs. About 1.5 hours; resumable.",
+  "runs": [
+    {
+      "name": "o3s2_4b_rag_s2",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S2"
+    },
+    {
+      "name": "o3s2_4b_v12_s2",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.2.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S2"
+    },
+    {
+      "name": "o3s2_2b_rag_s2",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S2"
+    },
+    {
+      "name": "o3s2_2b_v12_s2",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.2.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S2"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

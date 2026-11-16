@@ -1,0 +1,248 @@
+{
+  "name": "obj3_step1_baseline",
+  "description": "Objective 3, Step 1. Dev baseline with per-round logging. O3-B0 = Objective 2's deployed setup, unchanged: always retrieve, k = 3 compact cards, soft fallback that leaves the message unchanged, rule rag_always_rule_b, short pointer when a shown card is re-fetched, warm-up. References that stay fixed for all of Objective 3: oracle cards on the retrieval questions, no retrieval on the v1.1 tool cases (Stage 3 behaviour). Dev split only (151 retrieval questions, 78 v1.1 cases), greedy, seed 42, scaled catalogue, Vulkan for both models as in Objectives 1 and 2. About 3-4 hours; resumable.",
+  "runs": [
+    {
+      "name": "o3s1_4b_rag_b0",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-B0"
+    },
+    {
+      "name": "o3s1_4b_rag_oracle",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "oracle",
+      "context_view": "compact",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "ref-oracle"
+    },
+    {
+      "name": "o3s1_4b_v11_b0",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-B0"
+    },
+    {
+      "name": "o3s1_4b_v11_none",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "dev",
+      "retrieval": "none",
+      "warmup": true,
+      "config_label": "ref-none"
+    },
+    {
+      "name": "o3s1_2b_rag_b0",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-B0"
+    },
+    {
+      "name": "o3s1_2b_rag_oracle",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "oracle",
+      "context_view": "compact",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "ref-oracle"
+    },
+    {
+      "name": "o3s1_2b_v11_b0",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "dev",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-B0"
+    },
+    {
+      "name": "o3s1_2b_v11_none",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "dev",
+      "retrieval": "none",
+      "warmup": true,
+      "config_label": "ref-none"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

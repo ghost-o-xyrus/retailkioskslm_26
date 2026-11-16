@@ -1,0 +1,290 @@
+{
+  "name": "obj2_step8_core",
+  "description": "Objective 2, Step 8. Deployed setup (fixed in Step 7 on dev): always retrieve, k = 3 compact chunks, soft fallback that leaves the message unchanged, rule rag_always_rule_b, short reply when a shown card is re-fetched, warm-up. Greedy, seed 42, scaled catalogue. Core runs, Vulkan for both models (as Objective 1's quality stages): the 373 test retrieval questions with no retrieval, oracle chunks and the deployed setup; and the 292 v1.1 test cases with no retrieval and the deployed setup (regression check). About 9-10 hours; resumable.",
+  "runs": [
+    {
+      "name": "s8_4b_rag_none",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "none",
+      "warmup": true
+    },
+    {
+      "name": "s8_4b_rag_oracle",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "oracle",
+      "context_view": "compact",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_4b_rag_deployed",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_4b_v11_none",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "test",
+      "retrieval": "none",
+      "warmup": true
+    },
+    {
+      "name": "s8_4b_v11_deployed",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "test",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_rag_none",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "none",
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_rag_oracle",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "oracle",
+      "context_view": "compact",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_rag_deployed",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_v11_none",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "test",
+      "retrieval": "none",
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_v11_deployed",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "split": "test",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj2",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

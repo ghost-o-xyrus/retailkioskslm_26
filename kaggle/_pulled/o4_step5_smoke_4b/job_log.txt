@@ -1,0 +1,34 @@
+[21:04:05] project unpacked to /tmp/proj (bundle 20261107-023226)
+[21:04:05]   input finetune/adapters/smoke_qlora_4b: present
+[21:04:05] $ /usr/bin/python3 -m pip install -q "huggingface_hub" "transformers>=5"
+[21:04:09] downloading llama-b11696-bin-ubuntu-x64.tar.gz
+[21:04:10] llama-server: /tmp/llama/llama-b11696/llama-server (same build as the laptop)
+[21:04:10] $ STEP5_REPORT=step5_report_smoke4b STEP5_ONE_TIER=1 bash finetune/kaggle_step5.sh /tmp/llama/llama-b11696/llama-server b11696 smoke_qlora_4b
+llama-server: /tmp/llama/llama-b11696/llama-server; llama.cpp build b11696
+converter: llama.cpp ceefd16 Fri Oct 16 16:51:14 2026 +0800
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Qwen3.5-2B-Q8_0.gguf: sha256 1b04acba82481755... | laptop: hash not sent
+Qwen3.5-4B-Q4_K_M.gguf: sha256 00fe7986ff5f6b46... | laptop: same file
+## smoke_qlora_4b (Tier B, unsloth/Qwen3.5-4B, QLoRA)
+
+- converted: 42.5 MB
+- loads on Qwen3.5-4B-Q4_K_M.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/smoke_qlora_4b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 0/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**smoke_qlora_4b: passed**
+
+# Step 5: adapters on the deployed model files (route a)
+
+## smoke_qlora_4b (Tier B, unsloth/Qwen3.5-4B, QLoRA)
+
+- converted: 42.5 MB
+- loads on Qwen3.5-4B-Q4_K_M.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/smoke_qlora_4b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 0/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**smoke_qlora_4b: passed**
+
+[22:38:16] done: ok=True, 5 files packed, 94.7 min

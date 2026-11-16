@@ -1,0 +1,79 @@
+{
+  "name": "obj2_step7f_dedupe",
+  "description": "Objective 2, Step 7f, DEV cases only. Step 7e's 'omit' setup (compact cards, soft fallback with the message left unchanged, rule b, warm-up), plus: when the 2B calls get_product_details for a watch whose card it was already shown, the tool returns a short pointer (about 50 tokens) instead of the ~420-token record. In Step 7e the 2B re-fetched the shown card on 10 of 11 product questions, costing about 7 s of prompt reading each on CPU.",
+  "base_dir": "..",
+  "results_dir": "results_obj2",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "split": "all",
+    "repeats": 1,
+    "temperature": 0
+  },
+  "runs": [
+    {
+      "name": "p7f_2b_cpu_v11_dedupe",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true
+    },
+    {
+      "name": "p7f_2b_cpu_rag_dedupe",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "warmup": true,
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true
+    }
+  ]
+}

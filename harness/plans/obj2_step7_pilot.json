@@ -1,0 +1,239 @@
+{
+  "name": "obj2_step7_pilot",
+  "description": "Objective 2, Step 7 pilot. DEV cases only (24 retrieval questions, 20 v1.1 tool cases), so the test split stays untouched for Step 8. Checks that every retrieval condition runs, what it costs in prompt tokens and time, whether the prompt cache still works with retrieved text in the customer message, whether the 4B model calls search_knowledge, and how often the fallback would refuse ordinary shopping requests. Tier B: Qwen3.5-4B Q4_K_M on Vulkan. Tier A: Qwen3.5-2B Q8_0 on CPU, 4 threads. Scaled catalogue (data/kiosk). Greedy decoding.",
+  "base_dir": "..",
+  "results_dir": "results_obj2",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "split": "all",
+    "repeats": 1,
+    "temperature": 0
+  },
+  "runs": [
+    {
+      "name": "p7_4b_rag_none",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "none"
+    },
+    {
+      "name": "p7_4b_rag_oracle",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "oracle"
+    },
+    {
+      "name": "p7_4b_rag_always",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "shadow"
+    },
+    {
+      "name": "p7_4b_rag_gate",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "gate"
+    },
+    {
+      "name": "p7_4b_rag_tool",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "tool"
+    },
+    {
+      "name": "p7_4b_v11_none",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "none"
+    },
+    {
+      "name": "p7_4b_v11_always",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.1.jsonl",
+      "ids": "eval/v11_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "shadow"
+    },
+    {
+      "name": "p7_2b_cpu_rag_none",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "none"
+    },
+    {
+      "name": "p7_2b_cpu_rag_always",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "cpu",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "ids": "eval/rag_pilot_ids.json",
+      "retrieval": "always",
+      "fallback": "shadow"
+    }
+  ]
+}

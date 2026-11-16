@@ -1,0 +1,108 @@
+[06:34:36] project unpacked to /tmp/proj (bundle 20261107-115555)
+[06:34:36]   input finetune/adapters/lora_2b: present
+[06:34:36]   input finetune/adapters/qlora_2b: present
+[06:34:36]   input finetune/adapters/lora_4b: present
+[06:34:36]   input finetune/adapters/qlora_4b: MISSING
+[06:34:36] $ /usr/bin/python3 -m pip install -q "huggingface_hub" "transformers>=5"
+[06:34:42] downloading llama-b11696-bin-ubuntu-x64.tar.gz
+[06:34:43] llama-server: /tmp/llama/llama-b11696/llama-server (same build as the laptop)
+[06:34:43] $ bash finetune/kaggle_step5.sh /tmp/llama/llama-b11696/llama-server b11696 lora_2b qlora_2b lora_4b qlora_4b
+llama-server: /tmp/llama/llama-b11696/llama-server; llama.cpp build b11696
+converter: llama.cpp ceefd16 Fri Oct 16 16:51:14 2026 +0800
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Qwen3.5-2B-Q8_0.gguf: sha256 1b04acba82481755... | laptop: same file
+Qwen3.5-4B-Q4_K_M.gguf: sha256 00fe7986ff5f6b46... | laptop: same file
+  lora_2b: converted; loading it next to Qwen3.5-2B-Q8_0.gguf
+  lora_2b: template check done (40/40); starting plain decoding
+  lora_2b: scale-0 and scale-1 replies, example 1/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 2/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 3/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 4/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 5/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 6/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 7/8 ...
+  lora_2b: scale-0 and scale-1 replies, example 8/8 ...
+## lora_2b (Tier A, unsloth/Qwen3.5-2B)
+
+- converted: 21.8 MB
+- loads on Qwen3.5-2B-Q8_0.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/lora_2b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 0/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**lora_2b: passed**
+
+  qlora_2b: converted; loading it next to Qwen3.5-2B-Q8_0.gguf
+  qlora_2b: template check done (40/40); starting plain decoding
+  qlora_2b: scale-0 and scale-1 replies, example 1/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 2/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 3/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 4/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 5/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 6/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 7/8 ...
+  qlora_2b: scale-0 and scale-1 replies, example 8/8 ...
+## qlora_2b (Tier A, unsloth/Qwen3.5-2B, QLoRA)
+
+- converted: 21.8 MB
+- loads on Qwen3.5-2B-Q8_0.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/qlora_2b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 1/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**qlora_2b: passed**
+
+  lora_4b: converted; loading it next to Qwen3.5-4B-Q4_K_M.gguf
+  lora_4b: template check done (40/40); starting plain decoding
+  lora_4b: scale-0 and scale-1 replies, example 1/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 2/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 3/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 4/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 5/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 6/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 7/8 ...
+  lora_4b: scale-0 and scale-1 replies, example 8/8 ...
+## lora_4b (Tier B, unsloth/Qwen3.5-4B)
+
+- converted: 42.5 MB
+- loads on Qwen3.5-4B-Q4_K_M.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/lora_4b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 1/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**lora_4b: passed**
+
+qlora_4b: not trained (no adapter_model.safetensors); skipped
+# Step 5: adapters on the deployed model files (route a)
+
+## lora_2b (Tier A, unsloth/Qwen3.5-2B)
+
+- converted: 21.8 MB
+- loads on Qwen3.5-2B-Q8_0.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/lora_2b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 0/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**lora_2b: passed**
+
+## qlora_2b (Tier A, unsloth/Qwen3.5-2B, QLoRA)
+
+- converted: 21.8 MB
+- loads on Qwen3.5-2B-Q8_0.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/qlora_2b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 1/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**qlora_2b: passed**
+
+## lora_4b (Tier B, unsloth/Qwen3.5-4B)
+
+- converted: 42.5 MB
+- loads on Qwen3.5-4B-Q4_K_M.gguf: yes; /lora-adapters: [{'id': 0, 'path': '/tmp/proj/finetune/adapters_gguf/lora_4b.gguf', 'scale': 1.0, 'task_name': '', 'prompt_prefix': ''}]
+- template: 40/40 prompts identical (rule: at least 95%) -> met
+- scale 0: 8/8 replies identical to plain decoding; plain decoding agrees with itself 8/8 -> met
+- scale 1 (a look): 1/8 replies equal the training answer word for word; tool calls 0/0; printed markup 0; ended by themselves 8/8
+
+**lora_4b: passed**
+
+[09:40:52] done: ok=True, 11 files packed, 188.2 min

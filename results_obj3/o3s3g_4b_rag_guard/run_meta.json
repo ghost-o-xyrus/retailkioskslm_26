@@ -1,0 +1,74 @@
+{
+  "name": "o3s3g_4b_rag_guard",
+  "model": "Qwen3.5-4B",
+  "quant": "Q4_K_M",
+  "backend": "vulkan",
+  "eval_file": "eval\\rag_cases.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "dev",
+    "ids": null,
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 151,
+  "repeats": 1,
+  "config_label": "O3-S3g",
+  "tool_view": "json",
+  "loop_guard": true,
+  "data_dir": "data\\kiosk",
+  "warmup": true,
+  "retrieval": {
+    "condition": "always",
+    "fallback": "gate",
+    "context_view": "compact",
+    "chunk_gate": false,
+    "gate_style": "omit",
+    "rag_rule": "rag_always_rule_b",
+    "dedupe_shown": true,
+    "knowledge_base": {
+      "embedder": "BAAI/bge-small-en-v1.5",
+      "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "backend": "openvino",
+      "max_length": 256,
+      "depth": 20,
+      "k": 3,
+      "max_context_tokens": 1500,
+      "threshold": -3.481874465942383,
+      "hinglish_bypass": true,
+      "view": "compact",
+      "chunk_gate": false,
+      "fallback_file": "results_retrieval\\fallback_bypass\\fallback.json",
+      "load_s": 0.0,
+      "reused_from_earlier_run": true,
+      "added_rss_mb": null
+    }
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 95900",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-24T03:31:39",
+  "finished": "2026-10-24T04:11:47",
+  "errors": 0,
+  "run_peak_rss_mb": 4274.6,
+  "wall_minutes": 40.1
+}

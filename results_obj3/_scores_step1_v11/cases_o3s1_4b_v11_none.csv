@@ -1,0 +1,273 @@
+﻿id,repeat,category,subcategory,behaviour,language,passed,tool_ok,no_tool_ok,format_ok,facts_ok,forbidden_ok,clarify_ok,grounded_ok,error,flags,user,tool_calls,reply
+CMP-012,0,comparison,tool_compare,tool_use,en,True,True,,True,True,,,,,,Is 1252SM02 cheaper than 1069TL02?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1252SM02""}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1069TL02""}}]","Yes, 1252SM02 is cheaper than 1069TL02.
+
+*   **1252SM02:** ₹6,395
+*   **1069TL02:** ₹32,395
+
+The 1252SM02 is significantly more affordable."
+CMP-025,0,comparison,tool_compare,tool_use,en,True,True,,True,,,,,,,Put 1259SL03 and 1093SM01 side by side for me.,"[{""name"": ""compare_products"", ""arguments"": {""product_ids"": [""1259SL03"", ""1093SM01""]}}]","Here is the side-by-side comparison:
+
+**Veyra Slim Noble (1259SL03)**
+*   **MRP:** ₹7,795
+*   **Dial:** Blue
+*   **Strap:** Leather
+*   **Case Size:** 31mm
+*   **Water Resistance:** 30m
+
+**Veyra Lumiere Aurel (1093SM01)**
+*   **MRP:** ₹27,695
+*   **Dial:** Pink
+*   **Strap:** Metal (Bracelet)
+*   **Case Size:** 30mm
+*   **Water Resistance:** 50m
+
+The Lumiere Aurel is significantly more expensive, features a sapphire glass and higher water resistance, but the Slim Noble is a more budget-friendly option with a leather strap.
+
+Would you like to try either of these on?"
+DSC-001,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,I want to buy a watch.,[],"Sure! Could you please tell me who the watch is for (men, women, or unisex), your budget, and any specific features you're looking for, like strap material, dial color, or water resistance?"
+DSC-003,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,I need a gift for my wife.,[],"To help you find the perfect gift, could you tell me your budget and what style she prefers? For example, is it for a formal occasion or something more casual?"
+DSC-005,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,Something for office use.,[],"To help you find the perfect watch for office use, could you please specify:
+
+1.  **Who is it for?** (Men, Women, or Unisex)
+2.  **What is your budget?** (e.g., under ₹5000, ₹10,000, etc.)
+
+Once you provide these details, I can search for suitable formal watches for you."
+DSC-007,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,I want a good watch for a wedding.,[],"To help you find the perfect wedding watch, could you please specify:
+
+1.  **Who is it for?** (Men, Women, or Unisex)
+2.  **What is your budget?** (e.g., under ₹5,000, ₹10,000, etc.)
+3.  **Do you have a preference for style?** (e.g., Gold, Silver, Leather strap, or a specific collection)
+
+Once you provide these details, I can search for suitable options for you."
+DSC-009,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,"My budget is 5000, suggest something.",[],"To give you the best suggestion, could you please let me know if this watch is for a man or a woman? Also, do you have a preference for the style (e.g., formal, casual, sporty) or the strap material?"
+DSC-014,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,Women's watch with a leather strap under 5000 for daily office wear.,"[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""strap_material"": ""leather"", ""price_max"": 5000, ""style"": ""formal"", ""limit"": 5}}]","I found two women's watches with leather straps under ₹5000, suitable for office wear:
+
+1. **Veyra Promenade Cameo** - Champagne dial with tan leather strap, ₹4495
+2. **Veyra Ambassador Regent** - White dial with black leather strap, ₹4295
+
+Both are formal style with quartz movement. Would you like to try either of these on?"
+DSC-021,0,discovery,search,tool_use,en,False,False,,True,,,,False,,,Do you have a solar watch?,[],"Yes, we do! I can search for solar watches for you. Who is this watch for (men, women, or unisex), and do you have a specific budget in mind?"
+DSC-023,0,discovery,multi_turn_search,tool_use,en,True,True,,True,,,,True,,,"She's 10. Under 1,500 please.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""kids"", ""price_max"": 1500, ""limit"": 5}}]","Here are a few great options for your 10-year-old daughter under ₹1,500:
+
+1.  **Veyra Jungle Turtle** (₹1,449): Yellow dial with a blue silicone strap.
+2.  **Veyra Ocean Pals Turtle** (₹1,449): Orange dial with an orange resin strap.
+3.  **Veyra Tiny Tots Lion** (₹1,449): Pink dial with an orange resin strap.
+4.  **Veyra Tiny Tots Koala** (₹1,449): Yellow dial with a yellow resin strap.
+5.  **Veyra Ocean Pals Koala** (₹1,399): Aqua dial with a green resin strap.
+
+Do any of these catch your eye? Or would you like to see more options?"
+DSC-029,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,Which watch is best?,[],"To help you find the best watch, could you please tell me who it's for (men, women, or unisex), your budget, and any specific features you're looking for, such as style, strap material, or water resistance?"
+DSC-030,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,My dad's birthday is next week.,[],"Happy early birthday to your dad! That's wonderful.
+
+To help you find the perfect watch for him, could you please tell me:
+1. What is his budget?
+2. Does he prefer a specific style (e.g., formal, sporty, casual)?
+3. Any specific features he likes, like a particular colour or strap material?"
+DSC-042,0,discovery,search,tool_use,en,False,False,,True,,,,False,,,Unisex digital watch for the gym.,[],I can help you find a unisex digital watch suitable for the gym. Could you please specify your budget range? This will help me narrow down the options for you.
+DSC-043,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,I want a watch with a green dial for men.,"[{""name"": ""search_catalogue"", ""arguments"": {""dial_colour"": ""green"", ""gender"": ""men"", ""limit"": 5}}]","I found several men's watches with green dials in stock here:
+
+1. **Veyra Everyday Quarry** - Green dial with tan leather strap, ₹1,495
+2. **Veyra Everyday Daybreak** - Green dial with navy leather strap, ₹1,495
+3. **Veyra Everyday Signal** - Green dial with white leather strap, ₹1,695
+4. **Veyra Everyday Plain** - Green dial with black leather strap, ₹1,795
+5. **Veyra Turbo Delta** - Green dial with black metal bracelet, ₹1,895
+
+Would you like to try any of these on? Or do you have a preference for strap material or price range?"
+DSC-047,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,"Something premium and automatic, between 20k and 40k, for a man.","[{""name"": ""search_catalogue"", ""arguments"": {""price_min"": 20000, ""price_max"": 40000, ""gender"": ""men"", ""movement"": ""automatic"", ""limit"": 5}}]","Here are some premium automatic watches for men between ₹20k and ₹40k that are in stock:
+
+1. **Veyra Fathom Torrent** - ₹39,295 - White dial, black metal bracelet, 200m water resistance.
+2. **Veyra Tidewater Delta** - ₹38,895 - Black dial, navy rubber strap, 300m water resistance.
+3. **Veyra Meridian Noble** - ₹37,995 - White dial, white leather strap, formal style.
+4. **Veyra Regalia Tiara** - ₹37,995 - Emerald green dial, black leather strap, formal style.
+5. **Veyra Velocita Reef** - ₹37,895 - White dial, silver metal bracelet, sporty style.
+
+Would you like to try any of these on, or would "
+DSC-048,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,"Men's watch, 40 mm or smaller, formal.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""men"", ""style"": ""formal"", ""case_size_max_mm"": 40, ""limit"": 5}}]","Here are some men's formal watches with 40mm or smaller cases that are in stock:
+
+1. **Veyra Desk Linnea** - Silver dial, 39mm, ₹1,099
+2. **Veyra Steel Smart Orion** - Blue dial, 40mm, ₹1,795
+3. **Veyra Desk Sable** - Blue dial, 39mm, ₹2,595
+4. **Veyra Desk Bastion** - White dial, 40mm, ₹2,595
+5. **Veyra Desk Tribute** - White dial, 40mm, ₹2,595
+
+Would you like to see more options, check availability for a specific colour, or try any of these on?"
+DSC-053,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,"A gift for my wife, gold-tone, formal, under 15,000.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""price_max"": 15000, ""query"": ""gold-tone"", ""limit"": 5}}]","I found several gold-tone formal watches for your wife under ₹15,000:
+
+1. **Veyra Heritage Velour Cream Dial** - ₹14,295 (Gold-tone metal strap, 32mm case)
+2. **Veyra Ambassador Crest Grey Dial** - ₹13,995 (Gold-tone metal strap, 29mm case)
+3. **Veyra Heritage Sterling Black Dial** - ₹13,695 (Gold-tone metal strap, 31mm case)
+4. **Veyra Promenade Monarch Silver Dial** - ₹10,195 (Gold-tone metal strap, 29mm case)
+5. **Veyra Promenade Aurel Silver Dial** - ₹10,095 (Gold-tone metal strap, 31mm case)
+
+All are in stock here. Would you like to try any of these on? Or would you prefer more details ab"
+DSC-054,0,discovery,search,tool_use,en,False,False,,True,,,,False,,,Cheapest automatic you have?,[],I can help you find the cheapest automatic watch. Could you please let me know if this is for a man or a woman?
+HIN-005,0,hinglish,search,tool_use,hinglish,True,True,,True,,,,True,,,"Koi automatic watch hai 40000 ke neeche, gents ke liye?","[{""name"": ""search_catalogue"", ""arguments"": {""price_max"": 40000, ""gender"": ""men"", ""movement"": ""automatic"", ""limit"": 5}}]","Haan, kuch automatic watches 40,000 ke neeche mil rahe hain:
+
+1. **Veyra Fathom Torrent** - ₹39,295, White dial, Black metal strap, 41mm case.
+2. **Veyra Tidewater Delta** - ₹38,895, Black dial, Navy rubber strap, 42mm case.
+3. **Veyra Meridian Noble** - ₹37,995, White dial, White leather strap, 41mm case.
+4. **Veyra Regalia Tiara** - ₹37,995, Emerald green dial, Black leather strap, 41mm case.
+5. **Veyra Velocita Reef** - ₹37,895, White dial, Silver metal strap, 43mm case.
+
+Kya aap inmein se kisi specific watch ko try karne chahte hain ya aur details chahiye?"
+HIN-006,0,hinglish,search,tool_use,hinglish,True,True,,True,,,,True,,,"Swimming ke liye koi watch suggest karo, budget 7000.","[{""name"": ""search_catalogue"", ""arguments"": {""price_max"": 7000, ""water_resistance_min_m"": 100, ""limit"": 5}}]","Swimming ke liye kuch acche options hain jo 7000 ke budget mein hain aur 100 meter water resistance ke saath aate hain:
+
+1. **Veyra Skyline Falcon** - ₹6895, Grey dial, White silicone strap
+2. **Veyra Altitude Gale** - ₹6595, Blue dial, Silver metal strap
+3. **Veyra Skyline Rapid** - ₹6395, Green dial, Metal strap
+4. **Veyra Sprint Summit** - ₹6395, White dial, Gunmetal metal strap
+5. **Veyra Solar Line** - ₹6195, Olive dial, Black metal strap (Unisex)
+
+Koi specific color ya strap type pasand hai? Kya aap inmein se koi try on karna chahte hain?"
+HIN-012,0,hinglish,clarify,clarify,hinglish,True,,,True,,,True,,,,Gift ke liye kuch accha sa chahiye.,[],"Kripya thoda aur detail dein:
+1. Kaun ke liye hai (male/female/unisex)?
+2. Kaunsa budget hai?
+3. Koi specific style ya color pasand hai?
+
+Isse main aapko behtar suggestions de paunga."
+HIN-019,0,hinglish,paired_clarify,clarify,hinglish,True,,,True,,,True,,,,Bete ke liye watch dekh raha hoon.,[],"Bete ke liye watch dhoondh rahe hain? Kya aapko koi specific budget hai? Aur kya style pasand hai - formal, casual, ya sporty?"
+HIN-026,0,hinglish,paired_clarify,clarify,hinglish,True,,,True,,,True,,,,Mujhe badi watches pasand hain.,[],Aapki preference badi watches ke liye samajh gaya. Kya aapko kisi specific budget mein watch chahiye? Aur yeh watch kiske liye hai - aapke liye ya kisi aur ke liye?
+HIN-028,0,hinglish,paired_search,tool_use,hinglish,False,False,,True,,,,True,,,"Papa ke liye formal watch, metal bracelet wali, budget lagbhag 15,000.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""men"", ""style"": ""formal"", ""strap_material"": ""metal"", ""price_min"": 10000, ""price_max"": 20000, ""limit"": 5}}]","Yeh rahe kuch options jo aapke budget aur requirements ke hisaab se match karte hain:
+
+1. **Veyra Heritage Aurel** - ₹14,795 (Brown dial, Gold-tone metal bracelet)
+2. **Veyra Heritage Crest** - ₹14,295 (Navy dial, Rose gold metal bracelet)
+3. **Veyra Heritage Opus** - ₹13,895 (Navy dial, Rose gold metal bracelet)
+4. **Veyra Ambassador Aurel** - ₹13,895 (White dial, Rose gold metal bracelet)
+5. **Veyra Regalia Atlas** - ₹19,195 (Silver dial, Rose gold metal bracelet)
+
+Kya aap inmein se kisi specific color ya collection ko prefer karte hain? Ya phir koi specific feature jaise water resistance ya"
+HIN-034,0,hinglish,paired_search,tool_use,hinglish,True,True,,True,,,,True,,,"Gents ke liye sporty watch, 10k ke neeche.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""men"", ""style"": ""sport"", ""price_max"": 10000, ""limit"": 5}}]","Yeh rahe kuch sporty watches gents ke liye 10k ke neeche:
+
+1. **Veyra Altitude Ridge** - Blue dial, Gunmetal strap, ₹9395
+2. **Veyra Altitude Arc** - Orange dial, White silicone strap, ₹8795
+3. **Veyra Skyline Delta** - Green dial, Black metal strap, ₹8695
+4. **Veyra Sprint Apex** - White dial, White silicone strap, ₹8695
+5. **Veyra Altitude Blaze** - Blue dial, Gunmetal strap, ₹8495
+
+Koi specific color ya strap type pasand hai? Ya kisi specific watch ko try karne ke liye staff ko call karein?"
+HIN-035,0,hinglish,paired_search,tool_use,hinglish,True,True,,True,,,,True,,,"Ladies watch chhote case wali, 32 mm ya usse kam.","[{""name"": ""search_catalogue"", ""arguments"": {""case_size_max_mm"": 32, ""gender"": ""women"", ""limit"": 5}}]","Yeh rahe kuch chhote case ki ladies watches jo inke liye suitable hain:
+
+1. **Veyra Shagun Mohini** - Maroon dial, 29mm case, ₹999
+2. **Veyra Basics Dune** - Brown dial, 30mm case, ₹1049
+3. **Veyra Saathi Daybreak** - Cream dial, 30mm case, ₹1199
+4. **Veyra Mangal Utsav** - White dial, 28mm case, ₹1199
+5. **Veyra Shringar Sitara** - Pink dial, 27mm case, ₹1249
+
+Kya aap inmein se kisi specific color ya style ko try karne chahti hain? Ya phir koi aur specific feature dhundh rahi hain?"
+HIN-037,0,hinglish,paired_details,tool_use,hinglish,True,True,,True,True,,,,,,1356AL01 ki puri details batao.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1356AL01""}}]","Yeh Veyra Loop Fizz Sky Blue Dial Black Leather Strap Watch hai (Unisex).
+
+**Details:**
+*   **Sub-brand:** Veyra Pulse
+*   **Collection:** Loop
+*   **Movement:** Quartz
+*   **Display:** Analog
+*   **Case:** 36mm Alloy, Rose gold finish
+*   **Dial:** Sky Blue
+*   **Strap:** Black Leather
+*   **Water Resistance:** 30 meters
+*   **MRP:** ₹3,195
+*   **Warranty:** 12 months on movement and battery.
+
+Iske alag alag variants available hain. Kya aap kisi specific variant ki stock check karna chahte hain?"
+HND-001,0,handoff,try_on,handoff,en,True,True,,True,,,,,,,Can I try 1452RR03 on?,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""try_on"", ""product_id"": ""1452RR03""}}]","Yes, I can help you try on watch 1452RR03. A staff member has been notified and will be with you in about 3 minutes."
+HND-002,0,handoff,try_on,handoff,en,True,True,,True,,,,,,,I'd like to see 1418BL01 in person.,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""try_on"", ""product_id"": ""1418BL01""}}]",A staff member has been notified and will come to the kiosk shortly to help you try on watch 1418BL01. Expected wait time is about 3 minutes.
+HND-009,0,handoff,service,handoff,en,False,False,,True,,,,,,,The strap on my watch broke. Can you replace it?,[],I can help you with that. Please provide the product ID or style ID of your watch so I can check the available strap options and call the staff to assist you with the replacement.
+HND-014,0,handoff,other,handoff,en,True,True,,True,,,,,,,I want to speak to the store manager.,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered""}}]",A staff member has been notified and will come to the kiosk shortly. Ticket number: REQ-0021.
+HND-020,0,handoff,purchase,handoff,en,True,True,,True,,,,,,,I want to buy 1088SM01 now.,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""purchase"", ""product_id"": ""1088SM01""}}]",I've notified a staff member to assist you with the purchase of watch 1088SM01. They will be at the kiosk in about 3 minutes.
+HND-033,0,handoff,other,handoff,en,True,True,,True,,,,,,,"I'm unhappy with the service, I want to complain.","[{""name"": ""call_staff"", ""arguments"": {""reason"": ""service"", ""note"": ""Customer is unhappy with service and wants to complain.""}}]",A staff member has been notified and will be with you shortly. They will handle your complaint.
+REF-007,0,refusal,out_of_database,refuse,en,True,,,True,True,True,,,,,Do you have a smartwatch that counts steps and shows notifications?,[],"I don't have any smartwatches in our store. We only carry traditional analog and digital watches with quartz, automatic, or solar movements.
+
+Could you tell me who the watch is for (men, women, or unisex) and what budget you have? I can then search for a traditional watch that might have a similar feature, like a chronograph or a date display."
+REF-011,0,refusal,promise,refuse,en,True,,,True,True,True,,,,,Can you hold this watch for me for a week?,[],"I'm sorry, but we can only hold a watch for up to 24 hours. If you'd like to try it on, please let me know the product ID, and I can call a staff member to assist you."
+REF-013,0,refusal,internal_info,refuse,en,True,,,True,True,True,,,,,What's the cost price of 1414BM01? How much do you buy it for?,[],"I cannot provide the cost price or the internal buying price of the watch. That information is not available to me.
+
+I can, however, tell you the official MRP (Market Recommended Price) for the watch. Would you like me to check that for you?"
+REF-014,0,refusal,internal_info,refuse,en,True,,,True,True,,,,,,What margin does the store make on these watches?,[],"I'm sorry, but I don't have access to the store's internal pricing or profit margins. I can only provide the official MRP (Maximum Retail Price) listed on the product details.
+
+If you'd like to know more about the watches, I can help you find them, compare prices, or check their availability. Would you like to look at any specific watches?"
+REF-019,0,refusal,not_found,refuse,en,True,,,True,True,,,,,,Is 9999SL01 in stock?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""9999SL01""}}]",It seems there is no watch with the ID '9999SL01' in our catalogue. Could you please check the product ID or describe the watch you are looking for?
+REF-035,0,refusal,promise,refuse,en,True,,,True,True,True,,,,,Will this watch's price drop next week?,[],"I don't have access to future pricing or promotional schedules. I can only provide the current MRP and any active offers listed in our catalogue.
+
+For the latest price drops or sales, please ask a store staff member.
+
+Would you like me to check the current price and availability of a specific watch for you?"
+REF-038,0,refusal,internal_info,refuse,en,True,,,True,True,True,,,,,What did the store pay for 1479PP03?,[],"I cannot provide the cost price or margin information for any watch. That is internal store data and not available to me.
+
+I can, however, tell you the official MRP (Market Recommended Price) for the watch. Would you like me to check that for you?"
+REF-042,0,refusal,discount,refuse,en,False,,,True,False,True,,,,max_rounds_reached,Amazon has 1376AN02 cheaper. Match their price?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1376AN02""}}, {""name"": ""search_catalogue"", ""arguments"": {""query"": ""Veyra Loop Sky Blue Dial Gold-Tone Mesh Strap Watch"", ""price_max"": 3795, ""limit"": 5}}, {""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1376AN02""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""1376AN02"", ""reason"": ""cheaper""}}]",
+TSL-002,0,tool_selection,details,tool_use,en,True,True,,True,True,,,,,,Give me details of watch 1452RR02.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1452RR02""}}]","Here are the details for watch **1452RR02**:
+
+*   **Name:** Veyra Daily Digital Daybreak Black Display White Resin Strap Watch (Unisex)
+*   **Collection:** Daily Digital
+*   **MRP:** ₹1,249
+*   **Display:** Digital (Black dial, White resin strap)
+*   **Movement:** Quartz
+*   **Case:** 39mm Resin, Grey finish
+*   **Functions:** Alarm, Stopwatch, Backlight
+*   **Water Resistance:** 30 meters
+*   **Warranty:** 12 months on movement and battery
+
+Would you like to check its availability or see other variants?"
+TSL-007,0,tool_selection,stock_in,tool_use,en,True,True,,True,True,,,,,,Do you have 1452RR02 in stock?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1452RR02""}}]","Yes, the Veyra Daily Digital Daybreak watch (1452RR02) is in stock at our store. There is 1 on display and 2 in the backroom. Would you like to try it on or make a purchase?"
+TSL-009,0,tool_selection,stock_out,tool_use,en,True,True,,True,True,,,,,,Can I get 1027SL01 today from here?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1027SL01""}}]","I'm sorry, but the watch 1027SL01 is currently out of stock at this store. However, it is available at the Veyra Store in City Centre Mall, which is 6.8 km away. Would you like me to call the staff to assist you with purchasing it from there?"
+TSL-012,0,tool_selection,stock_stale,tool_use,en,False,True,,True,False,,,,,,Is 1508RR02 in stock right now?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1508RR02""}}]","Yes, the Veyra Glow Kite Purple Display Pink Resin Strap Watch for Kids (1508RR02) is currently in stock at our store. There is 1 unit on display and 2 in the backroom. Would you like to try it on or make a purchase?"
+TSL-013,0,tool_selection,stock_stale,tool_use,en,False,True,,True,False,,,,,,Is 1322RR02 in stock right now?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1322RR02""}}]","Yes, the Veyra Neon Digital Torrent watch (1322RR02) is currently in stock at our Central Mall store. There is 1 unit on display and 1 in the backroom.
+
+Would you like to try it on?"
+TSL-020,0,tool_selection,search_filter,tool_use,en,False,False,,True,,,,False,,,I'd like a rose gold watch for women.,[],"I can help you find a rose gold watch for women. Could you please specify your budget and any preferred style (e.g., formal, casual, sport)? This will help me narrow down the options for you."
+TSL-026,0,tool_selection,alternatives_cheaper,tool_use,en,True,True,,True,,,,True,,,1034SK02 is a bit over my budget. Anything similar but cheaper?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1034SK02""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""1034SK02"", ""reason"": ""cheaper""}}]","Here are three cheaper alternatives similar to the Tidewater Reef watch, all in stock here:
+
+1.  **Veyra Fathom Torrent** (₹40,995) - Petrol blue dial with a black metal bracelet. 41mm case, 200m water resistance.
+2.  **Veyra Monsoon Chrono Strike** (₹41,595) - White dial with a silver metal bracelet. 44mm case, 100m water resistance.
+3.  **Veyra Monsoon Chrono Pace** (₹41,995) - Grey dial with a white leather strap. 43mm case, 100m water resistance.
+
+All three are automatic, sporty watches for men. Which one would you like to try on?"
+TSL-027,0,tool_selection,alternatives_cheaper,tool_use,en,True,True,,True,,,,True,,,1088SM02 is a bit over my budget. Anything similar but cheaper?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1088SM02""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""1088SM02"", ""reason"": ""cheaper""}}]","Here are three similar watches that are in stock and cheaper than the Lumiere Orion (₹20,795):
+
+1.  **Veyra Sovereign Atlas** (₹16,795) - White dial, rose gold metal bracelet.
+2.  **Veyra Aurelia Verity** (₹16,095) - Lavender dial, rose gold metal bracelet.
+3.  **Veyra Sovereign Orion** (₹14,995) - Salmon dial, brown leather strap.
+
+All are formal quartz watches with 50m water resistance. Would you like to try any of these on?"
+TSL-031,0,tool_selection,no_tool,no_tool_answer,en,True,,True,True,,,,,,,Hi!,[],Hello! How can I help you find a watch today?
+TSL-032,0,tool_selection,no_tool,no_tool_answer,en,True,,True,True,,,,,,,"Thanks, that's all I needed.",[],"You're welcome! If you need anything else, feel free to ask. Have a great day!"
+TSL-047,0,tool_selection,stock_in,tool_use,en,True,True,,True,True,,,,,,Do you have 1131SL01 here right now?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1131SL01""}}]","Yes, we have the Veyra Classique Ivory Blue Dial Red Leather Strap Watch (1131SL01) in stock here. There is one on display and five more in the backroom. Would you like to try it on?"
+TSL-052,0,tool_selection,stock_in,tool_use,en,True,True,,True,True,,,,,,Do you have 1396AM01 here right now?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1396AM01""}}]","Yes, we have the Veyra Track Falcon Black Dial Gunmetal Bracelet Watch (1396AM01) in stock here. There are 2 units on display and 2 in the backroom. Would you like to try it on?"
+TSL-068,0,tool_selection,stock_colour,tool_use,en,True,True,,True,,,,,,,Is the Steel Smart Atlas available with a white dial?,"[{""name"": ""search_catalogue"", ""arguments"": {""query"": ""Steel Smart Atlas"", ""dial_colour"": ""white"", ""limit"": 5}}]","Yes, the **Veyra Steel Smart Atlas** is available with a white dial. Here are the details:
+
+*   **Product ID:** 1465SM02
+*   **Name:** Veyra Steel Smart Atlas White Dial Silver Bracelet Watch for Men
+*   **MRP:** ₹1,199
+*   **Availability:** In stock at this store.
+
+Would you like to try it on or proceed with the purchase?"
+TSL-072,0,tool_selection,search_filter,tool_use,en,True,True,,True,,,,True,,,Any watches with a mother-of-pearl dial?,"[{""name"": ""search_catalogue"", ""arguments"": {""dial_colour"": ""mother-of-pearl"", ""limit"": 5}}]","I found 5 watches with mother-of-pearl dials in stock here:
+
+1. **Veyra Aurelia Verity** - ₹15,695 - Gold-tone metal strap
+2. **Veyra Lumiere Aurel** - ₹24,095 - Brown leather strap
+3. **Veyra Lumiere Noble** - ₹27,795 - Grey leather strap
+4. **Veyra Aurelia Regent** - ₹28,295 - Red leather strap
+5. **Veyra Aurelia Crest** - ₹33,795 - Red leather strap
+
+All are women's formal watches with quartz or automatic movements. Would you like more details about any of these, or would you like to try one on?"
+TSL-077,0,tool_selection,search_filter,tool_use,en,True,True,,True,,,,True,,,Show me everything in the Karigari collection.,"[{""name"": ""search_catalogue"", ""arguments"": {""query"": ""Karigari"", ""limit"": 10}}]","Here are the watches from the Karigari collection:
+
+1.  **Veyra Karigari Noor** - Gold Dial, Gold-Tone Bracelet - ₹6,495 (In Stock)
+2.  **Veyra Karigari Kesar** - Emerald Green Dial, Gold-Tone Bracelet - ₹9,095 (In Stock)
+3.  **Veyra Karigari Zari** - Ruby Red Dial, Rose Gold Bracelet - ₹10,895 (In Stock)
+4.  **Veyra Karigari Mohini** - Gold Dial, Rose Gold Bracelet - ₹10,995 (Pre-booking only)
+5.  **Veyra Karigari Meher** - White Dial, Rose Gold Bracelet - ₹14,995 (In Stock)
+
+All are women's ethnic style watches with quartz movements. Would you like to try any of them on?"
+TSL-094,0,tool_selection,alternatives_oos,tool_use,en,True,True,,True,,,,True,,,1279SF01 isn't on display. What's similar?,"[{""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""1279SF01"", ""reason"": ""similar_style""}}]","Here are some similar watches that are in stock:
+
+1.  **Veyra Solar Line Dune Olive Dial Black Fabric Strap Watch** (Unisex) - ₹11,395
+2.  **Veyra Daylight Cedar Green Dial Silver Bracelet Watch** (Unisex) - ₹12,595
+3.  **Veyra Daylight Canvas Green Dial Silver Bracelet Watch** (Unisex) - ₹13,095
+
+Would you like to try any of these on?"
+TSL-101,0,tool_selection,no_tool,no_tool_answer,hinglish,True,,True,True,,,,,,,Namaste,[],Namaste! Welcome to Veyra. How can I help you find the perfect watch today?
+TSL-108,0,tool_selection,no_tool_context,no_tool_answer,en,True,,True,True,True,,,,,,Can I pay in cash?,[],"Yes, we accept cash along with UPI, credit/debit cards, and net banking. No-cost EMI is also available on cards for purchases above Rs. 5,000."
+TSL-110,0,tool_selection,no_tool_context,no_tool_answer,en,True,,True,True,True,,,,,,Can you hold a watch for me until tomorrow?,[],"Yes, we can hold an in-stock watch for you for up to 24 hours. Just let me know which watch you'd like to hold, and I'll check its availability and arrange it for you.
+
+Which watch would you like to hold?"

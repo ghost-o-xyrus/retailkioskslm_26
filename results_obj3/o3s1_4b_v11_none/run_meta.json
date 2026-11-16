@@ -1,0 +1,56 @@
+{
+  "name": "o3s1_4b_v11_none",
+  "model": "Qwen3.5-4B",
+  "quant": "Q4_K_M",
+  "backend": "vulkan",
+  "eval_file": "eval\\eval_set_v1.1.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "dev",
+    "ids": null,
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 78,
+  "repeats": 1,
+  "config_label": "ref-none",
+  "data_dir": "data\\kiosk",
+  "warmup": true,
+  "retrieval": {
+    "condition": "none",
+    "fallback": null,
+    "context_view": "full",
+    "chunk_gate": false,
+    "gate_style": "message",
+    "rag_rule": "rag_always_rule",
+    "dedupe_shown": false,
+    "knowledge_base": null
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 87508",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-23T02:30:55",
+  "finished": "2026-10-23T02:51:31",
+  "errors": 0,
+  "run_peak_rss_mb": 6015.2,
+  "wall_minutes": 20.6
+}

@@ -1,0 +1,78 @@
+﻿id,repeat,category,subcategory,behaviour,language,passed,tool_ok,no_tool_ok,format_ok,facts_ok,forbidden_ok,clarify_ok,grounded_ok,error,flags,user,tool_calls,reply
+CMP-012,0,comparison,tool_compare,tool_use,en,True,True,,True,True,,,,,,Is 1252SM02 cheaper than 1069TL02?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1252SM02""}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1069TL02""}}]","No, 1252SM02 is not cheaper than 1069TL02.
+
+1252SM02 has an MRP of Rs. 6,395, while 1069TL02 has an MRP of Rs. 32,395. The latter is significantly more expensive."
+CMP-025,0,comparison,tool_compare,tool_use,en,True,True,,True,,,,,,,Put 1259SL03 and 1093SM01 side by side for me.,"[{""name"": ""compare_products"", ""arguments"": {""product_ids"": [""1259SL03"", ""1093SM01""]}}]","Here's the side-by-side comparison:
+
+**Veyra Slim Noble (1259SL03)**
+- MRP: Rs. 7,795
+- Movement: Quartz, 2 hands
+- Case: 31 mm stainless steel, 5.2 mm thick
+- Glass: Mineral, Water resistance: 30 m
+- Strap: Navy leather
+- Dial: Blue
+- Warranty: 24 months movement, 12 months battery
+
+**Veyra Lumiere Aurel (1093SM01)**
+- MRP: Rs. 27,695
+- Movement: Quartz, 3 hands
+- Case: 30 mm 316L stainless steel, 8.2 mm thick
+- Glass: Sapphire, Water resistance: 50 m
+- Strap: Rose gold metal
+- Dial: Pink
+- Warranty: 24 months movement, 12 months battery
+
+The Lumiere Aurel is significantly more expensive and "
+DSC-003,0,discovery,clarify,clarify,en,True,,,True,,,True,,,,I need a gift for my wife.,"[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""limit"": 5}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""3926RR01"", ""reason"": ""similar_style""}}]","Here are some stylish unisex watches from the Tick Digital collection, perfect for a gift:
+
+1. **Veyra Tick Digital Dune Blue Display White Resin Strap Watch** - ₹799
+2. **Veyra Tick Digital Canvas Black Display Black Resin Strap Watch** - ₹849
+3. **Veyra Tick Digital Mosaic Grey Display White Resin Strap Watch** - ₹849
+
+All are in stock. Would you like more details or alternatives?"
+DSC-021,0,discovery,search,tool_use,en,True,True,,True,,,,True,,,Do you have a solar watch?,"[{""name"": ""search_catalogue"", ""arguments"": {""movement"": ""solar"", ""display"": ""analog"", ""style"": ""casual"", ""gender"": ""unisex"", ""limit"": 10}}]","Yes, we have several solar watches. The Solar Line collection by Veyra is casual, unisex, and priced from Rs. 5,395 to Rs. 12,795. They feature solar movements, analog displays, and stainless steel cases."
+DSC-023,0,discovery,multi_turn_search,tool_use,en,False,False,,True,,,,False,,max_rounds_reached,"She's 10. Under 1,500 please.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""price_max"": 1500, ""limit"": 5}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""1462RR01"", ""reason"": ""cheaper""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""2880AF01"", ""reason"": ""cheaper""}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""3498BM03"", ""reason"": ""cheaper""}}]",
+DSC-029,0,discovery,clarify,clarify,en,False,,,True,,,False,,,,Which watch is best?,"[{""name"": ""search_catalogue"", ""arguments"": {""limit"": 10}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""3613BL01""}}, {""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer wants to know which watch is best based on size guide and glossary info.""}}]",I've notified the staff. They'll come to the kiosk in 3 minutes to help you decide. Please wait while they assist you.
+DSC-053,0,discovery,search,tool_use,en,False,True,,True,,,,False,,max_rounds_reached,"A gift for my wife, gold-tone, formal, under 15,000.","[{""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}, {""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}, {""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}, {""name"": ""search_catalogue"", ""arguments"": {""gender"": ""women"", ""style"": ""formal"", ""display"": ""analog"", ""strap_material"": ""metal"", ""dial_colour"": ""gold"", ""price_max"": 15000, ""limit"": 5}}]",
+HIN-005,0,hinglish,search,tool_use,hinglish,True,True,,True,,,,True,,,"Koi automatic watch hai 40000 ke neeche, gents ke liye?","[{""name"": ""search_catalogue"", ""arguments"": {""price_max"": 40000, ""gender"": ""men"", ""movement"": ""automatic"", ""limit"": 10}}]","Yeh automatic men ke liye watches hain jo 40,000 rupay ke neeche hain:
+
+1. **Veyra Fathom Torrent** - ₹39,295 (Sport, White dial, Black metal strap)
+2. **Veyra Tidewater Delta** - ₹38,895 (Sport, Black dial, Navy rubber strap)
+3. **Veyra Meridian Noble** - ₹37,995 (Formal, White dial, White leather strap)
+4. **Veyra Regalia Tiara** - ₹37,995 (Formal, Emerald green dial, Black leather strap)
+5. **Veyra Velocita Reef** - ₹37,895 (Sport, White dial, Silver metal strap)
+6. **Veyra Velocita Shoal** - ₹37,495 (Sport, Black dial, Grey leather strap)
+7. **Veyra Sovereign Vela** - ₹36,995 (Formal, Salm"
+HIN-006,0,hinglish,search,tool_use,hinglish,False,False,,True,,,,True,,,"Swimming ke liye koi watch suggest karo, budget 7000.","[{""name"": ""search_catalogue"", ""arguments"": {""price_min"": 7000, ""limit"": 10}}, {""name"": ""get_alternatives"", ""arguments"": {""product_id"": ""2619SP01"", ""reason"": ""cheaper""}}]","Veyra Altitude Gale Blue Dial Silver Bracelet Watch (MRP Rs. 6,595) is a great option for swimming. It has 100m water resistance, quartz movement, and is available in stock."
+HIN-037,0,hinglish,paired_details,tool_use,hinglish,True,True,,True,True,,,,,,1356AL01 ki puri details batao.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1356AL01""}}]","Veyra Loop Fizz Sky Blue Dial Black Leather Strap Watch (Unisex)
+
+**Full Details:**
+- **Sub-brand:** Veyra Pulse
+- **Collection:** Loop
+- **Gender:** Unisex
+- **Style:** Fashion
+- **Movement:** Quartz
+- **Display:** Analog
+- **Functions:** 3 hands
+- **Case:** Alloy, Round, 36 mm diameter, 8.0 mm thick, Rose gold finish
+- **Glass:** Mineral
+- **Water Resistance:** 30 m
+- **Luminous Hands:** No
+- **Dial Colour:** Sky Blue
+- **Strap Material:** Black Leather
+- **MRP:** Rs. 3,195
+- **Warranty:** 12 months on movement & battery (from purchase date)
+- **Origin:** India
+
+**Variants:**
+- 1356AL01: Sky"
+HND-002,0,handoff,try_on,handoff,en,True,True,,True,,,,,,,I'd like to see 1418BL01 in person.,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""try_on"", ""product_id"": ""1418BL01""}}]",Staff has been notified to bring 1418BL01 to you. You'll wait about 3 minutes.
+HND-014,0,handoff,other,handoff,en,True,True,,True,,,,,,,I want to speak to the store manager.,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer wants to speak to the store manager.""}}]",I've notified the staff member. They will come to the kiosk in about 3 minutes to speak with you about the store manager.
+HND-020,0,handoff,purchase,handoff,en,True,True,,True,,,,,,,I want to buy 1088SM01 now.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1088SM01""}}, {""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1088SM01""}}, {""name"": ""call_staff"", ""arguments"": {""reason"": ""purchase"", ""product_id"": ""1088SM01""}}]",I've notified the store staff to come and assist you with purchasing the Veyra Lumiere Orion Pink Dial Rose Gold Bracelet Watch (1088SM01). The staff will be with you in about 3 minutes.
+REF-013,0,refusal,internal_info,refuse,en,False,,,True,False,True,,,,,What's the cost price of 1414BM01? How much do you buy it for?,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1414BM01""}}]",The cost price isn't listed in the catalogue. I can call a staff member to ask about the purchase price.
+REF-014,0,refusal,internal_info,refuse,en,True,,,True,True,,,,,,What margin does the store make on these watches?,[],I don't have information about the store's profit margins. I can call a staff member to ask this question for you.
+REF-035,0,refusal,promise,refuse,en,False,,,True,False,True,,,,,Will this watch's price drop next week?,"[{""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer wants to know if price will drop next week""}}]",I've notified a staff member to check if the price will drop next week. You'll hear back in about 3 minutes.
+TSL-009,0,tool_selection,stock_out,tool_use,en,False,True,,True,False,,,,,,Can I get 1027SL01 today from here?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1027SL01""}}]","No, this watch is not in stock at this store. However, it is available at nearby stores. Would you like me to check the alternatives or get more details about this model?"
+TSL-012,0,tool_selection,stock_stale,tool_use,en,False,True,,True,False,,,,,,Is 1508RR02 in stock right now?,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1508RR02""}}]","Yes, the Veyra Glow Kite Purple Display Pink Resin Strap watch (design V1508, product ID 1508RR02) is currently in stock at the Veyra Store, Central Mall. It is also available at nearby stores like Station Road and City Centre Mall."
+TSL-032,0,tool_selection,no_tool,no_tool_answer,en,False,,False,True,,,,,,max_rounds_reached,"Thanks, that's all I needed.","[{""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer is satisfied with the information provided.""}}, {""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer is satisfied with the information provided.""}}, {""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer is satisfied with the information provided.""}}, {""name"": ""call_staff"", ""arguments"": {""reason"": ""question_unanswered"", ""note"": ""Customer is satisfied with the information provided.""}}]",
+TSL-077,0,tool_selection,search_filter,tool_use,en,False,False,,True,,,,False,,max_rounds_reached,Show me everything in the Karigari collection.,"[{""name"": ""search_catalogue"", ""arguments"": {""sub_brand"": ""Veyra"", ""style"": ""ethnic"", ""gender"": ""women"", ""limit"": 10}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1170BM03""}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1157BM01""}}, {""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1170BM01""}}]",

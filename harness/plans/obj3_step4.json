@@ -1,0 +1,146 @@
+{
+  "name": "obj3_step4",
+  "description": "Objective 3, Step 4. O3-S4 = O3-S3 + the intent router (router/router.py): rules, then bge-small prototypes, decide the route of each customer message before any model call. Store questions and messages the router cannot place get the Objective 2 retrieval path (k = 3 compact cards, soft gate); lookups, stock checks, comparisons, shopping, staff requests and greetings get no retrieved cards. Everything else as O3-S3 (loop guard, compact honest tool outputs). Dev split, greedy, Vulkan, paired with the Step 3 O3-S3 runs. About 1.5 hours; resumable.",
+  "runs": [
+    {
+      "name": "o3s4_4b_rag_s4",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S4",
+      "loop_guard": true,
+      "tool_view": "compact"
+    },
+    {
+      "name": "o3s4_4b_v12_s4",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.2.jsonl",
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S4",
+      "loop_guard": true,
+      "tool_view": "compact"
+    },
+    {
+      "name": "o3s4_2b_rag_s4",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S4",
+      "loop_guard": true,
+      "tool_view": "compact"
+    },
+    {
+      "name": "o3s4_2b_v12_s4",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "vulkan",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.2.jsonl",
+      "split": "dev",
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S4",
+      "loop_guard": true,
+      "tool_view": "compact"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

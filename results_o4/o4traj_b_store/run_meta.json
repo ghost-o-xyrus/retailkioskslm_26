@@ -1,0 +1,98 @@
+{
+  "name": "o4traj_b_store",
+  "model": "Qwen3.5-4B",
+  "quant": "Q4_K_M",
+  "backend": "vulkan",
+  "eval_file": "finetune/train/store.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "train",
+    "ids": null,
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 2134,
+  "repeats": 1,
+  "config_label": "O3-final (Tier B) + oracle",
+  "tool_view": "compact",
+  "loop_guard": true,
+  "harness_tools": true,
+  "store_one_round": false,
+  "discovery": "template",
+  "forced_answer": "recover",
+  "staff_guard": false,
+  "tools_prompt": "tools",
+  "entity_check": true,
+  "staff_check": true,
+  "verify_answers": "shown",
+  "followup_retrieval": true,
+  "focus_memory": true,
+  "answer_length": false,
+  "parallel_tools": true,
+  "data_dir": "data_train/kiosk",
+  "warmup": false,
+  "machine": {
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "cpu_count": 4,
+    "total_ram_gb": 31.3
+  },
+  "retrieval": {
+    "condition": "routed",
+    "fallback": "store-live",
+    "context_view": "focused",
+    "chunk_gate": false,
+    "gate_style": "omit",
+    "rag_rule": "rag_always_rule_b",
+    "dedupe_shown": true,
+    "knowledge_base": {
+      "embedder": "BAAI/bge-small-en-v1.5",
+      "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "backend": "ovrt",
+      "max_length": 256,
+      "depth": 20,
+      "k": 3,
+      "max_context_tokens": 1500,
+      "threshold": -3.4569,
+      "hinglish_bypass": true,
+      "view": "focused",
+      "chunk_gate": false,
+      "fallback_file": "results_obj3/_speed_step12/fallback.json",
+      "int8": "static",
+      "rerank_view": "full",
+      "threads": 4,
+      "load_s": 0.0,
+      "reused_from_earlier_run": true,
+      "added_rss_mb": null,
+      "router": {
+        "prototypes": "router/prototypes.json",
+        "rule_margin": 1.0,
+        "proto_margin": 0.02,
+        "retrieve_routes": [
+          "store",
+          "unclear"
+        ]
+      }
+    }
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "oracle",
+    "build_info": "oracle-server",
+    "total_slots": 1,
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 7576",
+  "started": "2026-11-03T22:15:33",
+  "finished": "2026-11-03T23:18:34",
+  "errors": 0,
+  "run_peak_rss_mb": 34.5,
+  "wall_minutes": 63.0
+}

@@ -1,0 +1,27 @@
+# Watch glossary
+
+- **Analog:** shows the time with hands on a dial.
+- **Digital:** shows the time as numbers on a display.
+- **Ana-digi:** has both hands and a digital display.
+- **Quartz:** a battery-powered movement controlled by a quartz crystal; very accurate and low-maintenance.
+- **Automatic:** a mechanical movement wound by the motion of the wrist; needs no battery.
+- **Solar:** a quartz movement charged by light through the dial.
+- **Chronograph:** a watch with a built-in stopwatch, operated by pushers beside the crown.
+- **Multifunction:** extra small dials for day, date and 24-hour time.
+- **Day-date:** shows both the day of the week and the date.
+- **Moonphase:** a small window showing the current phase of the moon.
+- **Small seconds:** the seconds are shown on a small separate dial.
+- **Open heart:** a cut-out in the dial that shows part of the moving balance wheel.
+- **Sapphire crystal:** very scratch-resistant glass used on Veyra Atelier watches.
+- **Mineral glass:** hardened glass, more scratch-prone than sapphire; used on most Veyra and Veyra Nitya watches.
+- **Acrylic glass:** light plastic glass used on kids' and digital watches; scratches can be polished out.
+- **ATM / bar:** units of water resistance. 1 ATM is about 10 metres, so 5 ATM equals 50 m.
+- **Lume:** luminous paint on hands and markers that glows in the dark after exposure to light.
+- **316L stainless steel:** a corrosion-resistant steel used on Veyra Atelier cases.
+- **Titanium:** a light, strong, hypoallergenic metal about 40% lighter than steel.
+- **Tonneau:** a barrel-shaped case.
+- **Bezel:** the ring around the glass; on dive watches it rotates to time a dive.
+- **Crown:** the knob used to set the time and date.
+- **Lugs:** the arms of the case that hold the strap.
+- **Mesh strap:** a fine woven metal strap with an adjustable clasp.
+- **FKM rubber:** a durable rubber used on dive straps.

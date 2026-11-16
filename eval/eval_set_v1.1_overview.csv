@@ -1,0 +1,371 @@
+id,set,split,category,subcategory,mode,language,difficulty,behaviour,user_message,expected_tools,paired_with,rubric,source,notes
+GQA-001,core,test,grounded_qa,spec_water_resistance,grounded,en,medium,answer,Is this watch water resistant? Up to how much?,,,,skus.csv:1024SL02,abbreviated/noisy spec
+GQA-002,core,test,grounded_qa,spec_case_size,grounded,en,easy,answer,How big is the case on this one?,,,,skus.csv:1084TM02,
+GQA-003,core,test,grounded_qa,spec_glass,grounded,en,medium,answer,Is the glass on this watch scratch resistant? What is it made of?,,,,skus.csv:1102SM02,abbreviated/noisy spec
+GQA-004,core,test,grounded_qa,spec_strap,grounded,en,easy,answer,What is the strap made of?,,,,skus.csv:1492RR01,
+GQA-005,core,test,grounded_qa,spec_warranty,grounded,en,medium,answer,What warranty comes with this watch?,,,,skus.csv:1024SL01,abbreviated/noisy spec
+GQA-006,core,test,grounded_qa,spec_movement,grounded,en,easy,answer,Does this run on a battery or is it automatic?,,,,skus.csv:1105SM01,
+GQA-007,core,dev,grounded_qa,spec_price,grounded,en,medium,answer,How much does this cost?,,,,skus.csv:1345RR01,abbreviated/noisy spec
+GQA-008,core,dev,grounded_qa,spec_thickness,grounded,en,easy,answer,How thick is it? I want something slim.,,,,skus.csv:1404BL01,
+GQA-009,core,dev,grounded_qa,spec_water_resistance,grounded,en,medium,answer,Can I wear this in the shower? What's the water rating?,,,,skus.csv:1110SL03,abbreviated/noisy spec
+GQA-010,core,test,grounded_qa,spec_case_size,grounded,en,easy,answer,What's the dial size?,,,,skus.csv:1238SP01,
+GQA-011,core,test,grounded_qa,spec_glass,grounded,en,medium,answer,What kind of crystal does it have?,,,,skus.csv:1314PL01,abbreviated/noisy spec
+GQA-012,core,test,grounded_qa,spec_movement,grounded,en,easy,answer,What movement is inside?,,,,skus.csv:1284AL02,
+GQA-013,core,test,grounded_qa,missing_field,grounded,en,hard,answer_unknown,How thick is this watch?,,,,defects.csv:missing:V1001:case_thickness_mm,Field is absent from the context; a correct guess is still a hallucination.
+GQA-014,core,test,grounded_qa,missing_field,grounded,en,hard,answer_unknown,Where is this watch made?,,,,defects.csv:missing:V1038:country_of_origin,Field is absent from the context; a correct guess is still a hallucination.
+GQA-015,core,test,grounded_qa,missing_field,grounded,en,hard,answer_unknown,Will the hands glow in the dark?,,,,defects.csv:missing:V1180:lume,Field is absent from the context; a correct guess is still a hallucination.
+GQA-016,core,test,grounded_qa,missing_field,grounded,en,hard,answer_unknown,Is the case round or square?,,,,defects.csv:missing:V1307:case_shape,Field is absent from the context; a correct guess is still a hallucination.
+GQA-017,core,dev,grounded_qa,contradiction,grounded,en,hard,answer,Does this watch have sapphire crystal?,,,,defects.csv:contradiction:1179BM02,Description contradicts the spec fields; the spec fields are correct.
+GQA-018,core,test,grounded_qa,contradiction,grounded,en,hard,answer,Does this watch have sapphire crystal?,,,,defects.csv:contradiction:1131SM03,Description contradicts the spec fields; the spec fields are correct.
+GQA-019,core,test,grounded_qa,contradiction,grounded,en,hard,answer,Does it come on a steel bracelet?,,,,defects.csv:contradiction:1414BL02,Description contradicts the spec fields; the spec fields are correct.
+GQA-020,core,dev,grounded_qa,contradiction,grounded,en,hard,answer,Can I go snorkelling with this watch?,,,,defects.csv:contradiction:1088SM02,Description contradicts the spec fields; the spec fields are correct.
+GQA-021,core,test,grounded_qa,doc_warranty,grounded,en,easy,answer,Is the strap covered under warranty?,,,,docs/warranty.md,
+GQA-022,core,dev,grounded_qa,doc_returns,grounded,en,medium,answer,I bought a watch here 5 days ago and haven't worn it. Can I exchange it?,,,,docs/returns.md,
+GQA-023,core,test,grounded_qa,doc_service,grounded,en,easy,answer,How much does a battery replacement cost and how long does it take?,,,,docs/service.md,
+GQA-024,core,dev,grounded_qa,doc_care,grounded,en,medium,answer,My watch is rated 50 m. Can I swim in a pool with it?,,,,docs/care.md,
+GQA-025,core,dev,grounded_qa,doc_returns,grounded,en,easy,answer,Can I return a watch that I had engraved?,,,,docs/returns.md,
+DSC-001,core,dev,discovery,clarify,tools,en,medium,clarify,I want to buy a watch.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-002,core,test,discovery,clarify,tools,en,medium,clarify,Show me something nice.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-003,core,dev,discovery,clarify,tools,en,medium,clarify,I need a gift for my wife.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-004,core,test,discovery,clarify,tools,en,medium,clarify,Looking for a watch for my son.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-005,core,dev,discovery,clarify,tools,en,medium,clarify,Something for office use.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-006,core,test,discovery,clarify,tools,en,medium,clarify,What do you recommend?,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-007,core,dev,discovery,clarify,tools,en,medium,clarify,I want a good watch for a wedding.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-008,core,test,discovery,clarify,tools,en,medium,clarify,I need a sports watch.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-009,core,dev,discovery,clarify,tools,en,medium,clarify,"My budget is 5000, suggest something.",,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-010,core,test,discovery,clarify,tools,en,medium,clarify,A watch for my girlfriend's birthday.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-011,core,test,discovery,clarify,tools,en,medium,clarify,I like big watches.,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-012,core,test,discovery,clarify,tools,en,medium,clarify,Can you help me choose a watch?,,,yes,hand-written,Expected: one or two clarifying questions before searching. A search call is not required.
+DSC-013,core,test,discovery,search,tools,en,medium,tool_use,"Formal watch for my father with a metal bracelet, budget around 15,000.",search_catalogue,,yes,hand-written,
+DSC-014,core,dev,discovery,search,tools,en,medium,tool_use,Women's watch with a leather strap under 5000 for daily office wear.,search_catalogue,,yes,hand-written,
+DSC-015,core,test,discovery,search,tools,en,medium,tool_use,"I'm a man and I want an automatic watch, up to 50,000.",search_catalogue,,yes,hand-written,
+DSC-016,core,test,discovery,search,tools,en,medium,tool_use,I need a diving watch that's water resistant to at least 200 metres.,search_catalogue,,yes,hand-written,
+DSC-017,core,test,discovery,search,tools,en,medium,tool_use,Digital watch for my 8 year old.,search_catalogue,,yes,hand-written,
+DSC-018,core,test,discovery,search,tools,en,medium,tool_use,"Gold-tone ethnic watch for my mother to wear at a wedding, under 3,000.",search_catalogue,,yes,hand-written,
+DSC-019,core,test,discovery,search,tools,en,medium,tool_use,Sporty watch for men under 10k.,search_catalogue,,yes,hand-written,
+DSC-020,core,test,discovery,search,tools,en,medium,tool_use,"Women's watch with a small case, 32 mm or less.",search_catalogue,,yes,hand-written,
+DSC-021,core,dev,discovery,search,tools,en,medium,tool_use,Do you have a solar watch?,search_catalogue,,yes,hand-written,
+DSC-022,core,test,discovery,multi_turn_search,tools,en,hard,tool_use,"Office, around 10,000. He likes leather straps.",search_catalogue,,yes,hand-written,Constraints are spread across turns; all must reach the search call.
+DSC-023,core,dev,discovery,multi_turn_search,tools,en,hard,tool_use,"She's 10. Under 1,500 please.",search_catalogue,,yes,hand-written,Constraints are spread across turns; all must reach the search call.
+DSC-024,core,test,discovery,multi_turn_search,tools,en,hard,tool_use,"For me, I'm a woman. Under 6,000.",search_catalogue,,yes,hand-written,Constraints are spread across turns; all must reach the search call.
+DSC-025,core,test,discovery,multi_turn_search,tools,en,hard,tool_use,"Men's, under 8,000.",search_catalogue,,yes,hand-written,Constraints are spread across turns; all must reach the search call.
+CMP-001,core,dev,comparison,grounded_wr,grounded,en,medium,answer,Which of these two is more water resistant?,,,yes,"skus.csv:1470SM03,1012SL01",
+CMP-002,core,test,comparison,grounded_price,grounded,en,medium,answer,"Which one is cheaper, and by how much?",,,yes,"skus.csv:1364AL01,1356AL01",
+CMP-003,core,test,comparison,grounded_thin,grounded,en,medium,answer,I want the slimmer one. Which is thinner?,,,yes,"skus.csv:1492RR02,1509RR01",
+CMP-004,core,dev,comparison,grounded_size,grounded,en,medium,answer,Which has the bigger dial?,,,yes,"skus.csv:1024SL02,1139SM02",
+CMP-005,core,test,comparison,grounded_glass,grounded,en,medium,answer,Which one has the more scratch-resistant glass?,,,yes,"skus.csv:1078SL04,1396AP02",
+CMP-006,core,test,comparison,grounded_diff,grounded,en,medium,answer,What's the difference between these two?,,,yes,"skus.csv:1157BM01,1429BM01",
+CMP-007,core,test,comparison,grounded_wr,grounded,en,medium,answer,Which of these two is more water resistant?,,,yes,"skus.csv:1336RR01,1345RR01",
+CMP-008,core,dev,comparison,grounded_price,grounded,en,medium,answer,"Which one is cheaper, and by how much?",,,yes,"skus.csv:1211SM01,1203SM01",
+CMP-009,core,test,comparison,tool_compare,tools,en,medium,tool_use,Compare 1102SL03 and 1093SL02 for me.,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1102SL03,1093SL02",
+CMP-010,core,test,comparison,tool_compare,tools,en,medium,tool_use,What's the difference between 1354RR01 and 1322RR03?,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1354RR01,1322RR03",
+CMP-011,core,test,comparison,tool_compare,tools,en,medium,tool_use,"1452RR03 or 1462RR01, which is better for swimming?",compare_products | get_product_details + get_product_details,,yes,"skus.csv:1452RR03,1462RR01",
+CMP-012,core,dev,comparison,tool_compare,tools,en,medium,tool_use,Is 1252SM02 cheaper than 1069TL02?,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1252SM02,1069TL02",
+CMP-013,core,test,comparison,tool_compare,tools,en,medium,tool_use,"Compare 1179BM02 and 1425BM02: size, glass and price.",compare_products | get_product_details + get_product_details,,yes,"skus.csv:1179BM02,1425BM02",
+CMP-014,core,test,comparison,tool_compare,tools,en,medium,tool_use,"Which is bigger, 1436BM02 or 1433BM01?",compare_products | get_product_details + get_product_details,,yes,"skus.csv:1436BM02,1433BM01",
+CMP-015,core,test,comparison,tool_compare,tools,en,medium,tool_use,Help me decide between 1168BM02 and 1170BM03.,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1168BM02,1170BM03",
+TSL-001,core,test,tool_selection,details,tools,en,easy,tool_use,Give me details of watch 1356AL01.,get_product_details,,,skus.csv:1356AL01,
+TSL-002,core,dev,tool_selection,details,tools,en,easy,tool_use,Give me details of watch 1452RR02.,get_product_details,,,skus.csv:1452RR02,
+TSL-003,core,test,tool_selection,details,tools,en,easy,tool_use,Give me details of watch 1001SL02.,get_product_details,,,skus.csv:1001SL02,
+TSL-004,core,test,tool_selection,details,tools,en,easy,tool_use,Give me details of watch 1168BM03.,get_product_details,,,skus.csv:1168BM03,
+TSL-005,core,test,tool_selection,details,tools,en,easy,tool_use,Give me details of watch 1489PF02.,get_product_details,,,skus.csv:1489PF02,
+TSL-006,core,test,tool_selection,stock_in,tools,en,easy,tool_use,Is 1356AL01 available in this store?,check_inventory,,,inventory.csv:ST01|1356AL01,
+TSL-007,core,dev,tool_selection,stock_in,tools,en,easy,tool_use,Do you have 1452RR02 in stock?,check_inventory,,,inventory.csv:ST01|1452RR02,
+TSL-008,core,test,tool_selection,stock_in,tools,en,easy,tool_use,Do you have 1001SL02 in stock?,check_inventory,,,inventory.csv:ST01|1001SL02,
+TSL-009,core,dev,tool_selection,stock_out,tools,en,medium,tool_use,Can I get 1027SL01 today from here?,check_inventory,,,inventory.csv:1027SL01,"Out of stock here; nearest store with stock: Veyra Store, City Centre Mall."
+TSL-010,core,test,tool_selection,stock_out,tools,en,medium,tool_use,Do you have 1470SM02 in stock?,check_inventory,,,inventory.csv:1470SM02,Out of stock here; nearest store with stock: Time Square Multi-brand Outlet.
+TSL-011,core,test,tool_selection,stock_out,tools,en,medium,tool_use,Is 1376AN03 available in this store?,check_inventory,,,inventory.csv:1376AN03,Out of stock here; nearest store with stock: Time Square Multi-brand Outlet.
+TSL-012,core,dev,tool_selection,stock_stale,tools,en,hard,tool_use,Is 1508RR02 in stock right now?,check_inventory,,,defects.csv:stale_stock:ST01|1508RR02,Stock data is several days old; the answer should flag it.
+TSL-013,core,dev,tool_selection,stock_stale,tools,en,hard,tool_use,Is 1322RR02 in stock right now?,check_inventory,,,defects.csv:stale_stock:ST01|1322RR02,Stock data is several days old; the answer should flag it.
+TSL-014,core,test,tool_selection,stock_colour,tools,en,medium,tool_use,Do you have the Monsoon Chrono Pace with a grey dial?,check_inventory | search_catalogue,,,styles.csv:V1084,
+TSL-015,core,test,tool_selection,stock_colour,tools,en,medium,tool_use,Do you have the Solar Line Plain with a olive dial?,check_inventory | search_catalogue,,,styles.csv:V1268,
+TSL-016,core,test,tool_selection,stock_colour_absent,tools,en,hard,tool_use,Does the Shagun Noor come in purple?,check_inventory | get_product_details | search_catalogue,,,styles.csv:V1436,"Available dial colours: maroon, white."
+TSL-017,core,test,tool_selection,search_filter,tools,en,medium,tool_use,Show me watches with sapphire glass.,search_catalogue | search_catalogue,,,hand-written,
+TSL-018,core,test,tool_selection,search_filter,tools,en,medium,tool_use,Do you have any titanium watches?,search_catalogue,,,hand-written,
+TSL-019,core,test,tool_selection,search_filter,tools,en,medium,tool_use,Show me the Tidewater collection.,search_catalogue,,,hand-written,
+TSL-020,core,dev,tool_selection,search_filter,tools,en,medium,tool_use,I'd like a rose gold watch for women.,search_catalogue | search_catalogue,,,hand-written,
+TSL-021,core,test,tool_selection,search_filter,tools,en,medium,tool_use,Any watches with a mesh strap?,search_catalogue,,,hand-written,
+TSL-022,core,test,tool_selection,search_filter,tools,en,medium,tool_use,"I want a big watch, 44 mm or larger.",search_catalogue,,,hand-written,
+TSL-023,core,test,tool_selection,search_filter,tools,en,medium,tool_use,What do you have from Veyra Junior?,search_catalogue | search_catalogue,,,hand-written,
+TSL-024,core,test,tool_selection,search_filter,tools,en,medium,tool_use,"I need something I can swim with, under 7,000.",search_catalogue,,,hand-written,
+TSL-025,core,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,1038SM02 is a bit over my budget. Anything similar but cheaper?,get_alternatives | search_catalogue,,,skus.csv:1038SM02,
+TSL-026,core,dev,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,1034SK02 is a bit over my budget. Anything similar but cheaper?,get_alternatives | search_catalogue,,,skus.csv:1034SK02,
+TSL-027,core,dev,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,1088SM02 is a bit over my budget. Anything similar but cheaper?,get_alternatives | search_catalogue,,,skus.csv:1088SM02,
+TSL-028,core,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,I came for 1354RR02 but I can't see it here. What else do you have like it?,get_alternatives | check_inventory,,,inventory.csv:1354RR02,
+TSL-029,core,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,I came for 1378AM02 but I can't see it here. What else do you have like it?,get_alternatives | check_inventory,,,inventory.csv:1378AM02,
+TSL-030,core,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,I came for 1024SL01 but I can't see it here. What else do you have like it?,get_alternatives | check_inventory,,,inventory.csv:1024SL01,
+TSL-031,core,dev,tool_selection,no_tool,tools,en,easy,no_tool_answer,Hi!,(no tool),,,hand-written,
+TSL-032,core,dev,tool_selection,no_tool,tools,en,easy,no_tool_answer,"Thanks, that's all I needed.",(no tool),,,hand-written,
+TSL-033,core,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,What's the weather like today?,(no tool),,,hand-written,Out of scope; decline politely and steer back to watches.
+TSL-034,core,test,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,What time does the store close?,(no tool),,,docs/faq.md,
+TSL-035,core,test,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,Do you do gift wrapping?,(no tool),,,docs/faq.md,
+REF-001,core,test,refusal,false_presupposition,grounded,en,medium,refuse,Does this watch have a heart-rate sensor?,,,,skus.csv:1038SM02,
+REF-002,core,test,refusal,false_presupposition,grounded,en,medium,refuse,Does it have GPS?,,,,skus.csv:1470SM01,
+REF-003,core,test,refusal,false_presupposition,grounded,en,medium,refuse,Can I take calls on this watch over Bluetooth?,,,,skus.csv:1168BM01,
+REF-004,core,dev,refusal,false_presupposition,grounded,en,medium,refuse,How many diamonds are set in the dial?,,,,skus.csv:1020SL02,
+REF-005,core,test,refusal,false_presupposition,grounded,en,hard,refuse,"This is waterproof, right? I want to go scuba diving with it.",,,,skus.csv:1020SL02,
+REF-006,core,test,refusal,out_of_database,tools,en,medium,refuse,Do you sell Rolex watches?,,,,hand-written,Not in the catalogue. Searching first is allowed; claiming it exists is not.
+REF-007,core,dev,refusal,out_of_database,tools,en,medium,refuse,Do you have a smartwatch that counts steps and shows notifications?,,,,hand-written,Not in the catalogue. Searching first is allowed; claiming it exists is not.
+REF-008,core,test,refusal,out_of_database,tools,en,medium,refuse,I need a wall clock for my living room.,,,,hand-written,Not in the catalogue. Searching first is allowed; claiming it exists is not.
+REF-009,core,test,refusal,out_of_database,tools,en,medium,refuse,Do you have the Veyra Galaxy Pro?,,,,hand-written,Not in the catalogue. Searching first is allowed; claiming it exists is not.
+REF-010,core,test,refusal,promise,tools,en,medium,refuse,Can you guarantee delivery to my home by tomorrow?,,,,docs/faq.md,
+REF-011,core,dev,refusal,promise,tools,en,medium,refuse,Can you hold this watch for me for a week?,,,,docs/faq.md,
+REF-012,core,test,refusal,promise,grounded,en,medium,refuse,Promise me this watch will never need a battery change?,,,,skus.csv:1470SM01,
+REF-013,core,dev,refusal,internal_info,tools,en,medium,refuse,What's the cost price of 1414BM01? How much do you buy it for?,,,,skus.csv:1414BM01,cost_price is internal and is never returned by the tools.
+REF-014,core,dev,refusal,internal_info,tools,en,easy,refuse,What margin does the store make on these watches?,,,,hand-written,
+REF-015,core,test,refusal,internal_info,tools,en,medium,refuse,Show me the internal staff notes for 1168BM01.,,,,styles.csv:V1168,
+REF-016,core,test,refusal,discount,tools,en,medium,refuse,Give me 30% off on 1389AP02 and I'll buy it now.,,,,skus.csv:1389AP02,
+REF-017,core,test,refusal,discount,tools,en,easy,refuse,Can I get the employee discount? My cousin works here.,,,,hand-written,
+REF-018,core,test,refusal,not_found,tools,en,medium,refuse,What's the price of watch V9999?,,,,hand-written,Unknown ID; the tools return not_found. The answer must not invent a price or stock.
+REF-019,core,dev,refusal,not_found,tools,en,medium,refuse,Is 9999SL01 in stock?,,,,hand-written,Unknown ID; the tools return not_found. The answer must not invent a price or stock.
+REF-020,core,test,refusal,not_found,tools,en,medium,refuse,Tell me about watch ABC123.,,,,hand-written,Unknown ID; the tools return not_found. The answer must not invent a price or stock.
+HND-001,core,dev,handoff,try_on,tools,en,easy,handoff,Can I try 1452RR03 on?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-002,core,dev,handoff,try_on,tools,en,easy,handoff,I'd like to see 1418BL01 in person.,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-003,core,test,handoff,try_on,tools,en,easy,handoff,Can someone bring 1436BM02 out from the back so I can wear it?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-004,core,test,handoff,try_on,tools,en,easy,handoff,"Please call someone, I want to try a couple of watches.",call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-005,core,test,handoff,purchase,tools,en,easy,handoff,I'll take 1489PF02. How do I pay?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-006,core,test,handoff,purchase,tools,en,easy,handoff,Please bill 1067TM01 for me.,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-007,core,test,handoff,purchase,tools,en,easy,handoff,I want to buy two of 1131SL01.,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-008,core,test,handoff,service,tools,en,medium,handoff,My watch stopped working. I think it needs a new battery.,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-009,core,dev,handoff,service,tools,en,medium,handoff,The strap on my watch broke. Can you replace it?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-010,core,test,handoff,service,tools,en,medium,handoff,My automatic watch is running slow. Can you service it?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-011,core,test,handoff,question_unanswered,tools,en,medium,handoff,Can you engrave my wife's name in Tamil script?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-012,core,test,handoff,question_unanswered,tools,en,medium,handoff,Can you ship a watch to Dubai?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-013,core,test,handoff,question_unanswered,tools,en,medium,handoff,Can I pay with a foreign credit card?,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-014,core,dev,handoff,other,tools,en,medium,handoff,I want to speak to the store manager.,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HND-015,core,test,handoff,other,tools,en,medium,handoff,I have a complaint about a watch I bought last month.,call_staff,,,hand-written,Other tools (e.g. check_inventory) may be called first; call_staff must happen.
+HIN-001,core,test,hinglish,search,tools,hinglish,hard,tool_use,"Papa ke liye formal watch chahiye, metal strap wali, 15000 tak.",search_catalogue,,yes,hand-written,
+HIN-002,core,test,hinglish,search,tools,hinglish,hard,tool_use,Mujhe 3000 ke andar ladies watch dikhao.,search_catalogue,,yes,hand-written,
+HIN-003,core,test,hinglish,search,tools,hinglish,hard,tool_use,Bachche ke liye digital ghadi hai kya?,search_catalogue,,yes,hand-written,
+HIN-004,core,test,hinglish,search,tools,hinglish,hard,tool_use,Shaadi mein pehenne ke liye mummy ke liye golden watch chahiye.,search_catalogue,,yes,hand-written,
+HIN-005,core,dev,hinglish,search,tools,hinglish,hard,tool_use,"Koi automatic watch hai 40000 ke neeche, gents ke liye?",search_catalogue,,yes,hand-written,
+HIN-006,core,dev,hinglish,search,tools,hinglish,hard,tool_use,"Swimming ke liye koi watch suggest karo, budget 7000.",search_catalogue,,yes,hand-written,
+HIN-007,core,test,hinglish,stock,tools,hinglish,medium,tool_use,Kya 1276SF01 is store mein available hai?,check_inventory,,,skus.csv:1276SF01,
+HIN-008,core,test,hinglish,details,tools,hinglish,medium,tool_use,1238SP02 ke baare mein batao.,get_product_details,,,skus.csv:1238SP02,
+HIN-009,core,test,hinglish,alternatives,tools,hinglish,hard,tool_use,"1226SP03 thoda mehenga hai, iske jaisa sasta option hai kya?",get_alternatives | search_catalogue,,,skus.csv:1226SP03,
+HIN-010,core,test,hinglish,handoff,tools,hinglish,medium,handoff,Main 1479PF01 pehen ke dekhna chahta hoon.,call_staff,,,skus.csv:1479PF01,
+HIN-011,core,test,hinglish,handoff,tools,hinglish,medium,handoff,"Mera watch band ho gaya hai, battery badalni hai.",call_staff,,,hand-written,
+HIN-012,core,dev,hinglish,clarify,tools,hinglish,medium,clarify,Gift ke liye kuch accha sa chahiye.,,,yes,hand-written,
+HIN-013,core,test,hinglish,grounded_qa,grounded,hinglish,medium,answer,Is ghadi ka water resistance kitna hai? Kya main naha sakta hoon isko pehen ke?,,,,skus.csv:1067TM01,
+HIN-014,core,dev,hinglish,grounded_qa,grounded,hindi,hard,answer,इस घड़ी की वारंटी कितने समय की है?,,,,skus.csv:1264SL01,Devanagari Hindi: 'What is the warranty period of this watch?'
+HIN-015,core,test,hinglish,grounded_qa,grounded,hinglish,medium,answer,Iska price kya hai aur strap kis cheez ka hai?,,,,skus.csv:1264SL01,
+GQA-026,expansion,test,grounded_qa,spec_water_resistance,grounded,en,easy,answer,What's the water resistance on this one?,,,,skus.csv:1049SM02,
+GQA-027,expansion,dev,grounded_qa,spec_case_size,grounded,en,easy,answer,What size is the case in mm?,,,,skus.csv:1313PL01,
+GQA-028,expansion,test,grounded_qa,spec_glass,grounded,en,easy,answer,What crystal is on the front?,,,,skus.csv:1480PP01,
+GQA-029,expansion,test,grounded_qa,spec_strap,grounded,en,easy,answer,Is that a leather strap or metal?,,,,skus.csv:1356AN02,
+GQA-030,expansion,test,grounded_qa,spec_warranty,grounded,en,easy,answer,How long is the warranty on the movement?,,,,skus.csv:1078SM02,
+GQA-031,expansion,test,grounded_qa,spec_movement,grounded,en,easy,answer,Quartz or automatic?,,,,skus.csv:1027SL03,
+GQA-032,expansion,test,grounded_qa,spec_price,grounded,en,easy,answer,What's the MRP?,,,,skus.csv:1470SM04,
+GQA-033,expansion,test,grounded_qa,spec_case_size,grounded,en,easy,answer,Will it look big on a small wrist? How wide is it?,,,,skus.csv:1336RR02,
+GQA-034,expansion,test,grounded_qa,spec_water_resistance,grounded,en,easy,answer,Is it okay to wear while washing hands? What's it rated for?,,,,skus.csv:1508RR01,
+GQA-035,expansion,test,grounded_qa,spec_price,grounded,en,easy,answer,"Price kya hai? I mean, how much is it?",,,,skus.csv:1041SK02,
+GQA-036,expansion,test,grounded_qa,spec_dial,grounded,en,easy,answer,What colour is the dial?,,,,skus.csv:1020SL01,
+GQA-037,expansion,test,grounded_qa,spec_movement,grounded,en,easy,answer,Do I need to change a battery in this?,,,,skus.csv:1157BM02,
+GQA-038,expansion,test,grounded_qa,doc_faq,grounded,en,easy,answer,Is no-cost EMI available?,,,,docs/faq.md,
+GQA-039,expansion,test,grounded_qa,doc_faq,grounded,en,easy,answer,How much does engraving cost?,,,,docs/faq.md,
+GQA-040,expansion,test,grounded_qa,doc_faq,grounded,en,easy,answer,How long does it take to get a watch from another store?,,,,docs/faq.md,
+GQA-041,expansion,test,grounded_qa,doc_warranty,grounded,en,easy,answer,How long does a warranty claim take?,,,,docs/warranty.md,
+GQA-042,expansion,test,grounded_qa,doc_care,grounded,en,easy,answer,I left my automatic watch in a drawer for 3 days and it stopped. Is it broken?,,,,docs/care.md,
+GQA-043,expansion,test,grounded_qa,doc_care,grounded,en,easy,answer,Can my phone's magnetic case affect my watch?,,,,docs/care.md,
+GQA-044,expansion,test,grounded_qa,doc_service,grounded,en,easy,answer,How often should an automatic watch be serviced?,,,,docs/service.md,
+GQA-045,expansion,dev,grounded_qa,doc_returns,grounded,en,easy,answer,I bought a watch on sale. Can I get a refund?,,,,docs/returns.md,
+DSC-026,expansion,test,discovery,clarify,tools,en,medium,clarify,Help me find a watch.,,,yes,hand-written,
+DSC-027,expansion,test,discovery,clarify,tools,en,medium,clarify,I'm looking for a present.,,,yes,hand-written,
+DSC-028,expansion,test,discovery,clarify,tools,en,medium,clarify,"Something stylish, please.",,,yes,hand-written,
+DSC-029,expansion,dev,discovery,clarify,tools,en,medium,clarify,Which watch is best?,,,yes,hand-written,
+DSC-030,expansion,dev,discovery,clarify,tools,en,medium,clarify,My dad's birthday is next week.,,,yes,hand-written,
+DSC-031,expansion,test,discovery,clarify,tools,en,medium,clarify,I need something for my anniversary.,,,yes,hand-written,
+DSC-032,expansion,test,discovery,clarify,tools,en,medium,clarify,Show me your best sellers for women.,,,yes,hand-written,
+DSC-033,expansion,test,discovery,clarify,tools,en,medium,clarify,I want a watch for college.,,,yes,hand-written,
+DSC-034,expansion,test,discovery,clarify,tools,en,medium,clarify,Need a watch for daily wear.,,,yes,hand-written,
+DSC-035,expansion,test,discovery,clarify,tools,en,medium,clarify,What's a good watch for a teenager?,,,yes,hand-written,
+DSC-036,expansion,test,discovery,clarify,tools,en,medium,clarify,I want a premium watch.,,,yes,hand-written,
+DSC-037,expansion,test,discovery,clarify,tools,hinglish,medium,clarify,Kuch dikhao.,,,yes,hand-written,
+DSC-038,expansion,test,discovery,search,tools,en,medium,tool_use,"Leather strap watch for men, formal, under 9,000.",search_catalogue,,yes,hand-written,
+DSC-039,expansion,test,discovery,search,tools,en,medium,tool_use,Women's watch on a mesh strap.,search_catalogue,,yes,hand-written,
+DSC-040,expansion,test,discovery,search,tools,en,medium,tool_use,"A men's chronograph with a metal bracelet, budget 12k.",search_catalogue,,yes,hand-written,
+DSC-041,expansion,test,discovery,search,tools,en,medium,tool_use,"Kids' analog watch to learn time, under 1,000.",search_catalogue,,yes,hand-written,
+DSC-042,expansion,dev,discovery,search,tools,en,medium,tool_use,Unisex digital watch for the gym.,search_catalogue,,yes,hand-written,
+DSC-043,expansion,dev,discovery,search,tools,en,medium,tool_use,I want a watch with a green dial for men.,search_catalogue,,yes,hand-written,
+DSC-044,expansion,test,discovery,search,tools,en,medium,tool_use,"Ethnic women's watch between 1,000 and 2,000.",search_catalogue,,yes,hand-written,
+DSC-045,expansion,test,discovery,search,tools,en,medium,tool_use,"Casual watch for men under 2,500 with a leather strap.",search_catalogue,,yes,hand-written,
+DSC-046,expansion,test,discovery,search,tools,en,medium,tool_use,"Fashion watch for women with a silicone or fabric strap, under 5,000.",search_catalogue,,yes,hand-written,
+DSC-047,expansion,dev,discovery,search,tools,en,medium,tool_use,"Something premium and automatic, between 20k and 40k, for a man.",search_catalogue,,yes,hand-written,
+DSC-048,expansion,dev,discovery,search,tools,en,medium,tool_use,"Men's watch, 40 mm or smaller, formal.",search_catalogue,,yes,hand-written,
+DSC-049,expansion,test,discovery,search,tools,en,medium,tool_use,"Water resistant to 100 m, men's, metal strap.",search_catalogue,,yes,hand-written,
+DSC-050,expansion,test,discovery,search,tools,en,medium,tool_use,"White dial women's watch, formal.",search_catalogue,,yes,hand-written,
+DSC-051,expansion,test,discovery,search,tools,en,medium,tool_use,"Watches from the Veyra Pulse range under 3,000.",search_catalogue,,yes,hand-written,
+DSC-052,expansion,test,discovery,search,tools,en,medium,tool_use,Black dial sports watch for men with a silicone strap.,search_catalogue,,yes,hand-written,
+DSC-053,expansion,dev,discovery,search,tools,en,medium,tool_use,"A gift for my wife, gold-tone, formal, under 15,000.",search_catalogue,,yes,hand-written,
+DSC-054,expansion,dev,discovery,search,tools,en,medium,tool_use,Cheapest automatic you have?,search_catalogue,,yes,hand-written,
+DSC-055,expansion,test,discovery,search,tools,en,medium,tool_use,"Only show me watches in stock here, men's sport.",search_catalogue,,yes,hand-written,
+DSC-056,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"For my brother, around 5,000. He's into sports.",search_catalogue,,yes,hand-written,
+DSC-057,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"For Diwali, up to 4,000.",search_catalogue,,yes,hand-written,
+DSC-058,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"Me, I'm a woman. Metal, please.",search_catalogue,,yes,hand-written,
+DSC-059,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"At least 200 m, budget doesn't matter.",search_catalogue,,yes,hand-written,
+DSC-060,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"He's 7. Digital, under 1,200.",search_catalogue,,yes,hand-written,
+DSC-061,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"Woman, any budget.",search_catalogue,,yes,hand-written,
+DSC-062,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"For me, a man, under 3,000, leather strap.",search_catalogue,,yes,hand-written,
+DSC-063,expansion,test,discovery,multi_turn_search,tools,en,hard,tool_use,"Under 2,000, something for weddings.",search_catalogue,,yes,hand-written,
+CMP-016,expansion,test,comparison,grounded,grounded,en,medium,answer,Which of the two can handle more water?,,,yes,"skus.csv:1069TL01,1378AM03",
+CMP-017,expansion,test,comparison,grounded,grounded,en,medium,answer,Which one is smaller? I have thin wrists.,,,yes,"skus.csv:1449RR02,1268SM02",
+CMP-018,expansion,test,comparison,grounded,grounded,en,medium,answer,Do both of these need batteries?,,,yes,"skus.csv:1264SL02,1001SM04",
+CMP-019,expansion,test,comparison,grounded,grounded,en,medium,answer,Which of the two can handle more water?,,,yes,"skus.csv:1084TL03,1396AM01",
+CMP-020,expansion,test,comparison,grounded,grounded,en,medium,answer,Which one is smaller? I have thin wrists.,,,yes,"skus.csv:1279SF01,1453RR02",
+CMP-021,expansion,test,comparison,tool_compare,tools,en,medium,tool_use,Can you compare 1425BM01 with 1179BM03?,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1425BM01,1179BM03",
+CMP-022,expansion,test,comparison,tool_compare,tools,en,medium,tool_use,1356AN02 vs 1292PP03: which should I pick for office?,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1356AN02,1292PP03",
+CMP-023,expansion,test,comparison,tool_compare,tools,en,medium,tool_use,How is 1078SL03 different from 1038SK01?,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1078SL03,1038SK01",
+CMP-024,expansion,test,comparison,tool_compare,tools,en,medium,tool_use,"Which is more water resistant, 1118BL01 or 1105SM02?",compare_products | get_product_details + get_product_details,,yes,"skus.csv:1118BL01,1105SM02",
+CMP-025,expansion,dev,comparison,tool_compare,tools,en,medium,tool_use,Put 1259SL03 and 1093SM01 side by side for me.,compare_products | get_product_details + get_product_details,,yes,"skus.csv:1259SL03,1093SM01",
+CMP-026,expansion,test,comparison,tool_compare,tools,en,medium,tool_use,"Which has better glass, 1102SM01 or 1027SM02?",compare_products | get_product_details + get_product_details,,yes,"skus.csv:1102SM01,1027SM02",
+TSL-036,expansion,test,tool_selection,details,tools,en,easy,tool_use,"Specs for 1466SM01, please.",get_product_details,,,skus.csv:1466SM01,
+TSL-037,expansion,test,tool_selection,details,tools,en,easy,tool_use,What can you tell me about 1264SL02?,get_product_details,,,skus.csv:1264SL02,
+TSL-038,expansion,test,tool_selection,details,tools,en,easy,tool_use,Show me 1247SP02.,get_product_details,,,skus.csv:1247SP02,
+TSL-039,expansion,test,tool_selection,details,tools,en,easy,tool_use,Details on model 1034SM01?,get_product_details,,,skus.csv:1034SM01,
+TSL-040,expansion,test,tool_selection,details,tools,en,easy,tool_use,I saw 1247SM01 online. What is it like?,get_product_details,,,skus.csv:1247SM01,
+TSL-041,expansion,test,tool_selection,details,tools,en,easy,tool_use,"Specs for 1376AN01, please.",get_product_details,,,skus.csv:1376AN01,
+TSL-042,expansion,test,tool_selection,details,tools,en,easy,tool_use,What can you tell me about 1238SP04?,get_product_details,,,skus.csv:1238SP04,
+TSL-043,expansion,test,tool_selection,details,tools,en,easy,tool_use,Show me 1003SM02.,get_product_details,,,skus.csv:1003SM02,
+TSL-044,expansion,test,tool_selection,details,tools,en,easy,tool_use,Details on model 1105SM02?,get_product_details,,,skus.csv:1105SM02,
+TSL-045,expansion,test,tool_selection,details,tools,en,easy,tool_use,I saw 1465SM03 online. What is it like?,get_product_details,,,skus.csv:1465SM03,
+TSL-046,expansion,test,tool_selection,stock_in,tools,en,easy,tool_use,Is 1305PF02 in stock?,check_inventory,,,inventory.csv:ST01|1305PF02,
+TSL-047,expansion,dev,tool_selection,stock_in,tools,en,easy,tool_use,Do you have 1131SL01 here right now?,check_inventory,,,inventory.csv:ST01|1131SL01,
+TSL-048,expansion,test,tool_selection,stock_in,tools,en,easy,tool_use,Can I buy 1368AN01 from this store today?,check_inventory,,,inventory.csv:ST01|1368AN01,
+TSL-049,expansion,test,tool_selection,stock_in,tools,en,easy,tool_use,Any 1126SL01 available?,check_inventory,,,inventory.csv:ST01|1126SL01,
+TSL-050,expansion,test,tool_selection,stock_in,tools,en,easy,tool_use,Check stock for 1436BM01 please.,check_inventory,,,inventory.csv:ST01|1436BM01,
+TSL-051,expansion,test,tool_selection,stock_in,tools,en,easy,tool_use,Is 1198SL01 in stock?,check_inventory,,,inventory.csv:ST01|1198SL01,
+TSL-052,expansion,dev,tool_selection,stock_in,tools,en,easy,tool_use,Do you have 1396AM01 here right now?,check_inventory,,,inventory.csv:ST01|1396AM01,
+TSL-053,expansion,test,tool_selection,stock_in,tools,en,easy,tool_use,Can I buy 1292PL02 from this store today?,check_inventory,,,inventory.csv:ST01|1292PL02,
+TSL-054,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Is 1489PF01 in stock?,check_inventory,,,inventory.csv:1489PF01,"Nearest store with stock: Veyra Store, Station Road."
+TSL-055,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Do you have 1038SK01 here right now?,check_inventory,,,inventory.csv:1038SK01,"Nearest store with stock: Veyra Store, Station Road."
+TSL-056,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Can I buy 1425BM01 from this store today?,check_inventory,,,inventory.csv:1425BM01,"Nearest store with stock: Veyra Store, Station Road."
+TSL-057,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Any 1084TL01 available?,check_inventory,,,inventory.csv:1084TL01,"Nearest store with stock: Veyra Store, City Centre Mall."
+TSL-058,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Check stock for 1001SM03 please.,check_inventory,,,inventory.csv:1001SM03,"Nearest store with stock: Veyra Store, City Centre Mall."
+TSL-059,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Is 1453RR01 in stock?,check_inventory,,,inventory.csv:1453RR01,"Nearest store with stock: Veyra Store, Station Road."
+TSL-060,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Do you have 1307AP01 here right now?,check_inventory,,,inventory.csv:1307AP01,"Nearest store with stock: Veyra Store, Station Road."
+TSL-061,expansion,test,tool_selection,stock_out,tools,en,medium,tool_use,Can I buy 1313PF02 from this store today?,check_inventory,,,inventory.csv:1313PF02,"Nearest store with stock: Veyra Store, City Centre Mall."
+TSL-062,expansion,test,tool_selection,stock_stale,tools,en,hard,tool_use,Is 1102SM01 available today?,check_inventory,,,defects.csv:stale_stock:ST01|1102SM01,
+TSL-063,expansion,test,tool_selection,stock_stale,tools,en,hard,tool_use,Is 1110SM01 available today?,check_inventory,,,defects.csv:stale_stock:ST01|1110SM01,
+TSL-064,expansion,test,tool_selection,stock_stale,tools,en,hard,tool_use,Is 1170BM02 available today?,check_inventory,,,defects.csv:stale_stock:ST01|1170BM02,
+TSL-065,expansion,test,tool_selection,stock_stale,tools,en,hard,tool_use,Is 1264SN03 available today?,check_inventory,,,defects.csv:stale_stock:ST01|1264SN03,
+TSL-066,expansion,test,tool_selection,stock_colour,tools,en,medium,tool_use,Is the Workday Signal available with a blue dial?,check_inventory | search_catalogue,,,styles.csv:V1219,
+TSL-067,expansion,test,tool_selection,stock_colour,tools,en,medium,tool_use,Is the Daily Digital Dune available with a grey dial?,check_inventory | search_catalogue,,,styles.csv:V1449,
+TSL-068,expansion,dev,tool_selection,stock_colour,tools,en,medium,tool_use,Is the Steel Smart Atlas available with a white dial?,check_inventory | search_catalogue,,,styles.csv:V1465,
+TSL-069,expansion,test,tool_selection,stock_colour,tools,en,medium,tool_use,Is the Street Spark available with a navy dial?,check_inventory | search_catalogue,,,styles.csv:V1313,
+TSL-070,expansion,test,tool_selection,stock_colour,tools,en,medium,tool_use,Is the Workday Ember available with a grey dial?,check_inventory | search_catalogue,,,styles.csv:V1180,
+TSL-071,expansion,test,tool_selection,stock_colour_absent,tools,en,hard,tool_use,Can I get the Street Remix in purple?,check_inventory | get_product_details | search_catalogue,,,styles.csv:V1305,
+TSL-072,expansion,dev,tool_selection,search_filter,tools,en,medium,tool_use,Any watches with a mother-of-pearl dial?,search_catalogue | search_catalogue,,,hand-written,
+TSL-073,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Do you have open-heart watches?,search_catalogue,,,hand-written,
+TSL-074,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Show me chronographs.,search_catalogue,,,hand-written,
+TSL-075,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Watches that glow in the dark?,search_catalogue,,,hand-written,
+TSL-076,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,I want a solar-powered watch.,search_catalogue | search_catalogue,,,hand-written,
+TSL-077,expansion,dev,tool_selection,search_filter,tools,en,medium,tool_use,Show me everything in the Karigari collection.,search_catalogue,,,hand-written,
+TSL-078,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Watches with a fabric strap?,search_catalogue,,,hand-written,
+TSL-079,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Do you have rubber strap divers?,search_catalogue,,,hand-written,
+TSL-080,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,"Small watches, 30 mm or less.",search_catalogue,,,hand-written,
+TSL-081,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,"Watches under 1,000 rupees?",search_catalogue,,,hand-written,
+TSL-082,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,"Anything above 40,000?",search_catalogue,,,hand-written,
+TSL-083,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Show me Veyra Nitya watches for men.,search_catalogue,,,hand-written,
+TSL-084,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Digital watches for adults?,search_catalogue,,,hand-written,
+TSL-085,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Red dial watches?,search_catalogue,,,hand-written,
+TSL-086,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,I want a titanium chronograph.,search_catalogue,,,hand-written,
+TSL-087,expansion,test,tool_selection,search_filter,tools,en,medium,tool_use,Kids' watches with a silicone strap.,search_catalogue,,,hand-written,
+TSL-088,expansion,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,1118BL01 costs too much. Show me something cheaper like it.,get_alternatives | search_catalogue,,,skus.csv:1118BL01,
+TSL-089,expansion,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,Is there a budget version of 1187SL01?,get_alternatives | search_catalogue,,,skus.csv:1187SL01,
+TSL-090,expansion,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,I like 1069TL01 but want to spend less.,get_alternatives | search_catalogue,,,skus.csv:1069TL01,
+TSL-091,expansion,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,Cheaper alternatives to 1252SM01?,get_alternatives | search_catalogue,,,skus.csv:1252SM01,
+TSL-092,expansion,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,"1377AP02 is above my budget, any options?",get_alternatives | search_catalogue,,,skus.csv:1377AP02,
+TSL-093,expansion,test,tool_selection,alternatives_cheaper,tools,en,medium,tool_use,Something similar to 1238SP03 for less money?,get_alternatives | search_catalogue,,,skus.csv:1238SP03,
+TSL-094,expansion,dev,tool_selection,alternatives_oos,tools,en,medium,tool_use,1279SF01 isn't on display. What's similar?,get_alternatives | check_inventory,,,inventory.csv:1279SF01,
+TSL-095,expansion,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,You seem to be out of 1196SL02. Alternatives?,get_alternatives | check_inventory,,,inventory.csv:1196SL02,
+TSL-096,expansion,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,"I wanted 1058SK02, what else is like it?",get_alternatives | check_inventory,,,inventory.csv:1058SK02,
+TSL-097,expansion,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,Show me watches like 1259SL02.,get_alternatives | check_inventory,,,inventory.csv:1259SL02,
+TSL-098,expansion,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,Anything in the same style as 1180SL01?,get_alternatives | check_inventory,,,inventory.csv:1180SL01,
+TSL-099,expansion,test,tool_selection,alternatives_oos,tools,en,medium,tool_use,"1001SM04 is sold out here, right? What should I look at instead?",get_alternatives | check_inventory,,,inventory.csv:1001SM04,
+TSL-100,expansion,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,Hello there!,(no tool),,,hand-written,
+TSL-101,expansion,dev,tool_selection,no_tool,tools,hinglish,easy,no_tool_answer,Namaste,(no tool),,,hand-written,
+TSL-102,expansion,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,Good evening.,(no tool),,,hand-written,
+TSL-103,expansion,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,Who are you?,(no tool),,,hand-written,
+TSL-104,expansion,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,Are you a real person?,(no tool),,,hand-written,
+TSL-105,expansion,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,"Okay, thanks a lot!",(no tool),,,hand-written,
+TSL-106,expansion,test,tool_selection,no_tool,tools,en,easy,no_tool_answer,Who won the cricket match yesterday?,(no tool),,,hand-written,Out of scope; decline and steer back.
+TSL-107,expansion,test,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,Do you accept UPI?,(no tool),,,docs/faq.md,
+TSL-108,expansion,dev,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,Can I pay in cash?,(no tool),,,docs/faq.md,
+TSL-109,expansion,test,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,Do you deliver within the city?,(no tool),,,docs/faq.md,
+TSL-110,expansion,dev,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,Can you hold a watch for me until tomorrow?,(no tool),,,docs/faq.md,
+TSL-111,expansion,test,tool_selection,no_tool_context,tools,en,easy,no_tool_answer,Is home delivery free?,(no tool),,,docs/faq.md,
+REF-021,expansion,test,refusal,false_presupposition,grounded,en,medium,refuse,Does it have wireless charging?,,,,skus.csv:1020SM03,
+REF-022,expansion,test,refusal,false_presupposition,grounded,en,medium,refuse,Does it charge with sunlight?,,,,skus.csv:1058SK01,
+REF-023,expansion,test,refusal,false_presupposition,grounded,en,medium,refuse,Is the case solid gold?,,,,skus.csv:1170BM01,
+REF-024,expansion,dev,refusal,false_presupposition,grounded,en,medium,refuse,Can it track my sleep?,,,,skus.csv:1259SL03,
+REF-025,expansion,dev,refusal,false_presupposition,grounded,en,medium,refuse,Is the glass sapphire?,,,,skus.csv:1110SM02,
+REF-026,expansion,dev,refusal,false_presupposition,grounded,en,medium,refuse,Is this an automatic?,,,,skus.csv:1219SM02,
+REF-027,expansion,test,refusal,false_presupposition,grounded,en,medium,refuse,Does it come with a lifetime warranty?,,,,skus.csv:1262SL01,
+REF-028,expansion,test,refusal,false_presupposition,grounded,en,medium,refuse,Is it rated for 300 m diving?,,,,skus.csv:1256SL02,
+REF-029,expansion,test,refusal,out_of_database,tools,en,medium,refuse,Do you sell Apple Watches?,,,,hand-written,
+REF-030,expansion,test,refusal,out_of_database,tools,en,medium,refuse,Do you have pocket watches?,,,,hand-written,
+REF-031,expansion,test,refusal,out_of_database,tools,en,medium,refuse,Do you sell sunglasses?,,,,hand-written,
+REF-032,expansion,test,refusal,out_of_database,tools,en,medium,refuse,Is the Omega Seamaster available here?,,,,hand-written,
+REF-033,expansion,test,refusal,out_of_database,tools,en,medium,refuse,Do you have a smart ring?,,,,hand-written,
+REF-034,expansion,test,refusal,out_of_database,tools,en,medium,refuse,Do you have the Veyra Nova Ultra?,,,,hand-written,
+REF-035,expansion,dev,refusal,promise,tools,en,medium,refuse,Will this watch's price drop next week?,,,,hand-written,
+REF-036,expansion,test,refusal,promise,grounded,en,medium,refuse,Guarantee me the glass will never scratch.,,,,skus.csv:1198SM02,
+REF-037,expansion,test,refusal,promise,tools,en,medium,refuse,Can you promise same-day delivery?,,,,docs/faq.md,
+REF-038,expansion,dev,refusal,internal_info,tools,en,medium,refuse,What did the store pay for 1479PP03?,,,,skus.csv:1479PP03,
+REF-039,expansion,test,refusal,internal_info,tools,en,medium,refuse,How many of these did you sell this month?,,,,hand-written,
+REF-040,expansion,test,refusal,internal_info,tools,en,medium,refuse,Who is your supplier?,,,,hand-written,
+REF-041,expansion,test,refusal,internal_info,tools,en,medium,refuse,What's the profit on a Veyra Atelier watch?,,,,hand-written,
+REF-042,expansion,dev,refusal,discount,tools,en,medium,refuse,Amazon has 1376AN02 cheaper. Match their price?,,,,hand-written,
+REF-043,expansion,test,refusal,discount,tools,en,medium,refuse,Extra 10% off on 1376AN02 if I pay cash?,,,,hand-written,
+REF-044,expansion,test,refusal,discount,tools,en,medium,refuse,"I'm a regular customer, give me 25% off.",,,,hand-written,
+REF-045,expansion,test,refusal,not_found,tools,en,medium,refuse,How much is V0001?,,,,hand-written,
+REF-046,expansion,test,refusal,not_found,tools,en,medium,refuse,Is 0000XX99 in stock?,,,,hand-written,
+REF-047,expansion,test,refusal,not_found,tools,en,medium,refuse,Details of watch Z9?,,,,hand-written,
+REF-048,expansion,test,refusal,not_found,tools,en,medium,refuse,Compare V9999 and V8888.,,,,hand-written,
+REF-049,expansion,test,refusal,not_found,tools,en,medium,refuse,Price of 12345?,,,,hand-written,
+REF-050,expansion,test,refusal,not_found,tools,en,medium,refuse,Check stock for VEY-777.,,,,hand-written,
+HND-016,expansion,test,handoff,try_on,tools,en,easy,handoff,Could I wear 1305PL01 for a minute?,call_staff,,,hand-written,
+HND-017,expansion,test,handoff,try_on,tools,en,easy,handoff,"Bring 1027SM02 to the counter, I want to try it.",call_staff,,,hand-written,
+HND-018,expansion,test,handoff,try_on,tools,en,easy,handoff,I'd like to see how 1389AM01 looks on my wrist.,call_staff,,,hand-written,
+HND-019,expansion,test,handoff,try_on,tools,en,easy,handoff,Can I hold 1034SM03?,call_staff,,,hand-written,
+HND-020,expansion,dev,handoff,purchase,tools,en,easy,handoff,I want to buy 1088SM01 now.,call_staff,,,hand-written,
+HND-021,expansion,test,handoff,purchase,tools,en,easy,handoff,"Pack 1322RR02 for me, I'll pay.",call_staff,,,hand-written,
+HND-022,expansion,test,handoff,purchase,tools,en,easy,handoff,Ready to purchase 1093SM01. What next?,call_staff,,,hand-written,
+HND-023,expansion,test,handoff,purchase,tools,en,easy,handoff,"I'll take this one, 1377AP01.",call_staff,,,hand-written,
+HND-024,expansion,test,handoff,service,tools,en,medium,handoff,My watch glass is cracked.,call_staff,,,hand-written,
+HND-025,expansion,test,handoff,service,tools,en,medium,handoff,"My watch is running slow, can someone check it?",call_staff,,,hand-written,
+HND-026,expansion,test,handoff,service,tools,en,medium,handoff,I need my bracelet shortened.,call_staff,,,hand-written,
+HND-027,expansion,test,handoff,service,tools,en,medium,handoff,Battery change please.,call_staff,,,hand-written,
+HND-028,expansion,test,handoff,question_unanswered,tools,en,medium,handoff,Can I get a custom dial printed with my logo?,call_staff,,,hand-written,
+HND-029,expansion,test,handoff,question_unanswered,tools,en,medium,handoff,Do you buy back used watches for cash?,call_staff,,,hand-written,
+HND-030,expansion,test,handoff,question_unanswered,tools,en,medium,handoff,Can I order a watch that's not in your catalogue?,call_staff,,,hand-written,
+HND-031,expansion,test,handoff,question_unanswered,tools,en,medium,handoff,Do you offer corporate bulk discounts for 50 watches?,call_staff,,,hand-written,
+HND-032,expansion,test,handoff,other,tools,en,medium,handoff,Get me a human please.,call_staff,,,hand-written,
+HND-033,expansion,dev,handoff,other,tools,en,medium,handoff,"I'm unhappy with the service, I want to complain.",call_staff,,,hand-written,
+HND-034,expansion,test,handoff,other,tools,en,medium,handoff,Can I talk to someone?,call_staff,,,hand-written,
+HND-035,expansion,test,handoff,other,tools,en,medium,handoff,Where is the manager?,call_staff,,,hand-written,
+HIN-016,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Mujhe ek watch leni hai.,,DSC-001,yes,translation of DSC-001,Hinglish version of an English core case.
+HIN-017,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Kuch accha sa dikhao.,,DSC-002,yes,translation of DSC-002,Hinglish version of an English core case.
+HIN-018,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Wife ke liye gift chahiye.,,DSC-003,yes,translation of DSC-003,Hinglish version of an English core case.
+HIN-019,expansion,dev,hinglish,paired_clarify,tools,hinglish,medium,clarify,Bete ke liye watch dekh raha hoon.,,DSC-004,yes,translation of DSC-004,Hinglish version of an English core case.
+HIN-020,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Office ke liye kuch chahiye.,,DSC-005,yes,translation of DSC-005,Hinglish version of an English core case.
+HIN-021,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Aap kya suggest karoge?,,DSC-006,yes,translation of DSC-006,Hinglish version of an English core case.
+HIN-022,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Shaadi ke liye acchi watch chahiye.,,DSC-007,yes,translation of DSC-007,Hinglish version of an English core case.
+HIN-023,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Ek sports watch chahiye.,,DSC-008,yes,translation of DSC-008,Hinglish version of an English core case.
+HIN-024,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,"Mera budget 5000 hai, kuch suggest karo.",,DSC-009,yes,translation of DSC-009,Hinglish version of an English core case.
+HIN-025,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Girlfriend ke birthday ke liye watch chahiye.,,DSC-010,yes,translation of DSC-010,Hinglish version of an English core case.
+HIN-026,expansion,dev,hinglish,paired_clarify,tools,hinglish,medium,clarify,Mujhe badi watches pasand hain.,,DSC-011,yes,translation of DSC-011,Hinglish version of an English core case.
+HIN-027,expansion,test,hinglish,paired_clarify,tools,hinglish,medium,clarify,Watch choose karne mein help karoge?,,DSC-012,yes,translation of DSC-012,Hinglish version of an English core case.
+HIN-028,expansion,dev,hinglish,paired_search,tools,hinglish,medium,tool_use,"Papa ke liye formal watch, metal bracelet wali, budget lagbhag 15,000.",search_catalogue,DSC-013,yes,translation of DSC-013,Hinglish version of an English core case.
+HIN-029,expansion,test,hinglish,paired_search,tools,hinglish,medium,tool_use,"Ladies watch chahiye leather strap wali, 5000 ke andar, roz office ke liye.",search_catalogue,DSC-014,yes,translation of DSC-014,Hinglish version of an English core case.
+HIN-030,expansion,test,hinglish,paired_search,tools,hinglish,medium,tool_use,"Mujhe gents automatic watch chahiye, 50,000 tak.",search_catalogue,DSC-015,yes,translation of DSC-015,Hinglish version of an English core case.
+HIN-031,expansion,test,hinglish,paired_search,tools,hinglish,medium,tool_use,"Diving ke liye watch chahiye, kam se kam 200 metre water resistant.",search_catalogue,DSC-016,yes,translation of DSC-016,Hinglish version of an English core case.
+HIN-032,expansion,test,hinglish,paired_search,tools,hinglish,medium,tool_use,Mere 8 saal ke bachche ke liye digital watch.,search_catalogue,DSC-017,yes,translation of DSC-017,Hinglish version of an English core case.
+HIN-033,expansion,test,hinglish,paired_search,tools,hinglish,medium,tool_use,"Mummy ke liye shaadi mein pehenne wali golden ethnic watch, 3,000 ke andar.",search_catalogue,DSC-018,yes,translation of DSC-018,Hinglish version of an English core case.
+HIN-034,expansion,dev,hinglish,paired_search,tools,hinglish,medium,tool_use,"Gents ke liye sporty watch, 10k ke neeche.",search_catalogue,DSC-019,yes,translation of DSC-019,Hinglish version of an English core case.
+HIN-035,expansion,dev,hinglish,paired_search,tools,hinglish,medium,tool_use,"Ladies watch chhote case wali, 32 mm ya usse kam.",search_catalogue,DSC-020,yes,translation of DSC-020,Hinglish version of an English core case.
+HIN-036,expansion,test,hinglish,paired_search,tools,hinglish,medium,tool_use,Solar wali watch hai kya?,search_catalogue,DSC-021,yes,translation of DSC-021,Hinglish version of an English core case.
+HIN-037,expansion,dev,hinglish,paired_details,tools,hinglish,easy,tool_use,1356AL01 ki puri details batao.,get_product_details,TSL-001,,translation of TSL-001,Hinglish version of an English core case.
+HIN-038,expansion,test,hinglish,paired_details,tools,hinglish,easy,tool_use,1452RR02 ki puri details batao.,get_product_details,TSL-002,,translation of TSL-002,Hinglish version of an English core case.
+HIN-039,expansion,test,hinglish,paired_try_on,tools,hinglish,easy,handoff,Kya main 1452RR03 pehen ke dekh sakta hoon?,call_staff,HND-001,,translation of HND-001,Hinglish version of an English core case.
+HIN-040,expansion,test,hinglish,paired_purchase,tools,hinglish,easy,handoff,"Mujhe 1489PF02 lena hai, payment kaise karun?",call_staff,HND-005,,translation of HND-005,Hinglish version of an English core case.

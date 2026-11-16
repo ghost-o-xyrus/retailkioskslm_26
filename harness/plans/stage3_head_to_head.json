@@ -1,0 +1,165 @@
+{
+  "name": "stage3_head_to_head",
+  "description": "The 2 finalists on the v1.1 test split (292 cases): one greedy run for the main score plus 3 runs at the deployment temperature (0.3) for pass^3. Pick the 2 finalists' runs with --only (both the _greedy and _t03 entries). Change quant/model_path if a finalist's best quant is Q8_0. Check model_path values against your models/ folder; filenames follow model_registry.csv. Added after Stage 2: qwen35-2b_q8_0_vulkan_v11_greedy, a greedy-only tie-breaker for the 2B quant (Q8 vs Q4 was +4.7 pts, CI [-0.9, +11.3] on 106 cases). Also added: gemma4-e2b_q8_0_vulkan_v11_greedy, greedy only, because Gemma Q8 tied Qwen-2B Q8 on 106 cases (-7.5, CI [-17.0, +0.9]). Added after Stage 3: qwen35-2b_bf16_vulkan_v11_greedy, because Qwen-2B Q8 beat Q4 (+6.2, CI [+1.4, +11.0]), which met the BF16 rule set before Stage 1.",
+  "base_dir": "..",
+  "defaults": {
+    "server_exe": "llama-vulkan/llama-server.exe",
+    "server_args": [
+      "--jinja",
+      "-c",
+      "8192",
+      "-np",
+      "1",
+      "-ngl",
+      "99"
+    ],
+    "backend": "vulkan",
+    "port": 8080,
+    "eval": "eval/eval_set_v1.1.jsonl",
+    "set": "all",
+    "split": "test"
+  },
+  "runs": [
+    {
+      "name": "qwen35-2b_q4_k_m_vulkan_v11_greedy",
+      "model": "Qwen3.5-2B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "gemma4-e2b_q4_k_m_vulkan_v11_greedy",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q4_K_M.gguf",
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "qwen35-4b_q4_k_m_vulkan_v11_greedy",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "phi4-mini_q4_k_m_vulkan_v11_greedy",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct-Q4_K_M.gguf",
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "llama32-3b_q4_k_m_vulkan_v11_greedy",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "qwen35-2b_q4_k_m_vulkan_v11_t03",
+      "model": "Qwen3.5-2B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "repeats": 3,
+      "temperature": 0.3
+    },
+    {
+      "name": "gemma4-e2b_q4_k_m_vulkan_v11_t03",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q4_K_M.gguf",
+      "repeats": 3,
+      "temperature": 0.3
+    },
+    {
+      "name": "qwen35-4b_q4_k_m_vulkan_v11_t03",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "repeats": 3,
+      "temperature": 0.3
+    },
+    {
+      "name": "phi4-mini_q4_k_m_vulkan_v11_t03",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct-Q4_K_M.gguf",
+      "repeats": 3,
+      "temperature": 0.3
+    },
+    {
+      "name": "llama32-3b_q4_k_m_vulkan_v11_t03",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+      "repeats": 3,
+      "temperature": 0.3
+    },
+    {
+      "name": "qwen35-2b_q8_0_vulkan_v11_greedy",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "gemma4-e2b_q8_0_vulkan_v11_greedy",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q8_0.gguf",
+      "repeats": 1,
+      "temperature": 0
+    },
+    {
+      "name": "qwen35-2b_bf16_vulkan_v11_greedy",
+      "model": "Qwen3.5-2B",
+      "quant": "BF16",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-BF16.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "repeats": 1,
+      "temperature": 0
+    }
+  ]
+}

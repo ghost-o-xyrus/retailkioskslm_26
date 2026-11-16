@@ -1,0 +1,363 @@
+{
+ "A": [
+  {
+   "criterion": "Right tool run with valid arguments, whole system",
+   "target": "≥ 90%",
+   "value": "77.6% (149/192)",
+   "met": false,
+   "note": ""
+  },
+  {
+   "criterion": "Right tool chosen by the model alone (unclear turns)",
+   "target": "≥ 80%",
+   "value": "100.0% (1/1)",
+   "met": null,
+   "note": "not measurable on O3-final: the router left only 1 tool case(s) unclear; every other one went to the kiosk's own tools or a fixed reply"
+  },
+  {
+   "criterion": "Valid arguments in model-written calls",
+   "target": "≥ 98%",
+   "value": "100.0% (464/464)",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Router accuracy",
+   "target": "≥ 95%",
+   "value": "94.7% (610/644)",
+   "met": false,
+   "note": "unclear counts as right for a store question (it is retrieved)"
+  },
+  {
+   "criterion": "Store questions sent down a tool path",
+   "target": "≤ 3%",
+   "value": "3.6% (15/414)",
+   "met": false,
+   "note": ""
+  },
+  {
+   "criterion": "Slots known before the first recommendation (≥ 2 of 4)",
+   "target": "≥ 85% of dialogues",
+   "value": "100%",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Questions before the recommendation",
+   "target": "≤ 2",
+   "value": "max 2, mean 0.80",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Shown watches fit what the customer said",
+   "target": "≥ 90%",
+   "value": "97%",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Staff called when asked or needed",
+   "target": "≥ 90%",
+   "value": "64% (9/14)",
+   "met": false,
+   "note": "hand-off tool cases"
+  },
+  {
+   "criterion": "Unneeded staff calls",
+   "target": "≤ 5%",
+   "value": "10.2% (33/324)",
+   "met": false,
+   "note": "model staff calls on answerable store questions"
+  },
+  {
+   "criterion": "Staff calls per turn",
+   "target": "at most 1",
+   "value": "0 turns with more than one ticket",
+   "met": true,
+   "note": "27 repeated calls were stopped by the loop guard (no second ticket)"
+  },
+  {
+   "criterion": "No regression on tool cases (vs no retrieval, Stage 3)",
+   "target": "not significantly below",
+   "value": "+0.0 [-7.8, +7.8] (tie)",
+   "met": true,
+   "note": "Step 15 reference run (Kaggle CPU)"
+  },
+  {
+   "criterion": "Answerable store questions within 5 points of oracle cards",
+   "target": "≥ −5 points",
+   "value": "+5.6 [-0.4, +11.2]",
+   "met": true,
+   "note": "Step 15 reference run (Kaggle CPU)"
+  },
+  {
+   "criterion": "Hallucination on unanswerable questions",
+   "target": "≤ 5%",
+   "value": "36.8% (21/57)",
+   "met": false,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Hallucination on near-miss questions",
+   "target": "≤ 5%",
+   "value": "43.9% (36/82)",
+   "met": false,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "False refusals",
+   "target": "≤ 10%",
+   "value": "8.3% (27/324)",
+   "met": true,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Hallucination, Hinglish (unanswerable + near-miss)",
+   "target": "reported",
+   "value": "62.5% (15/24)",
+   "met": null,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Unsupported details in answers (automatic)",
+   "target": "≤ 5%",
+   "value": "2.9% (11/378)",
+   "met": true,
+   "note": "knowledge-path replies with a detail in neither the gold card nor the tool results"
+  },
+  {
+   "criterion": "Unsupported details in answers (judged sample)",
+   "target": "≤ 5%",
+   "value": "18.3% (11/60)",
+   "met": false,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Wait to first word, median / 90th percentile",
+   "target": "≤ 6 s / ≤ 12 s",
+   "value": "4.6 s / 15.5 s",
+   "met": false,
+   "note": "in place, laptop CPU, every repeat"
+  },
+  {
+   "criterion": "Full reply, median",
+   "target": "≤ 11 s",
+   "value": "10.1 s",
+   "met": true,
+   "note": "in place, laptop CPU, every repeat"
+  },
+  {
+   "criterion": "Model rounds per turn, mean",
+   "target": "≤ 1.3",
+   "value": "1.62",
+   "met": false,
+   "note": "store questions, tool cases and follow-ups"
+  },
+  {
+   "criterion": "Tokens read before the answer, vs Objective 2 deployed",
+   "target": "≤ 50%",
+   "value": "43% (388 vs 894)",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Retrieval latency p50 (CPU)",
+   "target": "≤ 300 ms",
+   "value": "286 ms",
+   "met": true,
+   "note": "store-route turns, in place"
+  },
+  {
+   "criterion": "Peak RAM, model server plus assistant",
+   "target": "≤ 5 GB",
+   "value": "4.04 GB",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "RAM added over O3-B0 (assistant process)",
+   "target": "≤ 0.8 GB",
+   "value": "+0.29 GB",
+   "met": true,
+   "note": "both include the retrieval stack; O3-final's re-ranker is the 8-bit one"
+  }
+ ],
+ "B": [
+  {
+   "criterion": "Right tool run with valid arguments, whole system",
+   "target": "≥ 90%",
+   "value": "83.3% (160/192)",
+   "met": false,
+   "note": ""
+  },
+  {
+   "criterion": "Right tool chosen by the model alone (unclear turns)",
+   "target": "≥ 80%",
+   "value": "0.0% (0/1)",
+   "met": null,
+   "note": "not measurable on O3-final: the router left only 1 tool case(s) unclear; every other one went to the kiosk's own tools or a fixed reply"
+  },
+  {
+   "criterion": "Valid arguments in model-written calls",
+   "target": "≥ 98%",
+   "value": "100.0% (100/100)",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Router accuracy",
+   "target": "≥ 95%",
+   "value": "94.7% (610/644)",
+   "met": false,
+   "note": "unclear counts as right for a store question (it is retrieved)"
+  },
+  {
+   "criterion": "Store questions sent down a tool path",
+   "target": "≤ 3%",
+   "value": "3.6% (15/414)",
+   "met": false,
+   "note": ""
+  },
+  {
+   "criterion": "Slots known before the first recommendation (≥ 2 of 4)",
+   "target": "≥ 85% of dialogues",
+   "value": "100%",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Questions before the recommendation",
+   "target": "≤ 2",
+   "value": "max 2, mean 0.80",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Shown watches fit what the customer said",
+   "target": "≥ 90%",
+   "value": "97%",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "Staff called when asked or needed",
+   "target": "≥ 90%",
+   "value": "64% (9/14)",
+   "met": false,
+   "note": "hand-off tool cases"
+  },
+  {
+   "criterion": "Unneeded staff calls",
+   "target": "≤ 5%",
+   "value": "0.9% (3/324)",
+   "met": true,
+   "note": "model staff calls on answerable store questions"
+  },
+  {
+   "criterion": "Staff calls per turn",
+   "target": "at most 1",
+   "value": "0 turns with more than one ticket",
+   "met": true,
+   "note": "4 repeated calls were stopped by the loop guard (no second ticket)"
+  },
+  {
+   "criterion": "No regression on tool cases (vs no retrieval, Stage 3)",
+   "target": "not significantly below",
+   "value": "-4.7 [-10.9, +1.6] (tie)",
+   "met": true,
+   "note": "Step 15 reference run (Kaggle CPU)"
+  },
+  {
+   "criterion": "Answerable store questions within 5 points of oracle cards",
+   "target": "≥ −5 points",
+   "value": "-3.9 [-7.0, -0.7]",
+   "met": true,
+   "note": "Step 15 reference run (Kaggle CPU)"
+  },
+  {
+   "criterion": "Hallucination on unanswerable questions",
+   "target": "≤ 5%",
+   "value": "22.8% (13/57)",
+   "met": false,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Hallucination on near-miss questions",
+   "target": "≤ 5%",
+   "value": "17.1% (14/82)",
+   "met": false,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "False refusals",
+   "target": "≤ 10%",
+   "value": "5.6% (18/324)",
+   "met": true,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Hallucination, Hinglish (unanswerable + near-miss)",
+   "target": "reported",
+   "value": "29.2% (7/24)",
+   "met": null,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Unsupported details in answers (automatic)",
+   "target": "≤ 5%",
+   "value": "4.9% (19/384)",
+   "met": true,
+   "note": "knowledge-path replies with a detail in neither the gold card nor the tool results"
+  },
+  {
+   "criterion": "Unsupported details in answers (judged sample)",
+   "target": "≤ 5%",
+   "value": "6.7% (4/60)",
+   "met": false,
+   "note": "blind judge"
+  },
+  {
+   "criterion": "Wait to first word, median / 90th percentile",
+   "target": "≤ 4 s / ≤ 9 s",
+   "value": "3.9 s / 14.5 s",
+   "met": false,
+   "note": "laptop Vulkan quality runs, speed subset, one repeat"
+  },
+  {
+   "criterion": "Full reply, median",
+   "target": "≤ 11 s",
+   "value": "11.9 s",
+   "met": false,
+   "note": "laptop Vulkan quality runs, speed subset, one repeat"
+  },
+  {
+   "criterion": "Model rounds per turn, mean",
+   "target": "≤ 1.3",
+   "value": "1.03",
+   "met": true,
+   "note": "store questions, tool cases and follow-ups"
+  },
+  {
+   "criterion": "Tokens read before the answer, vs Objective 2 deployed",
+   "target": "≤ 50%",
+   "value": "57% (344 vs 604)",
+   "met": false,
+   "note": ""
+  },
+  {
+   "criterion": "Peak RAM, model server plus assistant",
+   "target": "≤ 10 GB",
+   "value": "5.70 GB",
+   "met": true,
+   "note": ""
+  },
+  {
+   "criterion": "RAM added over O3-B0 (assistant process)",
+   "target": "≤ 0.8 GB",
+   "value": "-0.34 GB",
+   "met": true,
+   "note": "both include the retrieval stack; O3-final's re-ranker is the 8-bit one"
+  }
+ ]
+}

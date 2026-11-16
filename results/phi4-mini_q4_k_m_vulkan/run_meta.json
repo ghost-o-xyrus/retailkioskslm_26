@@ -1,0 +1,43 @@
+{
+  "name": "phi4-mini_q4_k_m_vulkan",
+  "model": "Phi-4-mini-instruct",
+  "quant": "Q4_K_M",
+  "backend": "vulkan",
+  "eval_file": "eval\\eval_set.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "all",
+    "ids": null,
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 150,
+  "repeats": 1,
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/phi-4-mini-instruct/Phi-4-mini-instruct-Q4_K_M.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{% for message in messages %}{% if message['role'] == 'system' and 'tools' in message and message['tools'] is not none %}{{ '<|' + message['role'] + '|>' + message['content'] + '<|tool|>' + message['tools'] + '<|/tool|>' + '<|end|>' }}{% else %}{{ '<|' + message['role'] + '|>' + message['content'] +...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 24880",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-18T07:04:26",
+  "finished": "2026-10-18T07:14:59",
+  "errors": 0,
+  "run_peak_rss_mb": 6128.6,
+  "wall_minutes": 10.5
+}

@@ -1,0 +1,80 @@
+{
+  "name": "stage1_screen",
+  "description": "All 6 models at Q4_K_M on Vulkan, greedy, v1.0 core (150 cases). Check model_path values against your models/ folder; filenames follow model_registry.csv.",
+  "base_dir": "..",
+  "defaults": {
+    "server_exe": "llama-vulkan/llama-server.exe",
+    "server_args": [
+      "--jinja",
+      "-c",
+      "8192",
+      "-np",
+      "1",
+      "-ngl",
+      "99"
+    ],
+    "backend": "vulkan",
+    "port": 8080,
+    "eval": "eval/eval_set.jsonl",
+    "set": "all",
+    "split": "all",
+    "repeats": 1,
+    "temperature": 0
+  },
+  "runs": [
+    {
+      "name": "qwen35-0.8b_q4_k_m_vulkan",
+      "model": "Qwen3.5-0.8B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-0.8b/Qwen3.5-0.8B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ]
+    },
+    {
+      "name": "qwen35-2b_q4_k_m_vulkan",
+      "model": "Qwen3.5-2B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ]
+    },
+    {
+      "name": "gemma4-e2b_q4_k_m_vulkan",
+      "model": "Gemma-4-E2B-it",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/gemma4-e2b/gemma-4-E2B-it-Q4_K_M.gguf"
+    },
+    {
+      "name": "qwen35-4b_q4_k_m_vulkan",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ]
+    },
+    {
+      "name": "phi4-mini_q4_k_m_vulkan",
+      "model": "Phi-4-mini-instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/phi4-mini/Phi-4-mini-instruct-Q4_K_M.gguf"
+    },
+    {
+      "name": "llama32-3b_q4_k_m_vulkan",
+      "model": "Llama-3.2-3B-Instruct",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/llama3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiosk</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="lab">
+  <header class="topbar">
+    <h1 class="brand"><span id="brand-mark">&#9671; &#9671; &#9671;</span> <span class="brand-word">kiosk</span></h1>
+    <nav class="picker lab-only" aria-label="Configuration">
+      <div class="chip-wrap"><button class="chip" id="chip-tier" aria-haspopup="true"></button><div class="menu" id="menu-tier" role="menu"></div></div>
+      <div class="chip-wrap"><button class="chip" id="chip-model" aria-haspopup="true"></button><div class="menu" id="menu-model" role="menu"></div></div>
+      <div class="chip-wrap"><button class="chip accent" id="chip-pipeline" aria-haspopup="true"></button><div class="menu wide" id="menu-pipeline" role="menu"></div></div>
+      <div class="chip-wrap"><button class="chip" id="chip-adapter" aria-haspopup="true"></button><div class="menu" id="menu-adapter" role="menu"></div></div>
+      <button class="chip" id="chip-compare" aria-pressed="false">Compare</button>
+    </nav>
+    <div class="mode-tag" id="mode-tag"></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar lab-only" aria-label="Conversations">
+      <button class="new-chat" id="new-chat">+ New chat</button>
+      <ul id="session-list"></ul>
+      <div class="side-foot" id="side-foot"></div>
+    </aside>
+
+    <main class="main">
+      <section id="custom-panel" class="custom-panel lab-only" hidden aria-label="Pipeline switches"></section>
+      <div id="untested" class="untested" hidden>Untested combination: no evaluation run covers these settings.</div>
+
+      <div id="chat-single" class="chat" aria-live="polite"></div>
+      <div id="chat-compare" class="compare" hidden>
+        <div class="col" data-side="a"><div class="col-head"><select class="cmp-sel" data-side="a" aria-label="Configuration A"></select><span class="col-label" data-side="a"></span></div><div class="chat" data-side="a" aria-live="polite"></div></div>
+        <div class="col" data-side="b"><div class="col-head"><select class="cmp-sel" data-side="b" aria-label="Configuration B"></select><span class="col-label" data-side="b"></span></div><div class="chat" data-side="b" aria-live="polite"></div></div>
+      </div>
+      <div id="strip" class="strip lab-only" hidden></div>
+
+      <form id="composer" class="composer" autocomplete="off">
+        <textarea id="input" rows="1" placeholder="Ask about watches or the store&hellip;" aria-label="Your message"></textarea>
+        <button type="button" class="mic" disabled title="Voice is planned" aria-label="Voice (planned, not active)">&#127908;</button>
+        <button type="submit" class="send" id="send">Send</button>
+      </form>
+
+      <div class="drawer-tabs lab-only">
+        <button class="tab" id="tab-tools" aria-expanded="false">&#9650; Tool calls <span class="count" id="tools-count"></span></button>
+        <button class="tab" id="tab-stages" aria-expanded="false">&#9650; Stages <span class="count" id="stages-count"></span></button>
+      </div>
+    </main>
+  </div>
+
+  <section id="drawer" class="drawer lab-only" hidden aria-label="Details">
+    <div class="drawer-head">
+      <div class="dtabs" role="tablist"><button class="dtab" id="dtab-tools" role="tab">Tool calls</button><button class="dtab" id="dtab-stages" role="tab">Stages</button></div>
+      <span id="drawer-turn" class="quiet"></span><button id="drawer-close" aria-label="Close">&#10005;</button></div>
+    <div id="drawer-body" class="drawer-body"></div>
+  </section>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

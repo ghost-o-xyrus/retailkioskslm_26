@@ -1,0 +1,76 @@
+{
+ "name": "obj3_step15_ref_4b_all",
+ "description": "Objective 3, Step 15 ladder on O3-T, Kaggle CPU: ref-oracle, o3l_ref_4b_oracle, o3l_ref_4b_none.",
+ "base_dir": "..",
+ "results_dir": "results_obj3",
+ "kaggle_max_minutes": 650,
+ "kaggle_llama_build": "fixed",
+ "kaggle_llama_tag": "b12110",
+ "defaults": {
+  "port": 8080,
+  "set": "all",
+  "repeats": 1,
+  "temperature": 0
+ },
+ "runs": [
+  {
+   "model": "Qwen3.5-4B",
+   "quant": "Q4_K_M",
+   "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+   "eval": "eval/rag_cases_o3t.jsonl",
+   "split": "test",
+   "backend": "cpu",
+   "server_exe": "llama-cpu/llama-server.exe",
+   "server_args": [
+    "--jinja",
+    "-c",
+    "8192",
+    "-np",
+    "1",
+    "-ngl",
+    "0",
+    "-t",
+    "4"
+   ],
+   "extra_server_args": [
+    "--reasoning-budget",
+    "0"
+   ],
+   "name": "o3l_ref_4b_oracle",
+   "config_label": "ref-oracle",
+   "retrieval": "oracle",
+   "context_view": "compact",
+   "rag_rule": "rag_always_rule_b",
+   "dedupe_shown": true,
+   "warmup": true
+  },
+  {
+   "model": "Qwen3.5-4B",
+   "quant": "Q4_K_M",
+   "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+   "eval": "eval/eval_set_o3t.jsonl",
+   "split": "test",
+   "backend": "cpu",
+   "server_exe": "llama-cpu/llama-server.exe",
+   "server_args": [
+    "--jinja",
+    "-c",
+    "8192",
+    "-np",
+    "1",
+    "-ngl",
+    "0",
+    "-t",
+    "4"
+   ],
+   "extra_server_args": [
+    "--reasoning-budget",
+    "0"
+   ],
+   "name": "o3l_ref_4b_none",
+   "config_label": "ref-none (Stage 3)",
+   "retrieval": "none",
+   "warmup": true
+  }
+ ]
+}

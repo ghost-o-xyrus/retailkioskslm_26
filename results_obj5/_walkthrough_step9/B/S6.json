@@ -1,0 +1,271 @@
+{
+ "turns": [
+  {
+   "message": "Can someone help me try it on?",
+   "reply": "I have asked a staff member to come and help you. They will be with you in a few minutes.",
+   "errors": [],
+   "cards": [],
+   "first_word_s": 4.37,
+   "total_s": 6.73,
+   "stages": [
+    "input",
+    "route",
+    "harness_tools",
+    "model_round",
+    "checks",
+    "output"
+   ],
+   "trace": {
+    "route": "staff",
+    "discovery": null,
+    "verify": null,
+    "followup": {
+     "focus": {
+      "style_id": "V1024",
+      "code": "1024SL01",
+      "name": "Meridian Atlas"
+     },
+     "query": "Can someone help me try it on? Show me the back of it Meridian Atlas",
+     "rerouted_from": null
+    },
+    "final_reply": "I have asked a staff member to come and help you. They will be with you in a few minutes.",
+    "tool_calls": [
+     {
+      "id": "h0",
+      "name": "call_staff",
+      "arguments": {
+       "reason": "try_on",
+       "product_id": "1024SL01"
+      },
+      "arguments_raw": "{\"reason\": \"try_on\", \"product_id\": \"1024SL01\"}",
+      "arguments_valid_json": true,
+      "parse_error": null,
+      "known_tool": true,
+      "by": "harness",
+      "round": -1,
+      "harness_note": "staff",
+      "result": {
+       "status": "notified",
+       "ticket": "REQ-0001",
+       "message": "A staff member has been notified and will come to the kiosk shortly.",
+       "expected_wait_minutes": 3
+      },
+      "result_error": null
+     }
+    ],
+    "flags": [],
+    "turns": [
+     {
+      "round": 0,
+      "wall_ms": 6707.8,
+      "finish_reason": "stop",
+      "prompt_tokens": 2136,
+      "completion_tokens": 23,
+      "prompt_n": 214,
+      "cache_n": 1922,
+      "prompt_ms": 4331.725,
+      "predicted_n": 23,
+      "predicted_ms": 2357.122,
+      "predicted_per_second": 9.333415919922686,
+      "draft_n": null,
+      "draft_n_accepted": null,
+      "content": "I have asked a staff member to come and help you. They will be with you in a few minutes.",
+      "n_tool_calls": 0,
+      "forced_final": true
+     }
+    ],
+    "n_rounds": 1,
+    "reasoning_chars": 0,
+    "retrieval": {
+     "condition": "none",
+     "route": "staff",
+     "router": {
+      "source": "rule",
+      "margin": 4.0,
+      "ms": 0.39,
+      "codes": [
+       "1024SL01"
+      ],
+      "named": false,
+      "not_carried": false
+     }
+    },
+    "metrics": {
+     "end_to_end_ms": 6722.1,
+     "retrieval_ms": 0.4,
+     "ttft_ms": 4331.725,
+     "first_visible_ms": 4365.0,
+     "first_response_ms": 6707.8,
+     "generated_tokens": 23,
+     "tokens_per_s": 9.76,
+     "prompt_tokens_total": 2136,
+     "prompt_tokens_processed": 214,
+     "prompt_tokens_cached": 1922,
+     "peak_rss_mb": 4050.8,
+     "harness_rss_mb": 799
+    },
+    "stages": [
+     {
+      "stage": "input",
+      "start_ms": 0.0,
+      "ms": 9.0,
+      "rss_mb": {
+       "server": 3998.4,
+       "app": 761.8
+      },
+      "peak_mb": {
+       "server": 3998.4,
+       "app": 761.8
+      }
+     },
+     {
+      "stage": "route",
+      "start_ms": 9.0,
+      "sub": [
+       {
+        "name": "router",
+        "ms": 0.4
+       }
+      ],
+      "info": {
+       "route": "staff",
+       "source": "rule",
+       "followup": true
+      },
+      "ms": 0.9,
+      "rss_mb": {
+       "server": 3998.4,
+       "app": 761.8
+      },
+      "peak_mb": {
+       "server": 3998.4,
+       "app": 761.8
+      }
+     },
+     {
+      "stage": "harness_tools",
+      "start_ms": 9.9,
+      "sub": [
+       {
+        "name": "tool:call_staff",
+        "ms": 1.8,
+        "by": "harness"
+       }
+      ],
+      "ms": 2.8,
+      "rss_mb": {
+       "server": 3998.4,
+       "app": 761.8
+      },
+      "peak_mb": {
+       "server": 3998.4,
+       "app": 761.8
+      }
+     },
+     {
+      "stage": "model_round",
+      "start_ms": 12.7,
+      "info": {
+       "round": 0,
+       "wall_ms": 6707.8,
+       "finish": "stop",
+       "tool_calls": 0
+      },
+      "sub": [
+       {
+        "name": "reading",
+        "ms": 4331.7,
+        "tokens": 214,
+        "cached": 1922
+       },
+       {
+        "name": "writing",
+        "ms": 2357.1,
+        "tokens": 23
+       }
+      ],
+      "ms": 6708.3,
+      "rss_mb": {
+       "server": 4050.8,
+       "app": 761.8
+      },
+      "peak_mb": {
+       "server": 4050.8,
+       "app": 761.8
+      }
+     },
+     {
+      "stage": "checks",
+      "start_ms": 6721.0,
+      "ms": 1.7,
+      "rss_mb": {
+       "server": 4050.8,
+       "app": 761.8
+      },
+      "peak_mb": {
+       "server": 4050.8,
+       "app": 761.8
+      }
+     },
+     {
+      "stage": "output",
+      "start_ms": 6722.7,
+      "ms": 0.7,
+      "rss_mb": {
+       "server": 4050.8,
+       "app": 761.8
+      },
+      "peak_mb": {
+       "server": 4050.8,
+       "app": 761.8
+      }
+     }
+    ],
+    "stage_summary": {
+     "by_stage_ms": {
+      "input": 9.0,
+      "route": 0.9,
+      "harness_tools": 2.8,
+      "model_round": 6708.3,
+      "checks": 1.7,
+      "output": 0.7
+     },
+     "covered_ms": 6723.4,
+     "unattributed_ms": -1.3,
+     "instrumentation_ms": 3.04,
+     "after_reply_ms": 0.0
+    },
+    "id": "4950accdc1-4",
+    "session": "4950accdc1",
+    "turn": 4,
+    "language": "en",
+    "config": "Deployed · Tier B · Qwen3.5-4B Q4_K_M + lora",
+    "engine": "core",
+    "time": "2026-11-10T15:53:48",
+    "queue_ms": 0,
+    "selection": {
+     "tier": "B",
+     "model": "qwen35-4b",
+     "pipeline": "deployed",
+     "adapter": "lora",
+     "toggles": {
+      "retrieval": true,
+      "fallback": "hard",
+      "harness_tools": true,
+      "answer_check": true,
+      "patches": false,
+      "short_replies": true,
+      "thinking": false
+     }
+    },
+    "cards": [],
+    "turn_id": "4950accdc1-4"
+   }
+  }
+ ],
+ "problems": [],
+ "ticket": "REQ-0001",
+ "ticket_in_reply": false,
+ "logged": true,
+ "passed": true
+}

@@ -1,0 +1,28 @@
+﻿id,repeat,category,subcategory,behaviour,language,passed,tool_ok,no_tool_ok,format_ok,facts_ok,forbidden_ok,clarify_ok,grounded_ok,error,flags,user,tool_calls,reply,your_verdict (scorer right? y/n)
+TSL-022,0,tool_selection,search_filter,tool_use,en,False,False,,True,,,,False,,,"I want a big watch, 44 mm or larger.",[],"What style of watch are you looking for? For example, sporty, formal, or fashion?",
+HND-012,0,handoff,question_unanswered,handoff,en,False,False,,True,,,,,,,Can you ship a watch to Dubai?,[],"I am sorry, I can only assist you with finding, comparing, and checking the stock of watches in this store. I cannot help with shipping.",
+CMP-013,0,comparison,tool_compare,tool_use,en,False,True,,True,False,,,,,,"Compare 1179BM02 and 1425BM02: size, glass and price.","[{""name"": ""compare_products"", ""arguments"": {""attributes"": [""case size"", ""glass"", ""mrp""], ""product_ids"": [""1179BM02"", ""1425BM02""]}}]","I'm sorry, I cannot compare those specific attributes. I can compare things like price, water resistance, or strap material. Would you like me to compare those instead?",
+TSL-016,0,tool_selection,stock_colour_absent,tool_use,en,False,True,,True,False,,,,,,Does the Shagun Noor come in purple?,"[{""name"": ""search_catalogue"", ""arguments"": {""query"": ""Shagun Noor""}}]","I couldn't find any 'Shagun Noor' watches with a purple dial in the catalogue. I found a few 'Shagun' collection watches, but they are in maroon, gold, or other colours. Would you like to see the details for any of the available options?",
+HND-008,0,handoff,service,handoff,en,False,False,,True,,,,,,,My watch stopped working. I think it needs a new battery.,[],I understand. I can help you with service. Could you please tell me the product ID of your watch so I can check the service options?,
+REF-009,0,refusal,out_of_database,refuse,en,False,,,True,False,True,,,,,Do you have the Veyra Galaxy Pro?,"[{""name"": ""search_catalogue"", ""arguments"": {""query"": ""Veyra Galaxy Pro""}}]","I found a few watches that might be what you are looking for. Could you tell me if you are looking for a watch for a **man**, **woman**, or **kid**? Also, do you have a specific **style** or **colour** in mind?",
+HND-013,0,handoff,question_unanswered,handoff,en,False,False,,True,,,,,,,Can I pay with a foreign credit card?,[],"I am sorry, I cannot answer questions about payment methods. Please call a staff member for assistance with that.",
+HND-006,0,handoff,purchase,handoff,en,False,False,,True,,,,,,,Please bill 1067TM01 for me.,"[{""name"": ""get_product_details"", ""arguments"": {""product_id"": ""1067TM01""}}]","I see the details for the Veyra Monsoon Chrono Strike watch (ID: 1067TM01). The MRP is ₹41,595.
+
+Would you like to check its stock, see alternatives, or do something else?",
+TSL-021,0,tool_selection,search_filter,tool_use,en,False,False,,True,,,,False,,,Any watches with a mesh strap?,[],"What style of watch are you looking for, and do you have a budget in mind?",
+HIN-001,0,hinglish,search,tool_use,hinglish,False,False,,True,,,,True,,,"Papa ke liye formal watch chahiye, metal strap wali, 15000 tak.","[{""name"": ""search_catalogue"", ""arguments"": {""price_max"": 15000, ""style"": ""formal"", ""strap_material"": ""metal""}}]","Here are 5 formal watches with metal straps under ₹15,000 for men:
+
+1.  **Veyra Classique Atlas White Dial Silver Bracelet Watch** (ID: 1110SM01) - MRP: ₹12,795
+2.  **Veyra Classique Ivory Black Dial Gold-Tone Bracelet Watch** (ID: 1131SM02) - MRP: ₹5,695
+3.  **Veyra Classique Sable Blue Dial Rose Gold Bracelet Watch** (ID: 1153SM01) - MRP: ₹5,595
+4.  **Veyra Steel Smart Orion Black Dial Two-Tone Bracelet Watch** (ID: 1475SM01) - MRP: ₹1,895
+5.  **Veyra Steel Smart Atlas White Dial Silver Bracelet Watch** (ID: 1465SM02) - MRP: ₹1,199
+
+Which one would you like to know more about, or check its s",
+HIN-002,0,hinglish,search,tool_use,hinglish,False,False,,True,,,,False,,,Mujhe 3000 ke andar ladies watch dikhao.,[],"Sure! Aap kis tarah ki ladies watch dekhna chahti hain? Kya aapko koi khaas style, colour, ya movement chahiye?",
+HND-007,0,handoff,purchase,handoff,en,False,False,,True,,,,,,,I want to buy two of 1131SL01.,"[{""name"": ""check_inventory"", ""arguments"": {""product_id"": ""1131SL01""}}]","I see that the Veyra Classique (1131SL01) is in stock here! We have 1 on display and 5 in the backroom.
+
+Would you like me to help you with the purchase, or do you need any more details about this watch?",
+DSC-020,0,discovery,search,tool_use,en,False,True,,True,,,,False,,,"Women's watch with a small case, 32 mm or less.","[{""name"": ""search_catalogue"", ""arguments"": {""case_size_max_mm"": 32, ""gender"": ""women""}}]","I found 5 watches for women with a case size of 32mm or less. Which one interests you, or would you like to filter by a specific style, color, or price range?",
+CMP-006,0,comparison,grounded_diff,answer,en,False,,,,False,,,,,,What's the difference between these two?,[],Veyra Karigari Meher has an emerald green dial and a 29 mm square case. Veyra Shagun Utsav has a maroon dial and a 27 mm round case.,
+GQA-019,0,grounded_qa,contradiction,answer,en,False,,,,False,True,,,,,Does it come on a steel bracelet?,[],"Yes, it completes the look with a solid-link steel bracelet.",

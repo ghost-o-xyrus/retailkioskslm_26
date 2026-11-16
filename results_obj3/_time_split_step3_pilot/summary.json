@@ -1,0 +1,185 @@
+{
+ "o3s3p_2b_rag_s3": {
+  "run": "o3s3p_2b_rag_s3",
+  "model": "Qwen3.5-2B",
+  "backend": "vulkan",
+  "config": "O3-S3 pilot",
+  "retrieval": "always",
+  "eval": "eval\\rag_cases.jsonl",
+  "n_records": 35,
+  "n_cases": 35,
+  "repeats": 1,
+  "rounds_mean": 3.2857142857142856,
+  "rounds_dist": {
+   "2": 8,
+   "3": 9,
+   "4": 18
+  },
+  "share_multi_round": 1.0,
+  "tok_read_mean": 725.8285714285714,
+  "tok_read_message_mean": 502.14285714285717,
+  "tok_read_tools_mean": 223.68571428571428,
+  "tok_write_calls_mean": 115.71428571428571,
+  "tok_answer_mean": 69.2,
+  "context_tokens_real_mean": 455.9428571428571,
+  "context_real_over_estimate": 1.3656824989302525,
+  "tool_output_tokens_mean": 182.54285714285714,
+  "tool_output_tokens_per_call": 79.8625,
+  "tool_calls_mean": 2.2857142857142856,
+  "time_share": {
+   "retrieval": 0.03344759528938851,
+   "read_message": 0.13765344388973794,
+   "read_tool_outputs": 0.10652097608935536,
+   "write_calls": 0.44579938925476525,
+   "write_answer": 0.2681161668022835,
+   "other": 0.008462428674469388
+  },
+  "time_mean_ms": {
+   "retrieval": 641.1285714285714,
+   "read_message": 2638.562057142857,
+   "read_tool_outputs": 2041.8102000000001,
+   "write_calls": 8545.1502,
+   "write_answer": 5139.291285714286,
+   "other": 162.2091142857142
+  },
+  "v_read_tok_s": 155.07923975937223,
+  "v_write_tok_s": 13.512738967631588,
+  "fit_read": {
+   "overhead_ms": 480.72104861954506,
+   "tok_s": 234.07329424496655
+  },
+  "fit_write": {
+   "overhead_ms": -97.8871936391024,
+   "tok_s": 13.202438276678771
+  },
+  "formula_median_abs_err": 0.037917262381483796,
+  "formula_p90_abs_err": 0.15715732963620657,
+  "first_word_p50_ms": 13200.7,
+  "first_word_p50_ci": [
+   11321.1,
+   15431.4
+  ],
+  "first_word_p90_ms": 21163.32,
+  "reply_p50_ms": 17345.3,
+  "reply_p50_ci": [
+   14103.3,
+   23281.7
+  ],
+  "reply_p90_ms": 30759.880000000005,
+  "forced_final_requests": 18,
+  "forced_final_read_mean": 87.44444444444444,
+  "other_tool_round_read_mean": 100.88709677419355,
+  "cache_miss_share": 0.0,
+  "waste": {
+   "dup_calls": 15,
+   "staff_calls_over_1": 14,
+   "deduped_fetches": 15,
+   "tool_errors": 0,
+   "max_rounds": 0,
+   "empty_replies": 0,
+   "guard_notes": 15,
+   "n_calls": 80
+  },
+  "repeats_check": null,
+  "by_category": {
+   "rag/collection": {
+    "n": 2,
+    "rounds": 2,
+    "tok_read": 924,
+    "first_p50_ms": 12203.95
+   },
+   "rag/faq": {
+    "n": 4,
+    "rounds": 2.25,
+    "tok_read": 292.25,
+    "first_p50_ms": 6965.9
+   },
+   "rag/glossary": {
+    "n": 3,
+    "rounds": 4,
+    "tok_read": 469.6666666666667,
+    "first_p50_ms": 14764.6
+   },
+   "rag/hinglish_spec": {
+    "n": 2,
+    "rounds": 3,
+    "tok_read": 788.5,
+    "first_p50_ms": 11041.45
+   },
+   "rag/hinglish_text": {
+    "n": 1,
+    "rounds": 3,
+    "tok_read": 772,
+    "first_p50_ms": 9609.3
+   },
+   "rag/missing_attribute": {
+    "n": 1,
+    "rounds": 3,
+    "tok_read": 1049,
+    "first_p50_ms": 10331.5
+   },
+   "rag/missing_policy": {
+    "n": 1,
+    "rounds": 4,
+    "tok_read": 646,
+    "first_p50_ms": 15200.5
+   },
+   "rag/nonexistent_product": {
+    "n": 2,
+    "rounds": 4,
+    "tok_read": 945,
+    "first_p50_ms": 14364.5
+   },
+   "rag/offer": {
+    "n": 2,
+    "rounds": 3,
+    "tok_read": 328,
+    "first_p50_ms": 12679.5
+   },
+   "rag/policy": {
+    "n": 2,
+    "rounds": 3.5,
+    "tok_read": 664.5,
+    "first_p50_ms": 13558.099999999999
+   },
+   "rag/product_description": {
+    "n": 8,
+    "rounds": 3.75,
+    "tok_read": 959.875,
+    "first_p50_ms": 21149.75
+   },
+   "rag/product_name": {
+    "n": 3,
+    "rounds": 3.3333333333333335,
+    "tok_read": 858.3333333333334,
+    "first_p50_ms": 11321.1
+   },
+   "rag/product_sku": {
+    "n": 1,
+    "rounds": 4,
+    "tok_read": 847,
+    "first_p50_ms": 14038.5
+   },
+   "rag/product_spec": {
+    "n": 1,
+    "rounds": 3,
+    "tok_read": 855,
+    "first_p50_ms": 10960.2
+   },
+   "rag/store": {
+    "n": 1,
+    "rounds": 4,
+    "tok_read": 296,
+    "first_p50_ms": 18503.9
+   },
+   "rag/typo_spec": {
+    "n": 1,
+    "rounds": 2,
+    "tok_read": 807,
+    "first_p50_ms": 7985.9
+   }
+  },
+  "run_peak_rss_mb": 2890.4,
+  "harness_rss_mb_max": 900
+ }
+}

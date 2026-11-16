@@ -1,0 +1,129 @@
+[12:39:17] project unpacked to /tmp/proj (bundle 20261029-180825)
+[12:39:17] $ /usr/bin/python3 -m pip install -q "sentence-transformers==5.7.0" "openvino==2026.4.1" "optimum-intel==2.2.0" "psutil==7.2.2"
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+gradio 6.26.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.
+diffusers 0.40.0 requires huggingface-hub<2.0,>=1.23.0, but you have huggingface-hub 1.21.0 which is incompatible.
+[12:39:47] $ "/usr/bin/python3" retrieval/build_rerank_train.py
+4302 generated, 3938 kept; first stage for hard negatives ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2023.95it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-small-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  500/3938
+  1000/3938
+  1500/3938
+  2000/3938
+  2500/3938
+  3000/3938
+  3500/3938
+# Step 9a: re-ranker training data (generated from the corpus)
+
+Generated 4302 questions; kept 3938 (3550 train, 388 gen-val held out by source chunk). Dropped: close to an eval question 342, duplicate 22.
+
+Languages: en 3107, hinglish 831.
+Templates: collection 197, faq 181, glossary 67, offer 18, policy 33, product 3091, product_description 145, product_typo 192, store 14.
+Positive in the first stage's top 20: 3924/3938 = 99.6% (the re-ranker can only help when it is there).
+
+Leakage control: eval files read only to drop generated questions with the same normalised text or word overlap >= 0.6 with any eval question (dev and test): knowledge/retrieval_eval.jsonl, eval/rag_cases.jsonl, eval/eval_set.jsonl, eval/eval_set_v1.1.jsonl, eval/eval_set_v1.2.jsonl, eval/o3_dialogues.jsonl.
+[12:44:29] $ "/usr/bin/python3" retrieval/finetune_reranker.py
+3550 training questions -> 17737 pairs, 1109 steps; 388 gen-val questions
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 105/105 [00:00<00:00, 2179.73it/s]
+[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
+Key                          | Status     |  | 
+-----------------------------+------------+--+-
+bert.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+gen-val before: 96.9%
+  step 50/1109  loss 0.246  3.6 min, about 76 min left
+  step 100/1109  loss 0.228  7.2 min, about 72 min left
+  step 150/1109  loss 0.211  10.8 min, about 69 min left
+  step 200/1109  loss 0.146  14.5 min, about 66 min left
+  step 250/1109  loss 0.124  18.1 min, about 62 min left
+  step 300/1109  loss 0.093  21.7 min, about 58 min left
+  step 350/1109  loss 0.095  25.2 min, about 55 min left
+  step 400/1109  loss 0.061  28.7 min, about 51 min left
+  step 450/1109  loss 0.069  32.3 min, about 47 min left
+  step 500/1109  loss 0.074  35.8 min, about 44 min left
+  step 550/1109  loss 0.079  39.3 min, about 40 min left
+  step 600/1109  loss 0.052  42.8 min, about 36 min left
+  step 650/1109  loss 0.069  46.5 min, about 33 min left
+  step 700/1109  loss 0.074  50.0 min, about 29 min left
+  step 750/1109  loss 0.062  53.6 min, about 26 min left
+  step 800/1109  loss 0.061  57.1 min, about 22 min left
+  step 850/1109  loss 0.069  60.6 min, about 18 min left
+  step 900/1109  loss 0.073  64.1 min, about 15 min left
+  step 950/1109  loss 0.099  67.6 min, about 11 min left
+  step 1000/1109  loss 0.081  71.3 min, about 8 min left
+  step 1050/1109  loss 0.090  74.9 min, about 4 min left
+  step 1100/1109  loss 0.072  78.5 min, about 1 min left
+  step 1109/1109  loss 0.075  79.1 min, about 0 min left
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 21.15it/s]
+
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 105/105 [00:00<00:00, 2247.15it/s]
+{
+ "base": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+ "hyperparameters": {
+  "epochs": 1,
+  "batch_size": 16,
+  "lr": 2e-05,
+  "weight_decay": 0.01,
+  "warmup": 0.1,
+  "clip": 1.0,
+  "max_length": 256,
+  "seed": 13
+ },
+ "n_train_questions": 3550,
+ "n_pairs": 17737,
+ "steps": 1109,
+ "minutes": 81.1,
+ "genval_before": 0.9690721649484536,
+ "genval_after": 0.9896907216494846,
+ "raw_score_check": {
+  "logit": 11.003514289855957,
+  "predict": 0.9999833106994629,
+  "same_scale": false
+ },
+ "output": "models/reranker-veyra-minilm"
+}
+WARNING: predict() does not return the raw score; send train_meta.json before going on.
+[14:07:51] $ "/usr/bin/python3" retrieval/bench_reranker.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2357.93it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-small-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Multiple distributions found for package optimum. Picked distribution: optimum
+WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work
+optimum.exporters.tasks.get_diffusers_tasks_to_model_mapping method failed to import diffusers with the error below.Please make sure you have diffusers installed and compatible with your transformers version.
+
+Failed to import diffusers.pipelines.anyflow.pipeline_anyflow_far because of the following error (look up to see its traceback):
+cannot import name 'get_cached_repo_tree' from 'huggingface_hub' (/usr/local/lib/python3.13/dist-packages/huggingface_hub/__init__.py)
+minilm: SKIPPED (RuntimeError: Failed to import diffusers.pipelines.pipeline_utils because of the following error (look up to see its traceback):
+cannot import name 'get_cached_repo_tree' from 'huggingface_hub' (/usr/local/lib/pyth)
+minilm-veyra: SKIPPED (RuntimeError: Failed to import diffusers.pipelines.pipeline_utils because of the following error (look up to see its traceback):
+cannot import name 'get_cached_repo_tree' from 'huggingface_hub' (/usr/local/lib/pyth)
+mminilm-l12: SKIPPED (RuntimeError: Failed to import diffusers.pipelines.pipeline_utils because of the following error (look up to see its traceback):
+cannot import name 'get_cached_repo_tree' from 'huggingface_hub' (/usr/local/lib/pyth)
+The baseline could not be run; nothing decided.
+[14:10:07] done: ok=False, 8 files packed, 91.0 min

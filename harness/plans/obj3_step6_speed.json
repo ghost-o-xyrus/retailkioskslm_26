@@ -1,0 +1,126 @@
+{
+  "name": "obj3_step6_speed",
+  "description": "Objective 3, Step 6. Tier A in-place timing of the 40 dev dialogues: Qwen3.5-2B Q8_0 on CPU, 4 threads, for O3-S5h, O3-S6 and O3-S6m. Close other apps. About 1 hour.",
+  "runs": [
+    {
+      "name": "o3s6dsp_a_2b_s5h",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "cpu",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "repeats": 1,
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S5h dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl"
+    },
+    {
+      "name": "o3s6dsp_a_2b_s6",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "cpu",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "repeats": 1,
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S6 dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl",
+      "discovery": "template"
+    },
+    {
+      "name": "o3s6dsp_a_2b_s6m",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "cpu",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "split": "dev",
+      "repeats": 1,
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S6m dialogues",
+      "loop_guard": true,
+      "tool_view": "compact",
+      "harness_tools": true,
+      "dialogues": "eval/o3_dialogues.jsonl",
+      "discovery": "model"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "temperature": 0
+  }
+}

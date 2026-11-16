@@ -1,0 +1,359 @@
+[05:36:22] project unpacked to /tmp/proj (bundle 20261105-110428)
+[05:36:22]   input models/ov/bge-small: present
+[05:36:22]   input models/ov/minilm: present
+[05:36:22]   input results_obj3/_speed_step12/choice.json: present
+[05:36:22]   input results_obj3/_speed_step12/fallback.json: present
+[05:36:22]   input results_obj3/o3l_r6_2b_dlg: MISSING
+[05:36:22]   input results_obj3/o3l_r6_2b_fup: MISSING
+[05:36:22]   input results_obj3/o3l_r6_2b_v12: present
+[05:36:22]   input results_retrieval/fallback_bypass/fallback.json: present
+[05:36:22]   input results_retrieval/integration/integration.json: present
+[05:36:22] $ /usr/bin/python3 -m pip uninstall -y -q diffusers
+[05:36:25] $ /usr/bin/python3 -m pip install -q "sentence-transformers==5.7.0" "openvino==2026.4.1" "optimum-intel==2.2.0" "psutil==7.2.2"
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+gradio 6.30.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.
+[05:36:52] llama-server: /tmp/proj/kaggle/_llama_build/b11696-avx2/llama-server (fixed build b11696-avx2, made by an earlier job)
+[05:36:52] $ "/usr/bin/python3" harness/run_plan.py harness/plans/obj3_step15/o3l_03_r6_2b_rest.json --only-backend cpu --server-exe /tmp/proj/kaggle/_llama_build/b11696-avx2/llama-server --models-root /kaggle/input
+
+== o3l_r6_2b_v12
+   server: /tmp/proj/kaggle/_llama_build/b11696-avx2/llama-server -m /kaggle/input/datasets/ananydevchoudhary/slm-kiosk-models/Qwen3.5-2B-Q8_0.gguf --host 127.0.0.1 --port 8080 --jinja -c 8192 -np 1 -ngl 0 -t 4 --reasoning-budget 0
+   cases: 192 x 1
+Knowledge base ready in 126.8 s (k=3, threshold -3.457, Hinglish bypass True, +686 MB)
+Router ready in 1.2 s (86 prototypes)
+Warm-up request: 58.4 s (not logged)
+o3l_r6_2b_v12: 192 cases x 1 repeats, 0 already done, 192 to run
+[1/192] N-CMP-001 r0 1 calls, 25.4s | eta 81 min
+[2/192] N-CMP-002 r0 1 calls, 22.4s | eta 76 min
+[3/192] N-CMP-003 r0 1 calls, 14.8s | eta 66 min
+[4/192] N-CMP-004 r0 1 calls, 14.5s | eta 60 min
+[5/192] N-CMP-005 r0 1 calls, 16.1s | eta 58 min
+[6/192] N-CMP-006 r0 1 calls, 14.1s | eta 55 min
+[7/192] N-CMP-007 r0 1 calls, 17.5s | eta 55 min
+[8/192] N-TSL-001 r0 1 calls, 16.4s | eta 54 min
+[9/192] N-TSL-002 r0 1 calls, 18.0s | eta 54 min
+[10/192] N-TSL-003 r0 1 calls, 19.1s | eta 54 min
+[11/192] N-TSL-004 r0 1 calls, 18.1s | eta 54 min
+[12/192] N-TSL-005 r0 1 calls, 18.5s | eta 54 min
+[13/192] N-TSL-006 r0 1 calls, 12.2s | eta 52 min
+[14/192] N-TSL-007 r0 1 calls, 9.9s | eta 50 min
+[15/192] N-TSL-008 r0 1 calls, 10.9s | eta 49 min
+[16/192] N-TSL-009 r0 1 calls, 13.1s | eta 48 min
+[17/192] N-TSL-010 r0 1 calls, 11.6s | eta 47 min
+[18/192] N-TSL-011 r0 1 calls, 12.4s | eta 46 min
+[19/192] N-TSL-012 r0 1 calls, 11.1s | eta 45 min
+[20/192] N-TSL-013 r0 1 calls, 11.0s | eta 44 min
+[21/192] N-TSL-014 r0 1 calls, 10.8s | eta 43 min
+[22/192] N-TSL-015 r0 3 calls, 46.0s | eta 47 min
+[23/192] N-TSL-016 r0 1 calls, 8.4s | eta 46 min
+[24/192] N-TSL-017 r0 1 calls, 19.9s | eta 46 min
+[25/192] N-TSL-018 r0 1 calls, 19.7s | eta 46 min
+[26/192] N-TSL-019 r0 1 calls, 20.4s | eta 46 min
+[27/192] N-TSL-020 r0 1 calls, 22.6s | eta 46 min
+[28/192] N-TSL-021 r0 1 calls, 22.6s | eta 47 min
+[29/192] N-TSL-022 r0 1 calls, 22.5s | eta 47 min
+[30/192] N-TSL-023 r0 3 calls, 115.7s | eta 55 min
+[31/192] N-TSL-024 r0 1 calls, 17.5s | eta 55 min
+[32/192] N-REF-001 r0 3 calls, 36.9s | eta 56 min
+[33/192] N-REF-002 r0 0 calls, 12.5s | eta 55 min
+[34/192] N-REF-003 r0 2 calls, 50.8s | eta 57 min
+[35/192] N-REF-004 r0 1 calls, 28.5s | eta 57 min
+[36/192] N-REF-005 r0 1 calls, 22.9s | eta 57 min
+[37/192] N-HND-001 r0 1 calls, 9.1s | eta 55 min
+[38/192] N-HND-002 r0 1 calls, 10.4s | eta 54 min
+[39/192] N-HND-003 r0 1 calls, 16.5s | eta 54 min
+[40/192] N-HND-004 r0 1 calls, 9.3s | eta 53 min
+[41/192] N-HND-005 r0 1 calls, 8.5s | eta 51 min
+[42/192] N-HND-006 r0 1 calls, 8.9s | eta 50 min
+[43/192] N-HIN-001 r0 1 calls, 12.3s | eta 50 min
+[44/192] N-HIN-002 r0 1 calls, 28.0s | eta 50 min
+[45/192] N-HIN-003 r0 1 calls, 24.4s | eta 50 min
+[46/192] N-HIN-004 r0 1 calls, 25.9s | eta 50 min
+[47/192] N-CMP-008 r0 1 calls, 23.4s | eta 49 min
+[48/192] N-CMP-009 r0 1 calls, 18.3s | eta 49 min
+[49/192] N-CMP-010 r0 1 calls, 19.1s | eta 49 min
+[50/192] N-CMP-011 r0 1 calls, 15.1s | eta 48 min
+[51/192] N-CMP-012 r0 1 calls, 23.3s | eta 48 min
+[52/192] N-CMP-013 r0 1 calls, 13.4s | eta 47 min
+[53/192] N-TSL-025 r0 1 calls, 18.3s | eta 47 min
+[54/192] N-TSL-026 r0 1 calls, 16.0s | eta 46 min
+[55/192] N-TSL-027 r0 1 calls, 16.3s | eta 46 min
+[56/192] N-TSL-028 r0 1 calls, 19.4s | eta 45 min
+[57/192] N-TSL-029 r0 1 calls, 18.7s | eta 45 min
+[58/192] N-TSL-030 r0 1 calls, 19.7s | eta 45 min
+[59/192] N-TSL-031 r0 1 calls, 20.6s | eta 44 min
+[60/192] N-TSL-032 r0 1 calls, 16.0s | eta 44 min
+[61/192] N-TSL-033 r0 1 calls, 18.6s | eta 43 min
+[62/192] N-TSL-034 r0 1 calls, 18.2s | eta 43 min
+[63/192] N-TSL-035 r0 1 calls, 12.6s | eta 43 min
+[64/192] N-TSL-036 r0 1 calls, 9.0s | eta 42 min
+[65/192] N-TSL-037 r0 1 calls, 8.1s | eta 41 min
+[66/192] N-TSL-038 r0 1 calls, 11.3s | eta 41 min
+[67/192] N-TSL-039 r0 1 calls, 14.0s | eta 40 min
+[68/192] N-TSL-040 r0 1 calls, 11.0s | eta 39 min
+[69/192] N-TSL-041 r0 1 calls, 11.2s | eta 39 min
+[70/192] N-TSL-042 r0 1 calls, 9.0s | eta 38 min
+[71/192] N-TSL-043 r0 1 calls, 11.6s | eta 38 min
+[72/192] N-TSL-044 r0 1 calls, 12.7s | eta 37 min
+[73/192] N-TSL-045 r0 1 calls, 8.1s | eta 37 min
+[74/192] N-TSL-046 r0 1 calls, 11.8s | eta 36 min
+[75/192] N-TSL-047 r0 1 calls, 11.1s | eta 36 min
+[76/192] N-TSL-048 r0 1 calls, 12.2s | eta 35 min
+[77/192] N-TSL-049 r0 1 calls, 11.4s | eta 35 min
+[78/192] N-TSL-050 r0 1 calls, 8.2s | eta 34 min
+[79/192] N-TSL-051 r0 1 calls, 13.3s | eta 34 min
+[80/192] N-TSL-052 r0 1 calls, 11.6s | eta 33 min
+[81/192] N-TSL-053 r0 1 calls, 9.6s | eta 33 min
+[82/192] N-TSL-054 r0 1 calls, 9.6s | eta 32 min
+[83/192] N-TSL-055 r0 1 calls, 8.3s | eta 32 min
+[84/192] N-TSL-056 r0 2 calls, 36.9s | eta 32 min
+[85/192] N-TSL-057 r0 1 calls, 19.7s | eta 32 min
+[86/192] N-TSL-058 r0 1 calls, 21.7s | eta 32 min
+[87/192] N-TSL-059 r0 1 calls, 20.2s | eta 31 min
+[88/192] N-TSL-060 r0 1 calls, 22.5s | eta 31 min
+[89/192] N-TSL-061 r0 1 calls, 20.3s | eta 31 min
+[90/192] N-TSL-062 r0 1 calls, 20.7s | eta 31 min
+[91/192] N-TSL-063 r0 1 calls, 22.4s | eta 30 min
+[92/192] N-TSL-064 r0 1 calls, 22.6s | eta 30 min
+[93/192] N-TSL-065 r0 1 calls, 22.5s | eta 30 min
+[94/192] N-TSL-066 r0 1 calls, 22.7s | eta 30 min
+[95/192] N-TSL-067 r0 1 calls, 23.5s | eta 30 min
+[96/192] N-TSL-068 r0 1 calls, 23.7s | eta 29 min
+[97/192] N-TSL-069 r0 3 calls, 107.5s | eta 30 min
+[98/192] N-TSL-070 r0 3 calls, 35.4s | eta 30 min
+[99/192] N-TSL-071 r0 3 calls, 37.6s | eta 30 min
+[100/192] N-TSL-072 r0 1 calls, 19.2s | eta 30 min
+[101/192] N-TSL-073 r0 3 calls, 34.2s | eta 30 min
+[102/192] N-REF-006 r0 0 calls, 2.0s | eta 29 min
+[103/192] N-REF-007 r0 1 calls, 17.7s | eta 29 min
+[104/192] N-REF-008 r0 3 calls, 37.1s | eta 29 min
+[105/192] N-REF-009 r0 3 calls, 40.9s | eta 29 min
+[106/192] N-HND-007 r0 1 calls, 11.5s | eta 28 min
+[107/192] N-HND-008 r0 1 calls, 14.1s | eta 28 min
+[108/192] N-HND-009 r0 1 calls, 16.5s | eta 28 min
+[109/192] N-HND-010 r0 1 calls, 15.0s | eta 27 min
+[110/192] N-HND-011 r0 1 calls, 8.1s | eta 27 min
+[111/192] N-HND-012 r0 1 calls, 8.0s | eta 26 min
+[112/192] N-HND-013 r0 1 calls, 8.5s | eta 26 min
+[113/192] N-HND-014 r0 1 calls, 7.9s | eta 25 min
+[114/192] N-HIN-005 r0 1 calls, 23.7s | eta 25 min
+[115/192] N-HIN-006 r0 1 calls, 23.0s | eta 25 min
+[116/192] N-HIN-007 r0 1 calls, 9.1s | eta 24 min
+[117/192] N-HIN-008 r0 1 calls, 12.9s | eta 24 min
+[118/192] DSC-002 r0 0 calls, 0.0s | eta 23 min
+[119/192] DSC-004 r0 0 calls, 0.0s | eta 23 min
+[120/192] DSC-006 r0 0 calls, 0.0s | eta 22 min
+[121/192] DSC-008 r0 0 calls, 0.0s | eta 22 min
+[122/192] DSC-010 r0 0 calls, 0.0s | eta 21 min
+[123/192] DSC-011 r0 0 calls, 0.0s | eta 21 min
+[124/192] DSC-012 r0 0 calls, 0.0s | eta 21 min
+[125/192] DSC-013 r0 1 calls, 23.4s | eta 20 min
+[126/192] DSC-015 r0 1 calls, 22.7s | eta 20 min
+[127/192] DSC-016 r0 1 calls, 53.1s | eta 20 min
+[128/192] DSC-017 r0 1 calls, 17.2s | eta 20 min
+[129/192] DSC-018 r0 1 calls, 23.7s | eta 19 min
+[130/192] DSC-019 r0 1 calls, 22.6s | eta 19 min
+[131/192] DSC-020 r0 1 calls, 22.4s | eta 19 min
+[132/192] DSC-022 r0 1 calls, 24.5s | eta 19 min
+[133/192] DSC-024 r0 1 calls, 12.9s | eta 18 min
+[134/192] DSC-025 r0 1 calls, 23.8s | eta 18 min
+[135/192] HIN-001 r0 1 calls, 23.4s | eta 18 min
+[136/192] HIN-002 r0 0 calls, 0.0s | eta 17 min
+[137/192] HIN-003 r0 1 calls, 20.8s | eta 17 min
+[138/192] HIN-004 r0 1 calls, 21.6s | eta 17 min
+[139/192] HIN-007 r0 1 calls, 9.9s | eta 16 min
+[140/192] HIN-008 r0 1 calls, 22.9s | eta 16 min
+[141/192] HIN-009 r0 1 calls, 21.0s | eta 16 min
+[142/192] HIN-010 r0 1 calls, 16.1s | eta 15 min
+[143/192] HIN-011 r0 1 calls, 24.5s | eta 15 min
+[144/192] DSC-026 r0 0 calls, 0.0s | eta 15 min
+[145/192] DSC-027 r0 0 calls, 0.0s | eta 14 min
+[146/192] DSC-028 r0 0 calls, 0.0s | eta 14 min
+[147/192] DSC-031 r0 0 calls, 0.0s | eta 14 min
+[148/192] DSC-032 r0 0 calls, 0.0s | eta 13 min
+[149/192] DSC-033 r0 0 calls, 0.0s | eta 13 min
+[150/192] DSC-034 r0 0 calls, 0.0s | eta 12 min
+[151/192] DSC-035 r0 0 calls, 0.0s | eta 12 min
+[152/192] DSC-036 r0 0 calls, 0.0s | eta 12 min
+[153/192] DSC-037 r0 0 calls, 0.0s | eta 11 min
+[154/192] DSC-038 r0 1 calls, 23.8s | eta 11 min
+[155/192] DSC-039 r0 1 calls, 20.5s | eta 11 min
+[156/192] DSC-040 r0 1 calls, 24.4s | eta 10 min
+[157/192] DSC-041 r0 1 calls, 13.0s | eta 10 min
+[158/192] DSC-044 r0 1 calls, 24.0s | eta 10 min
+[159/192] DSC-045 r0 1 calls, 23.4s | eta 10 min
+[160/192] DSC-046 r0 1 calls, 23.5s | eta 9 min
+[161/192] DSC-049 r0 3 calls, 68.5s | eta 9 min
+[162/192] DSC-050 r0 1 calls, 19.3s | eta 9 min
+[163/192] DSC-051 r0 1 calls, 56.2s | eta 9 min
+[164/192] DSC-052 r0 1 calls, 22.9s | eta 8 min
+[165/192] DSC-055 r0 1 calls, 22.0s | eta 8 min
+[166/192] DSC-056 r0 1 calls, 21.8s | eta 8 min
+[167/192] DSC-057 r0 1 calls, 21.3s | eta 8 min
+[168/192] DSC-058 r0 1 calls, 11.4s | eta 7 min
+[169/192] DSC-059 r0 1 calls, 23.7s | eta 7 min
+[170/192] DSC-060 r0 1 calls, 23.6s | eta 7 min
+[171/192] DSC-061 r0 1 calls, 18.9s | eta 6 min
+[172/192] DSC-062 r0 1 calls, 23.9s | eta 6 min
+[173/192] DSC-063 r0 1 calls, 24.3s | eta 6 min
+[174/192] HIN-016 r0 0 calls, 0.0s | eta 5 min
+[175/192] HIN-017 r0 0 calls, 0.0s | eta 5 min
+[176/192] HIN-018 r0 0 calls, 0.0s | eta 5 min
+[177/192] HIN-020 r0 0 calls, 0.0s | eta 4 min
+[178/192] HIN-021 r0 0 calls, 0.0s | eta 4 min
+[179/192] HIN-022 r0 0 calls, 0.0s | eta 4 min
+[180/192] HIN-023 r0 0 calls, 0.0s | eta 4 min
+[181/192] HIN-024 r0 0 calls, 0.0s | eta 3 min
+[182/192] HIN-025 r0 0 calls, 0.0s | eta 3 min
+[183/192] HIN-027 r0 0 calls, 12.4s | eta 3 min
+[184/192] HIN-029 r0 1 calls, 23.1s | eta 2 min
+[185/192] HIN-030 r0 1 calls, 23.0s | eta 2 min
+[186/192] HIN-031 r0 1 calls, 47.3s | eta 2 min
+[187/192] HIN-032 r0 1 calls, 18.7s | eta 1 min
+[188/192] HIN-033 r0 1 calls, 21.2s | eta 1 min
+[189/192] HIN-036 r0 1 calls, 17.8s | eta 1 min
+[190/192] HIN-038 r0 1 calls, 24.3s | eta 1 min
+[191/192] HIN-039 r0 1 calls, 8.2s | eta 0 min
+[192/192] HIN-040 r0 1 calls, 12.9s | eta 0 min
+Done: /tmp/proj/results_obj3/o3l_r6_2b_v12/cases.jsonl  (errors: 0, peak server RAM: 2930.8 MB)
+
+== o3l_r6_2b_fup
+   server: /tmp/proj/kaggle/_llama_build/b11696-avx2/llama-server -m /kaggle/input/datasets/ananydevchoudhary/slm-kiosk-models/Qwen3.5-2B-Q8_0.gguf --host 127.0.0.1 --port 8080 --jinja -c 8192 -np 1 -ngl 0 -t 4 --reasoning-budget 0
+   cases: 60 x 1
+Knowledge base ready in 0.0 s (k=3, threshold -3.457, Hinglish bypass True, +None MB)
+Warm-up request: 58.3 s (not logged)
+o3l_r6_2b_fup: 60 cases x 1 repeats, 0 already done, 60 to run
+[1/60] FUP-T001 r0 1 calls, 31.7s | eta 31 min
+[2/60] FUP-T002 r0 0 calls, 19.1s | eta 25 min
+[3/60] FUP-T003 r0 0 calls, 23.9s | eta 24 min
+[4/60] FUP-T004 r0 0 calls, 18.3s | eta 22 min
+[5/60] FUP-T005 r0 0 calls, 22.5s | eta 21 min
+[6/60] FUP-T006 r0 0 calls, 18.4s | eta 20 min
+[7/60] FUP-T007 r0 0 calls, 20.4s | eta 19 min
+[8/60] FUP-T008 r0 0 calls, 18.7s | eta 19 min
+[9/60] FUP-T009 r0 2 calls, 31.0s | eta 19 min
+[10/60] FUP-T010 r0 0 calls, 18.7s | eta 19 min
+[11/60] FUP-T011 r0 0 calls, 21.7s | eta 18 min
+[12/60] FUP-T012 r0 0 calls, 15.1s | eta 17 min
+[13/60] FUP-T013 r0 0 calls, 17.9s | eta 17 min
+[14/60] FUP-T014 r0 0 calls, 22.5s | eta 16 min
+[15/60] FUP-T015 r0 0 calls, 19.6s | eta 16 min
+[16/60] FUP-T016 r0 0 calls, 19.3s | eta 16 min
+[17/60] FUP-T017 r0 2 calls, 32.9s | eta 16 min
+[18/60] FUP-T018 r0 0 calls, 17.3s | eta 15 min
+[19/60] FUP-T019 r0 0 calls, 26.0s | eta 15 min
+[20/60] FUP-T020 r0 0 calls, 24.9s | eta 15 min
+[21/60] FUP-T021 r0 0 calls, 19.3s | eta 14 min
+[22/60] FUP-T022 r0 0 calls, 17.6s | eta 14 min
+[23/60] FUP-T023 r0 0 calls, 18.8s | eta 13 min
+[24/60] FUP-T024 r0 0 calls, 19.0s | eta 13 min
+[25/60] FUP-T025 r0 0 calls, 21.2s | eta 13 min
+[26/60] FUP-T026 r0 1 calls, 35.6s | eta 12 min
+[27/60] FUP-T027 r0 0 calls, 15.5s | eta 12 min
+[28/60] FUP-T028 r0 0 calls, 21.8s | eta 12 min
+[29/60] FUP-T029 r0 0 calls, 18.7s | eta 11 min
+[30/60] FUP-T030 r0 0 calls, 20.3s | eta 11 min
+[31/60] FUP-T031 r0 1 calls, 10.7s | eta 10 min
+[32/60] FUP-T032 r0 1 calls, 10.3s | eta 10 min
+[33/60] FUP-T033 r0 1 calls, 17.5s | eta 9 min
+[34/60] FUP-T034 r0 1 calls, 10.2s | eta 9 min
+[35/60] FUP-T035 r0 1 calls, 14.5s | eta 8 min
+[36/60] FUP-T036 r0 1 calls, 15.9s | eta 8 min
+[37/60] FUP-T037 r0 1 calls, 10.1s | eta 8 min
+[38/60] FUP-T038 r0 1 calls, 12.7s | eta 7 min
+[39/60] FUP-T039 r0 1 calls, 11.2s | eta 7 min
+[40/60] FUP-T040 r0 1 calls, 10.6s | eta 6 min
+[41/60] FUP-T041 r0 1 calls, 14.0s | eta 6 min
+[42/60] FUP-T042 r0 1 calls, 11.5s | eta 6 min
+[43/60] FUP-T043 r0 1 calls, 15.1s | eta 5 min
+[44/60] FUP-T044 r0 1 calls, 14.1s | eta 5 min
+[45/60] FUP-T045 r0 1 calls, 15.7s | eta 5 min
+[46/60] FUP-T046 r0 1 calls, 10.6s | eta 4 min
+[47/60] FUP-T047 r0 1 calls, 14.3s | eta 4 min
+[48/60] FUP-T048 r0 1 calls, 16.4s | eta 4 min
+[49/60] FUP-T049 r0 1 calls, 15.8s | eta 3 min
+[50/60] FUP-T050 r0 1 calls, 10.8s | eta 3 min
+[51/60] FUP-T051 r0 0 calls, 21.1s | eta 3 min
+[52/60] FUP-T052 r0 0 calls, 20.6s | eta 2 min
+[53/60] FUP-T053 r0 2 calls, 40.4s | eta 2 min
+[54/60] FUP-T054 r0 3 calls, 54.9s | eta 2 min
+[55/60] FUP-T055 r0 0 calls, 13.5s | eta 2 min
+[56/60] FUP-T056 r0 0 calls, 11.2s | eta 1 min
+[57/60] FUP-T057 r0 0 calls, 13.4s | eta 1 min
+[58/60] FUP-T058 r0 3 calls, 46.8s | eta 1 min
+[59/60] FUP-T059 r0 3 calls, 49.4s | eta 0 min
+[60/60] FUP-T060 r0 0 calls, 11.1s | eta 0 min
+Done: /tmp/proj/results_obj3/o3l_r6_2b_fup/cases.jsonl  (errors: 0, peak server RAM: 2399.9 MB)
+
+== o3l_r6_2b_dlg
+   server: /tmp/proj/kaggle/_llama_build/b11696-avx2/llama-server -m /kaggle/input/datasets/ananydevchoudhary/slm-kiosk-models/Qwen3.5-2B-Q8_0.gguf --host 127.0.0.1 --port 8080 --jinja -c 8192 -np 1 -ngl 0 -t 4 --reasoning-budget 0
+   cases: 60 x 1
+Knowledge base ready in 0.0 s (k=3, threshold -3.457, Hinglish bypass True, +None MB)
+Warm-up request: 58.3 s (not logged)
+o3l_r6_2b_dlg: 60 cases x 1 repeats, 0 already done, 60 to run
+[1/60] DLG-T001 r0 1 calls, 20.8s | eta 20 min
+[2/60] DLG-T002 r0 1 calls, 23.8s | eta 22 min
+[3/60] DLG-T003 r0 1 calls, 22.9s | eta 21 min
+[4/60] DLG-T004 r0 1 calls, 24.1s | eta 21 min
+[5/60] DLG-T005 r0 1 calls, 22.4s | eta 21 min
+[6/60] DLG-T006 r0 1 calls, 22.0s | eta 20 min
+[7/60] DLG-T007 r0 1 calls, 22.4s | eta 20 min
+[8/60] DLG-T008 r0 1 calls, 23.9s | eta 20 min
+[9/60] DLG-T009 r0 1 calls, 18.7s | eta 19 min
+[10/60] DLG-T010 r0 1 calls, 24.9s | eta 19 min
+[11/60] DLG-T011 r0 1 calls, 24.6s | eta 19 min
+[12/60] DLG-T012 r0 1 calls, 25.6s | eta 18 min
+[13/60] DLG-T013 r0 1 calls, 24.3s | eta 18 min
+[14/60] DLG-T014 r0 1 calls, 23.4s | eta 18 min
+[15/60] DLG-T015 r0 1 calls, 26.5s | eta 18 min
+[16/60] DLG-T016 r0 1 calls, 23.2s | eta 17 min
+[17/60] DLG-T017 r0 1 calls, 28.3s | eta 17 min
+[18/60] DLG-T018 r0 1 calls, 28.2s | eta 17 min
+[19/60] DLG-T019 r0 1 calls, 26.6s | eta 16 min
+[20/60] DLG-T020 r0 1 calls, 27.7s | eta 16 min
+[21/60] DLG-T021 r0 1 calls, 28.0s | eta 16 min
+[22/60] DLG-T022 r0 1 calls, 28.1s | eta 16 min
+[23/60] DLG-T023 r0 1 calls, 13.9s | eta 15 min
+[24/60] DLG-T024 r0 1 calls, 26.2s | eta 15 min
+[25/60] DLG-T025 r0 1 calls, 26.1s | eta 14 min
+[26/60] DLG-T026 r0 1 calls, 25.7s | eta 14 min
+[27/60] DLG-T027 r0 1 calls, 24.8s | eta 13 min
+[28/60] DLG-T028 r0 1 calls, 26.2s | eta 13 min
+[29/60] DLG-T029 r0 1 calls, 24.1s | eta 13 min
+[30/60] DLG-T030 r0 1 calls, 24.7s | eta 12 min
+[31/60] DLG-T031 r0 1 calls, 21.2s | eta 12 min
+[32/60] DLG-T032 r0 1 calls, 26.0s | eta 11 min
+[33/60] DLG-T033 r0 1 calls, 24.8s | eta 11 min
+[34/60] DLG-T034 r0 1 calls, 24.3s | eta 11 min
+[35/60] DLG-T035 r0 1 calls, 25.6s | eta 10 min
+[36/60] DLG-T036 r0 1 calls, 20.6s | eta 10 min
+[37/60] DLG-T037 r0 1 calls, 24.0s | eta 9 min
+[38/60] DLG-T038 r0 1 calls, 26.2s | eta 9 min
+[39/60] DLG-T039 r0 1 calls, 24.1s | eta 9 min
+[40/60] DLG-T040 r0 1 calls, 23.8s | eta 8 min
+[41/60] DLG-T041 r0 1 calls, 25.2s | eta 8 min
+[42/60] DLG-T042 r0 1 calls, 25.3s | eta 7 min
+[43/60] DLG-T043 r0 1 calls, 24.1s | eta 7 min
+[44/60] DLG-T044 r0 1 calls, 24.5s | eta 6 min
+[45/60] DLG-T045 r0 1 calls, 23.9s | eta 6 min
+[46/60] DLG-T046 r0 1 calls, 23.1s | eta 6 min
+[47/60] DLG-T047 r0 1 calls, 24.3s | eta 5 min
+[48/60] DLG-T048 r0 1 calls, 23.5s | eta 5 min
+[49/60] DLG-T049 r0 1 calls, 23.8s | eta 4 min
+[50/60] DLG-T050 r0 1 calls, 23.1s | eta 4 min
+[51/60] DLG-T051 r0 1 calls, 25.7s | eta 4 min
+[52/60] DLG-T052 r0 1 calls, 24.3s | eta 3 min
+[53/60] DLG-T053 r0 1 calls, 23.4s | eta 3 min
+[54/60] DLG-T054 r0 1 calls, 25.2s | eta 2 min
+[55/60] DLG-T055 r0 1 calls, 23.9s | eta 2 min
+[56/60] DLG-T056 r0 1 calls, 24.2s | eta 2 min
+[57/60] DLG-T057 r0 1 calls, 23.3s | eta 1 min
+[58/60] DLG-T058 r0 1 calls, 23.9s | eta 1 min
+[59/60] DLG-T059 r0 1 calls, 23.6s | eta 0 min
+[60/60] DLG-T060 r0 1 calls, 26.3s | eta 0 min
+Done: /tmp/proj/results_obj3/o3l_r6_2b_dlg/cases.jsonl  (errors: 0, peak server RAM: 2283.1 MB)
+
+Plan summary:
+  o3l_r6_2b_v12                            ok
+  o3l_r6_2b_fup                            ok
+  o3l_r6_2b_dlg                            ok
+[07:22:50] done: ok=True, 10 files packed, 106.9 min

@@ -1,0 +1,124 @@
+{
+  "name": "obj2_step8_secondary",
+  "description": "Objective 2, Step 8. Deployed setup (fixed in Step 7 on dev): always retrieve, k = 3 compact chunks, soft fallback that leaves the message unchanged, rule rag_always_rule_b, short reply when a shown card is re-fetched, warm-up. Greedy, seed 42, scaled catalogue. Secondary runs, both models, test retrieval questions: retrieval without any fallback, and retrieval as a search_knowledge tool. About 4-5 hours.",
+  "runs": [
+    {
+      "name": "s8_4b_rag_nofallback",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "always",
+      "fallback": "shadow",
+      "context_view": "compact",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_4b_rag_tool",
+      "model": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-4b/Qwen3.5-4B-Q4_K_M.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "tool",
+      "context_view": "compact",
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_rag_nofallback",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "always",
+      "fallback": "shadow",
+      "context_view": "compact",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true
+    },
+    {
+      "name": "s8_2b_rag_tool",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "backend": "vulkan",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "server_exe": "llama-vulkan/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "99"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "test",
+      "retrieval": "tool",
+      "context_view": "compact",
+      "warmup": true
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj2",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "repeats": 1,
+    "temperature": 0
+  }
+}

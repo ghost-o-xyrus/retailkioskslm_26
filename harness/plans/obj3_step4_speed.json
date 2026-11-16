@@ -1,0 +1,87 @@
+{
+  "name": "obj3_step4_speed",
+  "description": "Objective 3, Step 4. Tier A in-place timing of O3-S4: Qwen3.5-2B Q8_0 on CPU, 4 threads, the 70-case dev speed subset, 1 repeat. Compared with the Step 3 O3-S3 timing runs. Close other apps. About 20-30 minutes.",
+  "runs": [
+    {
+      "name": "o3s4sp_a_2b_rag_s4",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "cpu",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/rag_cases.jsonl",
+      "split": "dev",
+      "ids": "eval/o3_dev_speed_ids.json",
+      "repeats": 1,
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S4",
+      "loop_guard": true,
+      "tool_view": "compact"
+    },
+    {
+      "name": "o3s4sp_a_2b_v12_s4",
+      "model": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "model_path": "models/qwen3.5-2b/Qwen3.5-2B-Q8_0.gguf",
+      "backend": "cpu",
+      "server_exe": "llama-cpu/llama-server.exe",
+      "server_args": [
+        "--jinja",
+        "-c",
+        "8192",
+        "-np",
+        "1",
+        "-ngl",
+        "0",
+        "-t",
+        "4"
+      ],
+      "extra_server_args": [
+        "--reasoning-budget",
+        "0"
+      ],
+      "eval": "eval/eval_set_v1.2.jsonl",
+      "split": "dev",
+      "ids": "eval/o3_dev_speed_ids.json",
+      "repeats": 1,
+      "retrieval": "routed",
+      "fallback": "gate",
+      "context_view": "compact",
+      "gate_style": "omit",
+      "rag_rule": "rag_always_rule_b",
+      "dedupe_shown": true,
+      "warmup": true,
+      "config_label": "O3-S4",
+      "loop_guard": true,
+      "tool_view": "compact"
+    }
+  ],
+  "base_dir": "..",
+  "results_dir": "results_obj3",
+  "defaults": {
+    "port": 8080,
+    "set": "all",
+    "temperature": 0
+  }
+}

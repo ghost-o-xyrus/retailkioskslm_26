@@ -1,0 +1,43 @@
+{
+  "name": "llama32-3b_q4_k_m_vulkan",
+  "model": "Llama-3.2-3B-Instruct",
+  "quant": "Q4_K_M",
+  "backend": "vulkan",
+  "eval_file": "eval\\eval_set.jsonl",
+  "filters": {
+    "set": "all",
+    "split": "all",
+    "ids": null,
+    "category": null,
+    "limit": null
+  },
+  "n_cases": 150,
+  "repeats": 1,
+  "decoding": {
+    "temperature": 0.0,
+    "top_k": null,
+    "seed": 42,
+    "max_tokens": 512,
+    "max_rounds": 4,
+    "thinking": false
+  },
+  "server_props": {
+    "model_path": "C:\\Users\\user\\Downloads\\SLM_work\\models/llama-3.2-3b-instruct/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+    "build_info": "b11696-ceefd16da",
+    "total_slots": 1,
+    "chat_template": "{{- bos_token }}\n{%- if custom_tools is defined %}\n    {%- set tools = custom_tools %}\n{%- endif %}\n{%- if not tools_in_user_message is defined %}\n    {%- set tools_in_user_message = true %}\n{%- endif %}\n{%- if not date_string is defined %}\n    {%- if strftime_now is defined %}\n        {%- set date_...",
+    "n_ctx": 8192
+  },
+  "ram_tracking": "pid 52656",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 16,
+    "total_ram_gb": 15.7
+  },
+  "started": "2026-10-18T07:15:07",
+  "finished": "2026-10-18T07:55:05",
+  "errors": 1,
+  "run_peak_rss_mb": 5742.3,
+  "wall_minutes": 40.0
+}
